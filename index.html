@@ -1,104 +1,200 @@
-<!DOCTYPE html>
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
+
+    <title>凤翼</title>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="telephone=no" name="format-detection">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8">
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <script type="text/javascript" src="js/all.js"></script>
-    <title>凤翼网</title>
+    <link href="css/cate.css" rel="stylesheet" type="text/css" />
+    <link href="css/iscroll.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .banner img {width: 100%;}
+        .themeStyle{ background-color:#E83407 !important; }
+    </style>
+
+    <script src="js/iscroll.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var myScroll;
+        function loaded() {
+            myScroll = new iScroll('wrapper', {
+                snap: true,
+                momentum: false,
+                hScrollbar: false,
+                onScrollEnd: function () {
+                    document.querySelector('#indicator > li.active').className = '';
+                    document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loaded, false);
+    </script>
+
 </head>
+
 <body>
-
-<div class="ky_main">
-    <div class="ky_download">
-        <div class="logo"></div>
-        <div class="title">
-            <p class="ky_font14">风翼网</p>
-
-            <p class="ky_grey ky_mt5">留学机构、培训机构、出国专家</p>
+<!--music-->
+<div class="banner">
+    <div id="wrapper">
+        <div id="scroller">
+            <ul id="thelist">
+                <li><p>大米</p><img src="http://wx.dlwebs.com/uploads/g/gvccvs1405480392/c/0/e/d/thumb_53c64ada5f51f.jpg"></li><li><p>宣传</p><img src="http://wx.dlwebs.com/tpl/static/attachment/focus/default/4.jpg"></li>			</ul>
         </div>
     </div>
-    <div class="ky_main">
-        <div class="ky_slide"></div>
-        <div class="ky_carousel">
-            <div class="carousel">
-                <ul style="margin-left:10px">
-                    <li>
-                        <a href="list.html">
-                            <div class="icon dhl"></div>
-                            <p>雅思培训</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="list.html">
-                            <div class="icon hotel"></div>
-                            <p>托福培训</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="list.html">
-                            <div class="icon qz"></div>
-                            <p>留学机构</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="list.html">
-                            <div class="icon flight"></div>
-                            <p>移民</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ky_center ky_mt10 ky_mb5">
 
-            </div>
-        </div>
+    <div id="nav">
+        <ul id="indicator">
+            <li class="active" ></li><li  ></li>		</ul>
     </div>
-    <div class="ky_footer">
-        <div class="ad"></div>
-        <ul class="footer_nav clearfix">
 
-            <li>
-                <a href="@go=usercenter" id="usercenter">我的订单</a>
-            </li>
-            <li>
-                <a href="art_3015.html">关于我们</a>
-            </li>
-            <li>
-                <a href="art_3013.html">联系方式</a>
-            </li>
-        </ul>
-        <ul class="mobile_pc clearfix">
-            <li class="active"><a href="http://wx.dlwebs.com">聚优客</a></li>
-
-        </ul>
-        <div class="copyright">
-            <span>京ICP备11045617号 </span>
-            <a class="ky_ml25" href="mailto:service@kaiyuan.de">意见反馈</a>
-        </div>
-    </div>
 </div>
-<script type="text/javascript" src="js/lubo.js"></script>
-<script>
-    window.init = function () {
-        Taxi.index.init();
-    };
-    ;
-    (function ($) {
-        //轮播图
-        $('.ky_slide').slider({
-            data: [
-                {"src": "uploads/1403/image/1403211003393742.jpg", "url": "view_lastminute.html"},
 
-                {"src": "uploads/1402/image/1402230651287743.jpg", "url": "@go=list&keyword=_25E8_25B5_258F_25E8_258A_25B1"}
-            ]
-        });
-    })(Zepto);
+<ul class="mainmenu">
+    <li>
+        <a href="/index.php?g=Wap&m=Index&a=lists&classid=13&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY" >
+            <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/bookshelf.png" /><span>知识库</span></p>
+            <b>知识库</b>
+        </a>
+    </li><li>
+    <a href="/index.php?g=Wap&m=Index&a=lists&classid=14&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY" >
+        <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/packman.png" /><span>关于我们</span></p>
+        <b>关于我们</b>
+    </a>
+</li><li>
+    <a href="/index.php?g=Wap&m=Index&a=lists&classid=15&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY" >
+        <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/hand.png" /><span>活动中心</span></p>
+        <b>活动中心</b>
+    </a>
+</li><li>
+    <a href="/index.php?g=Wap&m=Index&a=lists&classid=16&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY" >
+        <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/glasses.png" /><span>公司新闻</span></p>
+        <b>公司新闻</b>
+    </a>
+</li>	</ul>
+
+
+<script>
+    var count = document.getElementById("thelist").getElementsByTagName("img").length;
+
+    var count2 = document.getElementsByClassName("menuimg").length;
+    for(i=0;i<count;i++){
+        document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+    }
+    document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+
+    setInterval(function(){
+        myScroll.scrollToPage('next', 0,400,count);
+    },3500 );
+    window.onresize = function(){
+        for(i=0;i<count;i++){
+            document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
+
+        }
+        document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
+    }
 </script>
-</body>
+<div class="copyright">
+</div>  <script src="js/jquery.min.js" type="text/javascript"></script>
+<script>
+    function displayit(n){
+        for(i=0;i<4;i++){
+            if(i==n){
+                var id='menu_list'+n;
+                if(document.getElementById(id).style.display=='none'){
+                    document.getElementById(id).style.display='';
+                    document.getElementById("plug-wrap").style.display='';
+                }else{
+                    document.getElementById(id).style.display='none';
+                    document.getElementById("plug-wrap").style.display='none';
+                }
+            }else{
+                if($('#menu_list'+i)){
+                    $('#menu_list'+i).css('display','none');
+                }
+            }
+        }
+    }
+    function closeall(){
+        var count = document.getElementById("top_menu").getElementsByTagName("ul").length;
+        for(i=0;i<count;i++){
+            document.getElementById("top_menu").getElementsByTagName("ul").item(i).style.display='none';
+        }
+        document.getElementById("plug-wrap").style.display='none';
+    }
+
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        WeixinJSBridge.call('hideToolbar');
+    });
+</script>
+<script type="text/javascript">
+    window.shareData = {
+        "moduleName":"Index",
+        "moduleID": '0',
+        "imgUrl": "http://wx.dlwebs.com/tpl/static/attachment/focus/default/2.jpg",
+        "timeLineLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
+        "sendFriendLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
+        "weiboLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
+        "tTitle": "微网站",
+        "tContent": "进入微网站"
+    };
+</script>
+<script>document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+        shareHandle('friend');
+        WeixinJSBridge.invoke('sendAppMessage', {
+            "img_url": window.shareData.imgUrl,
+            "img_width": "640",
+            "img_height": "640",
+            "link": window.shareData.sendFriendLink,
+            "desc": window.shareData.tContent,
+            "title": window.shareData.tTitle
+        }, function (res) {
+            _report('send_msg', res.err_msg);
+        })
+    });
+
+    WeixinJSBridge.on('menu:share:timeline', function (argv) {
+        shareHandle('frineds');
+        WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": window.shareData.imgUrl,
+            "img_width": "640",
+            "img_height": "640",
+            "link": window.shareData.sendFriendLink,
+            "desc": window.shareData.tContent,
+            "title": window.shareData.tTitle
+        }, function (res) {
+            _report('timeline', res.err_msg);
+        });
+    });
+
+    WeixinJSBridge.on('menu:share:weibo', function (argv) {
+        shareHandle('weibo');
+        WeixinJSBridge.invoke('shareWeibo', {
+            "content": window.shareData.tContent,
+            "url": window.shareData.sendFriendLink,
+        }, function (res) {
+            _report('weibo', res.err_msg);
+        });
+    });
+}, false)
+
+function shareHandle(to) {
+    var submitData = {
+        module: window.shareData.moduleName,
+        moduleid: window.shareData.moduleID,
+        token:'gvccvs1405480392',
+        wecha_id:'oazUWuMdilnK5nQbLIFpKbTGCjKY',
+        url: window.shareData.sendFriendLink,
+        to:to
+    };
+    $.post('/index.php?g=Wap&m=Share&a=shareData&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY',submitData,function (data) {},'json')
+}
+</script></body>
 </html>
