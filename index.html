@@ -1,208 +1,82 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-    <title>凤翼</title>
-    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta charset="utf-8">
-
-    <link href="css/cate.css" rel="stylesheet" type="text/css" />
-    <link href="css/iscroll.css" rel="stylesheet" type="text/css" />
-
-    <style>
-        .banner img {width: 100%;}
-        .themeStyle{ background-color:#E83407 !important; }
-    </style>
-
-    <script src="js/iscroll.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        var myScroll;
-        function loaded() {
-            myScroll = new iScroll('wrapper', {
-                snap: true,
-                momentum: false,
-                hScrollbar: false,
-                onScrollEnd: function () {
-                    document.querySelector('#indicator > li.active').className = '';
-                    document.querySelector('#indicator > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', loaded, false);
-    </script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+<link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-320x460.png" />
+<meta name="author" content="FamousThemes" />
+<meta name="description" content="GoMobile - A next generation web app theme" />
+<meta name="keywords" content="mobile web app, mobile template, mobile design, mobile app design, mobile app theme, mobile wordpress theme, my mobile app" />
+<title>仿GoMobile触屏版html5响应式手机app网站模板下载-懒人模板【http://www.lanrenmb.com/HTML5/】</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="colors/wedding/wedding.css">
+<link type="text/css" rel="stylesheet" href="css/idangerous.swiper.css">
+<link type="text/css" rel="stylesheet" href="css/swipebox.css">
+<link href='../../../fonts.googleapis.com/css@family=Lato_3A300' rel='stylesheet' type='text/css'>
 </head>
-
 <body>
-<!--music-->
-<div class="banner">
-    <div id="wrapper">
-        <div id="scroller">
-            <ul id="thelist">
-                <li><p>风翼网</p><img src="uploads/1403/image/1403211003393742.jpg"></li>
-                <li><p>风翼网</p><img src="uploads/1402/image/1402230651287743.jpg"></li>			</ul>
-        </div>
-    </div>
+  <div id="header">
+      <div class="gohome radius20"><a href="#"><img src="images/icons/home.png" alt="" title="" /></a></div>
+      <div class="gomenu radius20"><a href="#" onclick="swiperParent.swipeTo(10);"><img src="images/icons/contact.png" alt="" title="" /></a></div>
+  </div>
+  <div class="swiper-container swiper-parent">
+    <div class="swiper-wrapper">
+    
+      <!--Menu page-->
+      <div class="swiper-slide sliderbg_menu">
+          <div class="swiper-container swiper-nested">
+                   <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                                  <div class="slide-inner">
+                                        <div class="logo"><a href="#"><img src="colors/wedding/images/logo.png" alt="" title="" border="0" /><span>凤翼&留学</span></a></div>
+                                        <div class="menu">
+                                        <ul>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(1);"><img src="images/icons/about.png" alt="" title="" /><span>雅思</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(2);"><img src="images/icons/tools.png" alt="" title="" /><span>托福</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(3);"><img src="images/icons/blog.png" alt="" title="" /><span>德福</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(5);"><img src="images/icons/docs.png" alt="" title="" /><span>法语</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(6);"><img src="images/icons/photos.png" alt="" title="" /><span>留学</span></a></li>
 
-    <div id="nav">
-        <ul id="indicator">
-            <li class="active" ></li><li  ></li>		</ul>
-    </div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        </div>
+                                 </div>
+                         </div>
+                   </div>
+                  <div class="swiper-scrollbar"></div>
+          </div> 
+      </div>
+      
 
-</div>
-
-<ul class="mainmenu">
-    <li>
-        <a href="list.html" >
-            <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/bookshelf.png" /></p>
-            <b>雅思</b>
-        </a>
-    </li><li>
-    <a href="list.html" >
-        <p><img src="images/us.png" /></p>
-        <b>托福</b>
-    </a>
-</li><li>
-    <a href="list.html" >
-        <p><img src="images/german.png" /></p>
-        <b>德福</b>
-    </a>
-</li><li>
-    <a href="list.html" >
-        <p><img src="images/france.png" /></p>
-        <b>法语</b>
-    </a>
-</li>
-    <li>
-        <a href="list.html" >
-            <p><img src="http://wx.dlwebs.com/tpl/static/attachment/icon/lovely/glasses.png" /></p>
-            <b>留学</b>
-        </a>
-    </li>
-</ul>
-
-
-<script>
-    var count = document.getElementById("thelist").getElementsByTagName("img").length;
-
-    var count2 = document.getElementsByClassName("menuimg").length;
-    for(i=0;i<count;i++){
-        document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-
-    }
-    document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-
-    setInterval(function(){
-        myScroll.scrollToPage('next', 0,400,count);
-    },3500 );
-    window.onresize = function(){
-        for(i=0;i<count;i++){
-            document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:"+document.body.clientWidth+"px";
-
-        }
-        document.getElementById("scroller").style.cssText = " width:"+document.body.clientWidth*count+"px";
-    }
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script type="text/javascript" src="js/idangerous.swiper.scrollbar-2.1.js"></script>
+<script type="text/javascript" src="js/jquery.tabify.js"></script>
+<script type="text/javascript" src="js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script type="text/javascript" src="js/load.js"></script>
+<!--Twitter Feed-->
+<script type="text/javascript" src="js/twitter/jquery.tweet.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+var $ = jQuery.noConflict();  
+jQuery(function($){
+$(".tweet").tweet({
+  modpath: 'js/twitter/',
+  join_text: "auto",
+  username: "famousthemes",
+  count: 5,
+  auto_join_text_default: "we said,",
+  auto_join_text_ed: "we",
+  auto_join_text_ing: "we were",
+  auto_join_text_reply: "we replied",
+  auto_join_text_url: "we were checking out",
+  loading_text: "loading tweets..."
+});
+});
 </script>
-<div class="copyright">
-</div>  <script src="js/jquery.min.js" type="text/javascript"></script>
-<script>
-    function displayit(n){
-        for(i=0;i<4;i++){
-            if(i==n){
-                var id='menu_list'+n;
-                if(document.getElementById(id).style.display=='none'){
-                    document.getElementById(id).style.display='';
-                    document.getElementById("plug-wrap").style.display='';
-                }else{
-                    document.getElementById(id).style.display='none';
-                    document.getElementById("plug-wrap").style.display='none';
-                }
-            }else{
-                if($('#menu_list'+i)){
-                    $('#menu_list'+i).css('display','none');
-                }
-            }
-        }
-    }
-    function closeall(){
-        var count = document.getElementById("top_menu").getElementsByTagName("ul").length;
-        for(i=0;i<count;i++){
-            document.getElementById("top_menu").getElementsByTagName("ul").item(i).style.display='none';
-        }
-        document.getElementById("plug-wrap").style.display='none';
-    }
-
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-        WeixinJSBridge.call('hideToolbar');
-    });
-</script>
-<script type="text/javascript">
-    window.shareData = {
-        "moduleName":"Index",
-        "moduleID": '0',
-        "imgUrl": "http://wx.dlwebs.com/tpl/static/attachment/focus/default/2.jpg",
-        "timeLineLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
-        "sendFriendLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
-        "weiboLink": "http://wx.dlwebs.com/index.php?g=Wap&m=Index&a=index&token=gvccvs1405480392",
-        "tTitle": "微网站",
-        "tContent": "进入微网站"
-    };
-</script>
-<script>document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-    WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-        shareHandle('friend');
-        WeixinJSBridge.invoke('sendAppMessage', {
-            "img_url": window.shareData.imgUrl,
-            "img_width": "640",
-            "img_height": "640",
-            "link": window.shareData.sendFriendLink,
-            "desc": window.shareData.tContent,
-            "title": window.shareData.tTitle
-        }, function (res) {
-            _report('send_msg', res.err_msg);
-        })
-    });
-
-    WeixinJSBridge.on('menu:share:timeline', function (argv) {
-        shareHandle('frineds');
-        WeixinJSBridge.invoke('shareTimeline', {
-            "img_url": window.shareData.imgUrl,
-            "img_width": "640",
-            "img_height": "640",
-            "link": window.shareData.sendFriendLink,
-            "desc": window.shareData.tContent,
-            "title": window.shareData.tTitle
-        }, function (res) {
-            _report('timeline', res.err_msg);
-        });
-    });
-
-    WeixinJSBridge.on('menu:share:weibo', function (argv) {
-        shareHandle('weibo');
-        WeixinJSBridge.invoke('shareWeibo', {
-            "content": window.shareData.tContent,
-            "url": window.shareData.sendFriendLink,
-        }, function (res) {
-            _report('weibo', res.err_msg);
-        });
-    });
-}, false)
-
-function shareHandle(to) {
-    var submitData = {
-        module: window.shareData.moduleName,
-        moduleid: window.shareData.moduleID,
-        token:'gvccvs1405480392',
-        wecha_id:'oazUWuMdilnK5nQbLIFpKbTGCjKY',
-        url: window.shareData.sendFriendLink,
-        to:to
-    };
-    $.post('/index.php?g=Wap&m=Share&a=shareData&token=gvccvs1405480392&wecha_id=oazUWuMdilnK5nQbLIFpKbTGCjKY',submitData,function (data) {},'json')
-}
-</script></body>
+</body>
 </html>
