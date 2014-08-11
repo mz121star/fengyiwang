@@ -31,13 +31,14 @@
                    <div class="swiper-wrapper">
                         <div class="swiper-slide">
                                   <div class="slide-inner">
-                                        <div class="logo"><a href="#"><img src="colors/wedding/images/logo.png" alt="" title="" border="0" /><span>凤翼&留学</span></a></div>
+                                      <div class="ky_slide"></div>
+                                        <div class="logo"><a href="#"> <span>&nbsp</span></a></div>
                                         <div class="menu">
                                         <ul>
-                                        <li><a href="#" onclick="swiperParent.swipeTo(1);"><img src="images/us.png" alt="" title="" /><span>雅思</span></a></li>
-                                        <li><a href="#" onclick="swiperParent.swipeTo(2);"><img src="images/us.png" alt="" title="" /><span>托福</span></a></li>
-                                        <li><a href="#" onclick="swiperParent.swipeTo(3);"><img src="images/german.png" alt="" title="" /><span>德福</span></a></li>
-                                        <li><a href="#" onclick="swiperParent.swipeTo(5);"><img src="images/france.png" alt="" title="" /><span>法语</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(1);"><img src="images/icons/about.png" alt="" title="" /><span>雅思</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(2);"><img src="images/icons/tools.png" alt="" title="" /><span>托福</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(3);"><img src="images/icons/blog.png" alt="" title="" /><span>德福</span></a></li>
+                                        <li><a href="#" onclick="swiperParent.swipeTo(5);"><img src="images/icons/docs.png" alt="" title="" /><span>法语</span></a></li>
                                         <li><a href="#" onclick="swiperParent.swipeTo(6);"><img src="images/icons/photos.png" alt="" title="" /><span>留学</span></a></li>
 
                                         </ul>
@@ -61,22 +62,23 @@
 <script type="text/javascript" src="js/load.js"></script>
 <!--Twitter Feed-->
 <script type="text/javascript" src="js/twitter/jquery.tweet.js" charset="utf-8"></script>
-<script type="text/javascript" charset="utf-8">
-var $ = jQuery.noConflict();  
-jQuery(function($){
-$(".tweet").tweet({
-  modpath: 'js/twitter/',
-  join_text: "auto",
-  username: "famousthemes",
-  count: 5,
-  auto_join_text_default: "we said,",
-  auto_join_text_ed: "we",
-  auto_join_text_ing: "we were",
-  auto_join_text_reply: "we replied",
-  auto_join_text_url: "we were checking out",
-  loading_text: "loading tweets..."
-});
-});
-</script>
+
+        <script type="text/javascript" src="js/lubo.js"></script>
+        <script>
+            window.init = function () {
+                Taxi.index.init();
+            };
+            ;
+            (function ($) {
+                //轮播图
+                $('.ky_slide').slider({
+                    data: [
+                        {"src": "uploads/1403/image/1403211003393742.jpg", "url": "view_lastminute.html"},
+
+                        {"src": "uploads/1402/image/1402230651287743.jpg", "url": "@go=list&keyword=_25E8_25B5_258F_25E8_258A_25B1"}
+                    ]
+                });
+            })(Zepto);
+        </script>
 </body>
 </html>
