@@ -18,9 +18,9 @@ Basic Swiper Styles
 ================================================================*/
 
 .swiper-container {
-    margin:0 auto;
-    position:relative;
-    overflow:hidden;
+    /* margin:0 auto; */
+    /* position:relative; */
+    /* overflow:hidden; */
     -webkit-backface-visibility:hidden;
     -moz-backface-visibility:hidden;
     -ms-backface-visibility:hidden;
