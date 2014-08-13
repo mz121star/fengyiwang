@@ -87,10 +87,9 @@
                 </div>
                 <div class="list-item-price">
                     <div class="item_fun orange">
-                        <div class="item_price"><span class="price"><em>€<strong>559</strong></em></span></div>
-                        <div class="item_order">预订</div>
+
                     </div>
-                    <a class="link_area" href="detail.html"></a>
+                    <div class="link_area" href="detail.html"> <img class="ckbox"  src="images/uncheck.png"/></div>
                 </div>
             </div>
             <div class="list-item toggle_bright  >
@@ -102,10 +101,9 @@
             </div>
             <div class="list-item-price">
                 <div class="item_fun orange">
-                    <div class="item_price"><span class="price"><em>€<strong>639</strong></em></span></div>
-                    <div class="item_order">预订</div>
+
                 </div>
-                <a class="link_area" href="detail.html"></a>
+                <div class="link_area" href="detail.html"> <img  class="ckbox" src="images/uncheck.png"/></div>
             </div>
         </div>
         <div class="list-item toggle_bright  >
@@ -117,10 +115,9 @@
         </div>
         <div class="list-item-price">
             <div class="item_fun orange">
-                <div class="item_price"><span class="price"><em>€<strong>518</strong></em></span></div>
-                <div class="item_order">预订</div>
+
             </div>
-            <a class="link_area" href="detail.html"></a>
+            <div class="link_area" href="detail.html"> <img  class="ckbox" src="images/uncheck.png"/></div>
         </div>
     </div>
     <div class="list-item toggle_bright  >
@@ -132,9 +129,9 @@
     </div>
     <div class="list-item-price">
         <div class="item_fun orange">
-                       <input type="checkbox">
+
         </div>
-        <a class="link_area" href="detail.html"></a>
+        <div class="link_area" href="detail.html"> <img  class="ckbox" src="images/uncheck.png"/></div>
     </div>
 </div>
 <div class="list-item toggle_bright  >
@@ -146,10 +143,9 @@
 </div>
 <div class="list-item-price">
     <div class="item_fun orange">
-        <div class="item_price"><span class="price"><em>€<strong>495</strong></em></span></div>
-        <div class="item_order">预订</div>
+
     </div>
-    <a class="link_area" href="detail.html"></a>
+    <div class="link_area" href="detail.html"> <img class="ckbox" src="images/uncheck.png"/></div>
 </div>
 </div>
 
@@ -221,8 +217,9 @@
 <div style="position: fixed;"></div>
 <script type="text/javascript" src="js/lubo.js"></script>
 <script type="text/javascript" src="js/icheck.min.js"></script>
+
 <script>
-    $('input').iCheck('check');
+
     ; (function ($) {
         //轮播图
         $('.ky_slide').slider({
@@ -233,6 +230,12 @@
             ]
         });
     })(Zepto);
+    $('.tap').on("click",function(){
+        if($(this).attr("src")=="images/check.png")
+            $(this).attr("src","images/uncheck.png")  ;
+        else
+            $(this).attr("src","images/check.png")  ;
+    })
 </script>
 </body>
 </html>
