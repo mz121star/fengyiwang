@@ -230,7 +230,7 @@
             ]
         });
     })(Zepto);
-    $('.tap').on("tap",function(){
+    $('.tap').on("touchstart",function(){
         if($(this).attr("src")=="images/check.png")
             $(this).attr("src","images/uncheck.png")  ;
         else
