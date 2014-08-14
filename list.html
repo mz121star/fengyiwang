@@ -259,6 +259,17 @@
     })
     $(function() {
         $('#menu').mmenu();
+        var clone_e=$(".ky_head").clone(true);
+        var clone_bottom=$("#book-button").clone(true);
+
+
+        $(".ky_head").remove()
+        $("#book-button").remove()
+        $("#menu").after(clone_e);
+        $(".mmenu-page").after(clone_bottom);
+
+
+
     });
 
 </script>
