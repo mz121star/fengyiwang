@@ -618,3 +618,5 @@ header .l_tbn a:hover{color:#fff;}
     .mmenu-right .mmenu.mmenu-horizontal{left:auto;right:-4500px;}
     .mmenu-left.mmenu-opening .mmenu-page,.mmenu-left.mmenu-opening #mmenu-blocker{left:500px;}
 }
+
+.mmenu-opened i{display: inline;font-size: 25px;margin-right: 10px}
