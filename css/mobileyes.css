@@ -590,7 +590,7 @@ header .l_tbn a:hover{color:#fff;}
 .mmenu-opened .mmenu-page,.mmenu-opened #mmenu-blocker{-webkit-transition:left 0.5s ease, right 0.5s ease, margin 0.5s ease;-moz-transition:left 0.5s ease, right 0.5s ease, margin 0.5s ease;transition: left 0.5s ease, right 0.5s ease, margin 0.5s ease;}
 .mmenu-accelerated .mmenu-page,html.mmenu-accelerated #mmenu-blocker{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
 .mmenu-left.mmenu-opened .mmenu-page,html.mmenu-left.mmenu-opened #mmenu-blocker{margin-left:0px;left:0%;}
-.mmenu-left.mmenu-opening .mmenu-page,.mmenu-left.mmenu-opening #mmenu-blocker{margin-left:-65px;left:100%;}
+.mmenu-left.mmenu-opening .mmenu-page,.mmenu-left.mmenu-opening #mmenu-blocker{margin-left:-65px;left: 70%;}
 .mmenu-right.mmenu-opened .mmenu-page,.mmenu-right.mmenu-opened #mmenu-blocker{margin-right:0px;right:0%;}
 .mmenu-right.mmenu-opening .mmenu-page,.mmenu-right.mmenu-opening #mmenu-blocker{margin-right:-65px;right:100%;}
 
@@ -604,7 +604,7 @@ header .l_tbn a:hover{color:#fff;}
 .mmenu li.mmenu-selected > a,.mmenu li.mmenu-selected > span{background: #4D5D5F;}
 .mmenu li.mmenu-selected > a.mmenu-subopen{background:transparent;}
 
-.mmenu.mmenu-horizontal{width:1000%;}
+.mmenu.mmenu-horizontal{width: 1000%;}
 .mmenu.mmenu-horizontal ul{width:10%;margin-left:0%;float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-transition:margin-left 0.5s ease;-moz-transition:margin-left 0.5s ease;transition:margin-left 0.5s ease;}
 .mmenu-accelerated .mmenu.mmenu-horizontal ul{-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);transform:translate3d(0,0,0);}
 
