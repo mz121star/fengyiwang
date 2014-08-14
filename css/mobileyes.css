@@ -60,7 +60,7 @@ table{border-collapse:collapse;border-spacing:0}
 .v-page{position: relative;}
 .ky_head { background: none repeat scroll 0 0 #25A4BB;border-bottom: 1px solid #1B7A8B;color: #FFFFFF;height: 33px;line-height: 33px;padding: 6px 0 4px; position: relative;text-align: center; position: fixed;  top: 0px;  z-index: 99;  width: 100%;}
 .ky_head .back_home{display: block;height: 44px; left: 0;outline: medium none; position: absolute;top: 0;width: 40px;}
-.ky_head i{position: absolute;top: 0;left: 0;width: 42px;height: 42px;cursor: pointer;background: url(../images/header_sprites.png) 0 0 no-repeat;background-size: 300% 100%; }
+.ky_head i{position: absolute;left: 0;width: 41px;height: 37px;cursor: pointer;/* background: url(../images/header_sprites.png) 0 0 no-repeat; *//* background-size: 300% 100%; */ color: white;font-size: 25px;}
 .ky_head .logo{position:absolute;right:9px;top:6px;height:33px;width:29px;background:url(../images/logo_2x.png) no-repeat;background-size:100% auto;}
 
 
