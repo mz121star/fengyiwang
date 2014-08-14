@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
     <title>留学机构列表</title>
-    <link rel="stylesheet" href="css/mobileyes.css">
+    <link rel="stylesheet" href="/css/mobileyes.css">
 
-    <script type="text/javascript" src="js/all.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
 
     <script src="js/TouchSlide.1.1.js"></script>
     <script type="text/javascript">
@@ -20,9 +20,19 @@
     </script>
 </head><body>
 <div id="ky_page">
+    <nav id="menu">
+        <ul>
+            <li class="Selected"><a href="javascript:;">培训</a></li>
+            <li><a href="javascript:;">留学</a></li>
+            <li><a href="javascript:;">结伴留学</a></li>
+            <li><a href="javascript:;">结伴培训</a></li>
+            <li><a href="javascript:;">个人中心</a></li>
+        </ul>
+    </nav>
+
     <div class="v-page" id="main-page" >
         <div class="ky_head">
-            <a class="back_home" href="index.html">
+            <a class="back_home" href="#menu">
                 <i></i>
             </a>
             <h1>留学机构列表</h1>
@@ -225,8 +235,9 @@
 
 </div>
 <div style="position: fixed;"></div>
-<script type="text/javascript" src="js/lubo.js"></script>
-<script type="text/javascript" src="js/icheck.min.js"></script>
+<script type="text/javascript" src="/js/lubo.js"></script>
+<script type="text/javascript" src="/js/icheck.min.js"></script>
+<script src="/js/jquery.mmenu.min.js"></script>
 
 <script>
 
@@ -246,6 +257,10 @@
         else
             $(this).attr("src","images/check.png")  ;
     })
+    $(function() {
+        $('#menu').mmenu();
+    });
+
 </script>
 </body>
 </html>
