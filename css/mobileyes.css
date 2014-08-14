@@ -612,6 +612,7 @@ header .l_tbn a:hover{color:#fff;}
 .mmenu.mmenu-horizontal ul.mmenu-submenu.mmenu-opened{display:block;}
 .mmenu.mmenu-horizontal ul.mmenu-subopened{margin-left:-10%;height:100%;overflow:hidden;}
 #mmenu-blocker{display: none}
+.mmenu-page{padding-top: 34px;}
 @media all and (min-width: 500px) {
     .mmenu.mmenu-horizontal{width:5000px;}
     .mmenu-right .mmenu.mmenu-horizontal{left:auto;right:-4500px;}
