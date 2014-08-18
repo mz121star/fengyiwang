@@ -385,7 +385,7 @@ div.gallery-item img { display: block; width: 100%; height: auto; }
 html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolling.mm-opened .mm-page .socialMedia {border-radius: 0px;}
 
 
-/*閺堣櫣銈ㄩ崚妤勩€�*/
+/*闁哄牐娅ｉ妶銊╁礆濡ゅ嫨鈧拷*/
 .list-items {margin-bottom: -1px;}
 .list-item { background: none repeat scroll 0 0 #FFFFFF; /* border-bottom: 1px solid #D2D2D2; */  min-height: 60px; padding: 10px 0; position: relative;}
 .link_area { bottom: 0;  left: 0;  position: absolute;right: 0;  top: 0;z-index: 2;}
@@ -420,8 +420,8 @@ html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolli
 .item_fun.orange .item_order{height:22px;border:1px solid #e96300;border-top-color:#e27500;line-height:22px;background:#ef7c00;-webkit-border-radius:0 0 3px 3px;-moz-border-radius:0 0 3px 3px;border-radius:0 0 3px 3px;}
 .list_item_interleave{background:#f5fcfd;}
 .ckbox{width: 48px;height: 40px}
-.book_now {z-index:9999;border-bottom:1px solid #A8A8A8;padding:12px 0 8px;text-align:center;cursor:pointer;background:-webkit-linear-gradient(top,#f1f1f1,#c8c8c8);background:-moz-linear-gradient(top,#f1f1f1,#c8c8c8);background:linear-gradient(top,#f1f1f1,#c8c8c8);}
-.book_now a {display:inline-block;font:24px/38px microsoft yahei;color:#fff;padding:0 46px;-webkit-border-radius:5px;border-radius:5px;-webkit-box-shadow:1px 1px 2px rgba(168,168,168,1);box-shadow:1px 1px 2px rgba(232,232,232,1);background:-webkit-linear-gradient(top,#ff812d,#ff6702);background:-moz-linear-gradient(top,#ff812d,#ff6702);background:linear-gradient(top,#ff812d,#ff6702);}
+.book_now {z-index:9999;border-bottom:1px solid #A8A8A8;padding:12px 0 8px;text-align:center;cursor:pointer;background:-webkit-linear-gradient(top,#f1f1f1,#c8c8c8);background:-moz-linear-gradient(top,#f1f1f1,#c8c8c8);background:linear-gradient(top,#f1f1f1,#c8c8c8);opacity: 0.7;}
+.book_now a {display:inline-block;font:24px/38px microsoft yahei;color:#fff;padding:0 46px;-webkit-border-radius:5px;border-radius:5px;-webkit-box-shadow:1px 1px 2px rgba(168,168,168,1);box-shadow:1px 1px 2px rgba(232,232,232,1);background: -webkit-linear-gradient(top,#464340,#4B4642);background:-moz-linear-gradient(top,#ff812d,#ff6702);background:linear-gradient(top,#ff812d,#ff6702);}
 .book_new {padding-left: 0;padding-right:0}
 .book_new a {display:block;line-height:41px;text-align:center;color:#fff;background:-webkit-linear-gradient(top,#ffa442,#ff801a);background:-webkit-gradient(linear,left top,left bottom,from(#ffa442),to(#ff801a));background:-moz-linear-gradient(top,#ffa442,#ff801a);background:-ms-linear-gradient(top,#ffa442,#ff801a);background:linear-gradient(top,#ffa442,#ff801a)}
 .book_new #travelbooksub {display:block;line-height:41px;width: 100%;height:41px;border: 0 none;text-align:center;color:#fff;background:-webkit-linear-gradient(top,#ffa442,#ff801a);background:-webkit-gradient(linear,left top,left bottom,from(#ffa442),to(#ff801a));background:-moz-linear-gradient(top,#ffa442,#ff801a);background:-ms-linear-gradient(top,#ffa442,#ff801a);background:linear-gradient(top,#ffa442,#ff801a)}
