@@ -355,7 +355,7 @@ div.gallery-item img { display: block; width: 100%; height: auto; }
 .notifications.info i { background-position: -102px -900px; }
 
 .socialMedia { padding: 10px 0px 0px 0px;  display: inline-block; width: 100%; text-align: center; }
-.socialMedia.scl-grey { background-color: #233241; opacity: 0.7; /* border-radius: 0px 0px 10px 10px; */}
+.socialMedia.scl-grey { background-color: #233241; opacity: 0.7; /* border-radius: 0px 0px 10px 10px; */ width: 100%;  left: 0px;  bottom: 0px;  position: fixed;}
 .socialMedia a { background: url("fonts/icons.svg") no-repeat left top; text-indent: -9999px; overflow: hidden; display: inline-block; margin-right: 5px; }
 
 .socialMedia a { width:26px; height: 26px; color: rgba(0, 0, 0, 0); }
@@ -385,7 +385,7 @@ div.gallery-item img { display: block; width: 100%; height: auto; }
 html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolling.mm-opened .mm-page .socialMedia {border-radius: 0px;}
 
 
-/*闁哄牐娅ｉ妶銊╁礆濡ゅ嫨鈧拷*/
+/*闂佸搫鐗愬▍锝夊Χ閵娾晛绀嗘俊銈呭閳ь剨鎷�*/
 .list-items {margin-bottom: -1px;}
 .list-item { background: none repeat scroll 0 0 #FFFFFF; /* border-bottom: 1px solid #D2D2D2; */  min-height: 60px; padding: 10px 0; position: relative;}
 .link_area { bottom: 0;  left: 0;  position: absolute;right: 0;  top: 0;z-index: 2;}
