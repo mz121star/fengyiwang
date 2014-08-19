@@ -20,13 +20,13 @@ html, body
     margin: 0;
 }
 body {
-    background-color: #ffffff;
     font-family: 'Open Sans';
     font-size: 14px;
     line-height: 22px;
     color: #333;
     -webkit-text-size-adjust: none;
-    background-image: url(../images/bg.jpg);
+    /* background-image: url(../images/bg.jpg); */
+    background-image: -webkit-linear-gradient(180deg, rgb(90, 82, 71), rgb(53, 46, 46));
 }
 body *
 {
@@ -227,8 +227,8 @@ i.i-small { margin: 0px 10px 0px 0px; left: 0px; }
 
 
 .exploreSiteFullPane { padding: 0px; }
-a.explorePane { text-decoration:none; background-color: rgb(56, 137, 211); opacity: 0.7; /* border-radius: 8px 0px 0px 0px; */}
-.explorePane { width: 33.3333%; float: left; padding: 1%; border-bottom: 1px solid #837D7D; text-align: center; text-decoration:none; }
+a.explorePane { text-decoration:none; background-color: rgb(56, 137, 211); opacity: 0.7; border-radius: 10px; /* margin: 0px 2px 2px 2px; */}
+.explorePane { width: 31.3333%; float: left; padding: 1%; border-bottom: 1px solid #837D7D; text-align: center; text-decoration:none; /* margin-left: 0px; */ margin: 0px 2px 5px 3px;}
 .explorePane.middle { border-left: 1px solid #7C7979; border-right: 1px solid #7A7777; }
 
 .explorePane .i-pane { float:none; margin:0px; display: inline-block; padding-top: 15px;}
@@ -385,7 +385,7 @@ div.gallery-item img { display: block; width: 100%; height: auto; }
 html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolling.mm-opened .mm-page .socialMedia {border-radius: 0px;}
 
 
-/*闂傚倸鍊搁崐椋庣矆娓氣偓楠炴牠顢曢敂钘変罕闂佸綊鍋婇崗姗€寮稿澶嬬叆婵犻潧妫Σ鎼佸炊閹绢喗鈷戦梻鍫熷崟閸儱鐤炬繛鎴炴皑閻棝鏌涢埄鍏犺偐鎹㈤崱娑欑厪闁割偅绻冮崳瑙勩亜韫囧鍔﹂柡灞界Х椤т線鏌涢幘鍗炲妤犵偛绻橀弫鎾绘晸閿燂拷*/
+/*闂傚倸鍊搁崐鎼佸磹閹间礁纾瑰瀣捣閻棗銆掑锝呬壕濡ょ姷鍋為悧鐘汇€侀弴銏℃櫆闁芥ê顦純鏇㈡⒒娴ｅ摜绉洪柛瀣躬瀹曟顫滈埀顒€顕ｇ粙娆惧悑濠㈣泛顑囬崣鍡椻攽閻樼粯娑ф俊顐幖鍗遍柟闂寸閻愬﹪鏌熺紒銏犳灍闁抽攱鍨垮濠氬醇閻斿嘲绀嬮梺鍓插亖閸庨亶鎮块悙顒傜闁瑰鍋為惃鎴︽煟椤撶偞顥㈤柡灞剧洴閸╁嫰宕楅悩鍝勪汗闁瑰箍鍨藉畷鍗炩槈濞嗘垵甯鹃梻浣稿閸嬪懐鎹㈤崘顔奸棷閻熸瑥瀚ㄦ禍婊堢叓閸パ屽剰闁告棑绠撻弻锛勪沪閻ｅ睗銉︺亜瑜岀欢姘跺蓟濞戙垹绠婚柛妤冨仜椤洤螖閻橀潧浠滅紒缁橈耿瀵偊骞樼紒妯绘闂佽法鍣﹂幏锟�*/
 .list-items {margin-bottom: -1px;}
 .list-item { background: none repeat scroll 0 0 #FFFFFF; /* border-bottom: 1px solid #D2D2D2; */  min-height: 60px; padding: 10px 0; position: relative;}
 .link_area { bottom: 0;  left: 0;  position: absolute;right: 0;  top: 0;z-index: 2;}
