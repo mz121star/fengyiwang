@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>订餐系统</title>
+    <title>教育系统</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/dashboard.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -22,7 +22,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="__GROUP__/Index">订餐系统后台管理</a>
+          <a class="navbar-brand" href="__GROUP__/Index">教育系统后台管理</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -36,44 +36,15 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
 
-            <if condition="$Think.session.userinfo.user_type eq 1">
-           <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'User' and $current_a eq 'shoplist'">class="active"</if>><a href="__GROUP__/User/shoplist">商户列表</a></li>
-            <li <if condition="$current_c eq 'User' and $current_a eq 'peoplelist'">class="active"</if>><a href="__GROUP__/User/peoplelist">普通用户列表</a></li>
-            <li <if condition="$current_c eq 'User' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/User/showadd">添加用户</a></li>
-            <li <if condition="$current_c eq 'User' and $current_a eq 'shoptype'">class="active"</if>><a href="__GROUP__/User/shoptype">商户类型</a></li>
-          </ul>
-            </if>
-
           <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'Food' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Food/lists">菜品列表</a></li>
-             <if condition="$Think.session.userinfo.user_type eq 2">
-            <li <if condition="$current_c eq 'Food' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/Food/showadd">添加菜肴</a></li>
-            </if>
+             <li <if condition="$current_c eq 'Section' and $current_a eq 'shoplist'">class="active"</if>><a href="__GROUP__/Section/shoplist">栏目列表</a></li>
+             <li <if condition="$current_c eq 'Section' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/Section/showadd">添加栏目</a></li>
           </ul>
-            
-           <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'Notice' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Notice/lists">公告列表</a></li>
-             <if condition="$Think.session.userinfo.user_type eq 2">
-            <li <if condition="$current_c eq 'Notice' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/Notice/showadd">添加公告</a></li>
-            </if>
-          </ul>
-
+          
           <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'Order' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Order/lists">订单管理</a></li>
+             <li <if condition="$current_c eq 'Edu' and $current_a eq 'shoplist'">class="active"</if>><a href="__GROUP__/Edu/shoplist">教育机构列表</a></li>
+             <li <if condition="$current_c eq 'Edu' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/Edu/showadd">添加机构</a></li>
           </ul>
-
-            <if condition="$Think.session.userinfo.user_type eq 1">
-          <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'System' and $current_a eq 'showset'">class="active"</if>><a href="__GROUP__/System/showset">系统信息配置</a></li>
-            <li <if condition="$current_c eq 'System' and $current_a eq 'showimage'">class="active"</if>><a href="__GROUP__/System/showimage">首页图片配置</a></li>
-          </ul>
-            </if>
-            <if condition="$Think.session.userinfo.user_type eq 2">
-          <ul class="nav nav-sidebar">
-            <li <if condition="$current_c eq 'User' and $current_a eq 'modself'">class="active"</if>><a href="__GROUP__/User/modself">信息设定</a></li>
-          </ul>
-            </if>
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

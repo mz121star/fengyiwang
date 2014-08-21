@@ -1,17 +1,15 @@
 <?php
+//公共配置
+$common_config = include APP_PATH.'../Conf/config.php';
 
-return $private_config = array(
-                                'DB_PREFIX' => 'dc_',
-                                'DB_DSN' => 'mysql://root:820819@localhost:3306/fengyi',
+//私有配置
+$private_config = array(
+                        'LAYOUT_ON' => true,
+                        'URL_ROUTER_ON' => true,
+                        'URL_CASE_INSENSITIVE' =>true,
+                        'URL_ROUTE_RULES' => array(
+                                                  'modshop/:userid' => 'User/modshop'
+                                                  )
+                        );
 
-                                'SHOW_PAGE_TRACE' => true,
-                                'DEFAULT_FILTER'=>'htmlspecialchars,stripslashes',
-
-                                'LAYOUT_ON' => true,
-
-                                'URL_ROUTER_ON' => true,
-                                'URL_CASE_INSENSITIVE' =>true,
-                                'URL_ROUTE_RULES' => array(
-                                                      'shop/detail/:shopid' => 'Shop/index'
-                                                      ));//私有配置
-
+return array_merge($common_config, $private_config);
