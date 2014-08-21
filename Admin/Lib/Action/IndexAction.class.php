@@ -4,7 +4,7 @@ class IndexAction extends Action {
 
     public function index(){
         $userInfo = session('userinfo');
-        if(empty($userInfo) || $userInfo['user_type'] == 3){
+        if(empty($userInfo) || $userInfo['user_type'] == 2){
             $this->redirect('Index/showlogin');
         } else {
             $this->display();
@@ -13,7 +13,7 @@ class IndexAction extends Action {
 
     public function showlogin(){
         $userInfo = session('userinfo');
-        if(empty($userInfo) || $userInfo['user_type'] == 3){
+        if(empty($userInfo) || $userInfo['user_type'] == 2){
             $this->display();
         } else {
             $this->redirect('Index/index');
@@ -22,7 +22,7 @@ class IndexAction extends Action {
 
     public function login(){
         $userInfo = session('userinfo');
-        if(!empty($userInfo) && $userInfo['user_type'] != 3){
+        if(!empty($userInfo) && $userInfo['user_type'] != 2){
             $this->redirect('Index/index');
         }
         $user = M("User");
@@ -30,7 +30,7 @@ class IndexAction extends Action {
         $_POST['user_pw'] = md5($this->_post('user_pw'));
         $_POST['user_status'] = 1;
         $userInfo = $user->where($_POST)->field('id,user_id,user_type')->find();
-        if(!empty($userInfo) && $userInfo['user_type'] != 3){
+        if(!empty($userInfo) && $userInfo['user_type'] != 2){
             session('userinfo', $userInfo);
             $this->redirect('Index/index');
         } else {

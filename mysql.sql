@@ -1,6 +1,6 @@
 
-DROP TABLE IF EXISTS `dc_user`;
-CREATE TABLE `dc_user` (
+DROP TABLE IF EXISTS `fy_user`;
+CREATE TABLE `fy_user` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` varchar(250) NOT NULL,
   `user_pw` varchar(250) NOT NULL,
@@ -10,4 +10,4 @@ CREATE TABLE `dc_user` (
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';
 
-INSERT INTO `dc_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', 1);
+INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', 1);
