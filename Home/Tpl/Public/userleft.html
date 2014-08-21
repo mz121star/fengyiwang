@@ -1,0 +1,33 @@
+<div class="mainbg mg_t1">
+    <script src="/js/header.js"></script>
+    <script src="/js/member.js"></script>
+    <script src="/js/kj.rule.js"></script>
+    <script src="/js/kj.alert.js"></script>
+    <script>
+        kj.onload(function(){
+            var w = (kj.w()-980)/2;
+            kj.set("#idmenu1" , "style.top" , '120px');
+            kj.set("#idmenu1" , "style.left" , (w+390)+'px');
+            jsheader.rule_uname = "default";
+            jsheader.reg_verify = "1";
+            jsheader.tempurl = "/webcss/default/";
+            jsheader.is_verify = false;
+        });
+    </script>	<div class="h10">&nbsp;</div>
+    <div class="mleft">
+        <div class="x1">
+
+            <div class="xname">您好，<span class="txt_orangeB">测试用户</span> !</div>
+
+
+        </div>
+        <div class="x6">
+            <li class="xtit">会员中心</li>
+            <li class="xlist">
+                <a href="/index.php/User/orderdetail" <if condition="$current_a eq 'orderdetail'">class="xsel"</if>>订单明细</a>
+                <a href="/index.php/User/myfav" <if condition="$current_a eq 'myfav'">class="xsel"</if>>我的收藏</a>
+                <a href="/index.php/User/changeinfo" <if condition="$current_a eq 'changeinfo'">class="xsel"</if>>资料修改</a>
+
+            </li>
+        </div>
+    </div>
