@@ -3,76 +3,63 @@
 class EduAction extends PublicAction {
 
     public function lists(){
-        $food = M("Food");
+        $edu = M("edu");
         import('ORG.Util.Page');
-        $userid = $this->userInfo['user_id'];
-        $usertype = $this->userInfo['user_type'];
-        if ($usertype == 1) {
-            $count = $food->count();
-            $page = new Page($count, 10);
-            $foodlist = $food->field('id,food_name,food_price')->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
-        } else {
-            $count = $food->where('user_id="'.$userid.'"')->count();
-            $page = new Page($count, 10);
-            $foodlist = $food->where('user_id="'.$userid.'"')->field('id,food_name,food_price')->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
-        }
+        $count = $edu->count();
+        $page = new Page($count, 10);
+        $edulist = $edu->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
-        $this->assign('foodlist', $foodlist);
+        $this->assign('edulist', $edulist);
         $this->display();
     }
 
     public function showadd(){
-        $usertype = $this->userInfo['user_type'];
-         if ($usertype == 1) {
-             $this->redirect('Food/lists');
-         }
+        $section = M("section");
+        $sectionlist = $section->select();
+        $this->assign('sectionlist', $sectionlist);
+        $this->display();
+    }
+
+    public function modedu() {
+        $eduid = $this->_get('eduid');
+        $edu = M("edu");
+        $eduinfo = $edu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, section_id')->where('fy_edu.id='.$eduid)->join(' fy_section on fy_section.id=fy_edu.section_id')->find();
+        if (!$eduinfo) {
+            $this->redirect('Edu/lists');
+        }
+        $this->assign('eduinfo', $eduinfo);
+
+        $section = M("section");
+        $sectionlist = $section->select();
+        $this->assign('sectionlist', $sectionlist);
         $this->display();
     }
     
-    public function modfood() {
-        $foodid = $this->_get('foodid');
-        $userid = $this->userInfo['user_id'];
-        $food = M("Food");
-        $foodinfo = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->find();
-        if (!$foodinfo) {
-            $this->redirect('Food/lists');
-        }
-        $this->assign('foodinfo', $foodinfo);
-        $this->display();
-    }
-    
-    public function delfood(){
-        $foodid = $this->_get('foodid');
-        $userid = $this->userInfo['user_id'];
-        $usertype = $this->userInfo['user_type'];
-        $food = M("Food");
-        if ($usertype == 1) {
-            $foodnumber = $food->where('id='.$foodid)->delete();
-            $this->redirect('Food/lists');
-        }
-        $foodinfo = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->find();
-        if ($foodinfo) {
-            $foodnumber = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->delete();
-            if ($foodnumber) {
-                unlink('./upload/'.$foodinfo['food_image']);
-                $this->redirect('Food/lists');
+    public function deledu(){
+        $eduid = $this->_get('eduid');
+        $edu = M("edu");
+        $eduinfo = $edu->where('id='.$eduid)->find();
+        if ($eduinfo) {
+            $edunumber = $edu->where('id='.$eduid)->delete();
+            if ($edunumber) {
+                unlink('./upload/'.$eduinfo['edu_image']);
+                $this->redirect('Edu/lists');
             } else {
-                $this->error("删除菜品失败", 'lists');
+                $this->error("删除机构失败", 'lists');
             }
         } else {
-            $this->error("删除菜品失败", 'lists');
+            $this->error("删除机构失败", 'lists');
         }
     }
 
     public function save(){
-        $userid = $this->userInfo['user_id'];
-        $isdelimage = $this->_post('delfood_image');
+        $isdelimage = $this->_post('deledu_image');
         if ($isdelimage) {
-            $_POST['food_image'] = '';
+            $_POST['edu_image'] = '';
             unlink('./upload/'.$isdelimage);
         }
-        if ($_FILES['food_image']['name']) {
+        if ($_FILES['edu_image']['name']) {
             import('ORG.Net.UploadFile');
             $upload = new UploadFile();
             $upload->maxSize = 3145728;//3M
@@ -83,19 +70,15 @@ class EduAction extends PublicAction {
             }else{
                 $info = $upload->getUploadFileInfo();
             }
-            $_POST['food_image'] = $info[0]['savename'];
+            $_POST['edu_image'] = $info[0]['savename'];
         }
-        $food = M("Food");
+        $edu = M("edu");
         $post = $this->filterAllParam('post');
-        if (!isset($post['food_top'])) {
-            $post['food_top'] = "0";
-        }
-        $post['user_id'] = $userid;
         if (isset($post['id']) && $post['id']) {
-            $foodnumber = $food->where('id='.$post['id'].' and user_id="'.$userid.'"')->save($post);
+            $edunumber = $edu->where('id='.$post['id'])->save($post);
         } else {
-            $foodid = $food->add($post);
+            $eduid = $edu->add($post);
         }
-        $this->redirect('Food/lists');
+        $this->redirect('Edu/lists');
     }
 }

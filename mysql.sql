@@ -17,6 +17,7 @@ DROP TABLE IF EXISTS `fy_section`;
 CREATE TABLE `fy_section` (
   `id` int(11) NOT NULL auto_increment,
   `section_name` varchar(250) NOT NULL,
+  `section_desc` text NOT NULL,
   `section_image` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='板块表';

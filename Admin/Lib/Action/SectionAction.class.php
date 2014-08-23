@@ -19,48 +19,43 @@ class SectionAction extends PublicAction {
     }
     
     public function modsection() {
-        $foodid = $this->_get('foodid');
-        $userid = $this->userInfo['user_id'];
-        $food = M("Food");
-        $foodinfo = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->find();
-        if (!$foodinfo) {
-            $this->redirect('Food/lists');
+        $sid = $this->_get('sid');
+        $section = M("section");
+        $sectioninfo = $section->where('id='.$sid)->find();
+        if (!$sectioninfo) {
+            $this->redirect('Section/lists');
         }
-        $this->assign('foodinfo', $foodinfo);
+        $this->assign('sectioninfo', $sectioninfo);
         $this->display();
     }
     
     public function delsection(){
-        $foodid = $this->_get('foodid');
-        $userid = $this->userInfo['user_id'];
-        $usertype = $this->userInfo['user_type'];
-        $food = M("Food");
-        if ($usertype == 1) {
-            $foodnumber = $food->where('id='.$foodid)->delete();
-            $this->redirect('Food/lists');
-        }
-        $foodinfo = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->find();
-        if ($foodinfo) {
-            $foodnumber = $food->where('id='.$foodid.' and user_id="'.$userid.'"')->delete();
-            if ($foodnumber) {
-                unlink('./upload/'.$foodinfo['food_image']);
-                $this->redirect('Food/lists');
+        $sid = $this->_get('sid');
+        $section = M("section");
+        $sectioninfo = $section->where('id='.$sid)->find();
+        if ($sectioninfo) {
+            $sectionnumber = $section->where('id='.$sid)->delete();
+            if ($sectionnumber) {
+                unlink('./upload/'.$sectioninfo['section_image']);
+                $edu = M("edu");
+                $edu->where('section_id='.$sid)->delete();
+                $this->redirect('Section/lists');
             } else {
-                $this->error("删除菜品失败", 'lists');
+                $this->error("删除板块失败", 'lists');
             }
         } else {
-            $this->error("删除菜品失败", 'lists');
+            $this->error("删除板块失败", 'lists');
         }
     }
 
     public function save(){
         $userid = $this->userInfo['user_id'];
-        $isdelimage = $this->_post('delfood_image');
+        $isdelimage = $this->_post('delsection_image');
         if ($isdelimage) {
-            $_POST['food_image'] = '';
+            $_POST['section_image'] = '';
             unlink('./upload/'.$isdelimage);
         }
-        if ($_FILES['food_image']['name']) {
+        if ($_FILES['section_image']['name']) {
             import('ORG.Net.UploadFile');
             $upload = new UploadFile();
             $upload->maxSize = 3145728;//3M
@@ -71,19 +66,15 @@ class SectionAction extends PublicAction {
             }else{
                 $info = $upload->getUploadFileInfo();
             }
-            $_POST['food_image'] = $info[0]['savename'];
+            $_POST['section_image'] = $info[0]['savename'];
         }
-        $food = M("Food");
+        $section = M("section");
         $post = $this->filterAllParam('post');
-        if (!isset($post['food_top'])) {
-            $post['food_top'] = "0";
-        }
-        $post['user_id'] = $userid;
         if (isset($post['id']) && $post['id']) {
-            $foodnumber = $food->where('id='.$post['id'].' and user_id="'.$userid.'"')->save($post);
+            $sectionnumber = $section->where('id='.$post['id'])->save($post);
         } else {
-            $foodid = $food->add($post);
+            $sectionid = $section->add($post);
         }
-        $this->redirect('Food/lists');
+        $this->redirect('Section/lists');
     }
 }

@@ -1,0 +1,27 @@
+<h2 class="sub-header">机构列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>机构名称</th>
+            <th>机构星级</th>
+            <th>机构优惠</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="edulist" item="edu">
+          <tr>
+            <td class="col-sm-2">{$edu.edu_name}</td>
+            <td class="col-sm-2">{$edu.edu_star}</td>
+            <td class="col-sm-2">{$edu.edu_discount}</td>
+            <td class="col-sm-2">
+                <a href="__GROUP__/modedu/{$edu.id}">编辑</a>
+                <a href="__GROUP__/deledu/{$edu.id}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>

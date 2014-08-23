@@ -1,0 +1,23 @@
+<h2 class="sub-header">板块列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>板块名称</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="sectionlist" item="section">
+          <tr>
+            <td class="col-sm-2">{$section.section_name}</td>
+            <td class="col-sm-2">
+                <a href="__GROUP__/modsection/{$section.id}">编辑</a>
+                <a href="__GROUP__/delsection/{$section.id}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>
