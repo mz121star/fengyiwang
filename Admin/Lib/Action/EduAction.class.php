@@ -24,7 +24,7 @@ class EduAction extends PublicAction {
     public function modedu() {
         $eduid = $this->_get('eduid');
         $edu = M("edu");
-        $eduinfo = $edu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, section_id')->where('fy_edu.id='.$eduid)->join(' fy_section on fy_section.id=fy_edu.section_id')->find();
+        $eduinfo = $edu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, section_id')->where('fy_edu.id='.$eduid)->join(' fy_section on fy_section.id=fy_edu.section_id')->find();
         if (!$eduinfo) {
             $this->redirect('Edu/lists');
         }

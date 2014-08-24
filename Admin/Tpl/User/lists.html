@@ -1,0 +1,27 @@
+<h2 class="sub-header">用户列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>用户ID</th>
+            <th>用户名</th>
+            <th>用户电话</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="userlist" item="user">
+          <tr>
+            <td class="col-sm-2">{$user.user_id}</td>
+            <td class="col-sm-2">{$user.user_name}</td>
+            <td class="col-sm-2">{$user.user_phone}</td>
+            <td class="col-sm-2">
+                <a href="__GROUP__/moduser/{$user.user_id}">编辑</a>
+                <a href="__GROUP__/deluser/{$user.user_id}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>

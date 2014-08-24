@@ -11,7 +11,9 @@ $private_config = array(
                                                   'modsection/:sid' => 'Section/modsection',
                                                   'delsection/:sid' => 'Section/delsection',
                                                   'modedu/:eduid' => 'Edu/modedu',
-                                                  'deledu/:eduid' => 'Edu/deledu'
+                                                  'deledu/:eduid' => 'Edu/deledu',
+                                                  'moduser/:uid' => 'User/moduser',
+                                                  'deluser/:uid' => 'User/deluser'
                                                   )
                         );
 
