@@ -1,0 +1,43 @@
+<include file="Public:header"/>
+
+    <!-- Content -->
+
+    <div id="list-items" class="list-items">
+
+        <foreach name="edulist" item="edu">
+        <div class="list-item toggle_bright">
+			 <a href="#" class="link_area"></a>
+        <a href="ticket_230.html"><img class="list-item-pic" src="uploads/1403/image/20130929095156416.jpg" /></a>
+        <div class="list-item-infos">
+            <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$edu.edu_name}</div>
+            <div class="list-item-address txt_ellipsis gray">∑Á“ÌÕ¯”≈ª›£∫{$edu.edu_discount}</div>
+            <div class="list-item-address1 txt_ellipsis gray"> –«º∂:<span class="star star- {$edu.edu_star}0"></span></div>
+        </div>
+        <div class="list-item-price">
+            <div class="item_fun orange">
+
+            </div>
+            <div class="link_area" href="detail.html"> <img class="ckbox"  src="images/uncheck.png"/></div>
+        </div>
+    </div>
+      </foreach>
+    
+<div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;">¡¢º¥‘§∂©</a>
+
+</div>
+    <!-- Menu navigation -->
+    <include file="Public:userleft"/>
+    <script>
+
+
+    $('.ckbox').on("touchstart",function(){
+        if($(this).attr("src")=="images/check.png")
+            $(this).attr("src","images/uncheck.png")  ;
+        else
+            $(this).attr("src","images/check.png")  ;
+    })
+
+
+</script>
+ <include file="Public:footer"/>

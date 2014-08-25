@@ -1,1 +1,52 @@
-<h2 class="sub-header">欢迎来到教育系统后台管理</h2>
+<include file="Public:header"/>
+			
+<div class="subHeader"><i class="i-home i-small"></i>Welcome friend!</div>
+<!-- Banner -->
+			<div class="bannerPane">
+			  <section class="slider">
+				<div class="flexslider">
+				  <ul class="slides">
+					<li>
+						<img src="/img/blog/1.jpg" />
+						</li>
+						<li>
+						<img src="/img/blog/2.jpg" />
+						</li>
+						<li>
+						<img src="/img/blog/3.jpg" />
+						</li>
+				  </ul>
+				</div>
+			  </section>
+			</div>
+			<!-- End Banner -->
+			
+			<!-- Content -->
+
+			
+			<div class="exploreSiteFullPane">
+				<foreach name="sectionlist" item="section">
+				<a href="__GROUP__/edu/{$section.id}" class="explorePane active">
+					<span class="i-pane i-blue">
+						<i class="fa fa-paper-plane"></i>
+					</span>
+					<h4>{$section.section_name}</h4>
+				</a>
+                                                                                                </foreach>
+			</div>
+			
+			<!-- Social Icons -->
+			<div class="socialMedia scl-grey">
+				<a href="#" class="ico-facebook" title="facebook">facebook</a>
+				<a href="#" class="ico-twitter" title="twittertwitter">twitter</a>
+				<a href="#" class="ico-linkedin" title="linkedin">linkedin</a>
+				<a href="#" class="ico-gplus" title="gplus">gplus</a>
+				<a href="#" class="ico-youtube" title="youtube">youtube</a>
+				<a href="#" class="ico-tumblr" title="tumblr">tumblr</a>
+				<a href="#" class="ico-pinterest" title="pinterest">pinterest</a>
+			</div>
+			
+			<!-- Menu navigation -->
+			<include file="Public:userleft"/>
+                        <include file="Public:footer"/>
+		

@@ -3,12 +3,10 @@
 class IndexAction extends Action {
 
     public function index(){
-        $userInfo = session('userinfo');
-        if(empty($userInfo) || $userInfo['user_type'] == 2){
-            $this->redirect('Index/showlogin');
-        } else {
-            $this->display();
-        }
+        $section = M("section");
+        $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
+        $this->assign('sectionlist', $sectionlist);
+        $this->display();
     }
 
     public function showlogin(){
