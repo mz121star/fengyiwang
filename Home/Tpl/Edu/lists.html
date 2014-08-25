@@ -7,7 +7,7 @@
         <foreach name="edulist" item="edu">
         <div class="list-item toggle_bright">
 			 <a href="#" class="link_area"></a>
-        <a href="ticket_230.html"><img class="list-item-pic" src="uploads/1403/image/20130929095156416.jpg" /></a>
+        <a href="ticket_230.html"><img class="list-item-pic" src="/uploads/1403/image/20130929095156416.jpg" /></a>
         <div class="list-item-infos">
             <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$edu.edu_name}</div>
             <div class="list-item-address txt_ellipsis gray">风翼网优惠：{$edu.edu_discount}</div>
@@ -17,7 +17,7 @@
             <div class="item_fun orange">
 
             </div>
-            <div class="link_area" href="detail.html"> <img class="ckbox"  src="images/uncheck.png"/></div>
+            <div class="link_area" href="detail.html"> <img class="ckbox"  src="/images/uncheck.png"/></div>
         </div>
     </div>
       </foreach>
@@ -32,10 +32,10 @@
 
 
     $('.ckbox').on("touchstart",function(){
-        if($(this).attr("src")=="images/check.png")
-            $(this).attr("src","images/uncheck.png")  ;
+        if($(this).attr("src")=="/images/check.png")
+            $(this).attr("src","/images/uncheck.png")  ;
         else
-            $(this).attr("src","images/check.png")  ;
+            $(this).attr("src","/images/check.png")  ;
     })
 
 

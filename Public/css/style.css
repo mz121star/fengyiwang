@@ -240,7 +240,7 @@ a.explorePane { text-decoration:none; /* background: url(../images/fbg.jpg); */ 
 .block { font-size:14px; font-weight:bold; background-color:#f1f2f4; text-align:center; padding:15px;
     border-top:1px solid #ccd2d8; border-bottom: 1px solid #ccd2d8; color:#233241; }
 
-.o-page .mm-ismenu { background: rgb(120, 167, 209); /* background-image: url(../images/bg.jpg); */ opacity: 0.7;}
+.o-page .mm-ismenu { background: rgb(0, 66, 126); /* background-image: url(../images/bg.jpg); */ opacity: 0.7;}
 .o-page .mm-list > li { background-color: rgb(56, 137, 211); color: #FFF; }
 .o-page .mm-menu.mm-vertical .mm-list .mm-panel { padding: 0px 0px 0px 40px !important; background-color: #0E1419 !important; }
 .o-page .mm-menu.mm-vertical .mm-list .mm-panel li { background-color: #0E1419; border-bottom: 1px solid #233241; border-left: 1px solid #233241; }
