@@ -1,6 +1,6 @@
 <?php
 
-class EduAction extends PublicAction {
+class OrderAction extends PublicAction {
 
     public function lists(){
         $order = M("order");
