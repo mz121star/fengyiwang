@@ -4,14 +4,14 @@ class EduAction extends PublicAction {
 
     public function lists(){
         $sid = $this->_get('sid');
-        $edu = M("edu");
-        import('ORG.Util.Page');
-        $count = $edu->count();
-        $page = new Page($count, 100);
-        $edulist = $edu->where('section_id = '.$sid)->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
-        $show = $page->show();
-        $this->assign('page',$show);
+        $sectionedu = M("sectionedu");
+        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->select();
         $this->assign('edulist', $edulist);
         $this->display();
+    }
+    
+    public function detail() {
+        $post = $this->filterAllParam('post');
+        print_r($post);exit;
     }
 }
