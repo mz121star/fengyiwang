@@ -1,0 +1,27 @@
+<h2 class="sub-header">订单列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>机构名称</th>
+            <th>机构星级</th>
+            <th>机构优惠</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="orderlist" item="order">
+          <tr>
+            <td class="col-sm-2">{$order.edu_name}</td>
+            <td class="col-sm-2">{$order.edu_star}</td>
+            <td class="col-sm-2">{$order.edu_discount}</td>
+            <td class="col-sm-2">
+                <a href="__GROUP__/modedu/{$order.id}">编辑</a>
+                <a href="__GROUP__/deledu/{$order.id}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>

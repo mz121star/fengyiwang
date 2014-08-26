@@ -11,7 +11,6 @@ CREATE TABLE `fy_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';
-
 INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '', '1', 1);
 
 
@@ -19,10 +18,16 @@ DROP TABLE IF EXISTS `fy_section`;
 CREATE TABLE `fy_section` (
   `id` int(11) NOT NULL auto_increment,
   `section_name` varchar(250) NOT NULL,
-  `section_desc` text NOT NULL,
   `section_image` varchar(250) NOT NULL,
+  `section_type` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='板块表';
+INSERT INTO `fy_section` VALUES (1, '雅思', 'fa fa-paper-plane', '培训');
+INSERT INTO `fy_section` VALUES (2, '托福', 'fa fa-flag', '培训');
+INSERT INTO `fy_section` VALUES (3, 'SAT', 'fa fa-globe', '培训');
+INSERT INTO `fy_section` VALUES (4, '4/6级', 'fa fa-book', '培训');
+INSERT INTO `fy_section` VALUES (5, '小语种', 'fa fa-graduation-cap', '培训');
+INSERT INTO `fy_section` VALUES (6, '留学', 'fa fa-pencil', '留学');
 
 
 DROP TABLE IF EXISTS `fy_edu`;
@@ -33,9 +38,20 @@ CREATE TABLE `fy_edu` (
   `edu_image` varchar(250) NOT NULL,
   `edu_discount` varchar(250) NOT NULL,
   `edu_desc` text NOT NULL,
-  `section_id` int(11) unsigned NOT NULL,
+  `edu_browse` int(11) unsigned NOT NULL,
+  `edu_choose` int(11) unsigned NOT NULL,
+  `edu_sign` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='教育机构表';
+
+
+DROP TABLE IF EXISTS `fy_sectionedu`;
+CREATE TABLE `fy_sectionedu` (
+  `id` int(11) NOT NULL auto_increment,
+  `edu_id` int(11) unsigned NOT NULL,
+  `section_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='板块机构对应表';
 
 
 DROP TABLE IF EXISTS `fy_order`;

@@ -29,12 +29,12 @@
             </div>
             <div class="form-group">
               <label for="userid" class="col-sm-2 control-label">所属板块</label>
-              <div class="col-sm-3">
-                <select name="section_id">
-                    <foreach name="sectionlist" item="section">
-                    <option value="{$section.id}"<if condition="$section['id'] eq $eduinfo['section_id']"> selected</if>>{$section.section_name}</option>
+              <div class="col-sm-7">
+                <foreach name="sectionlist" item="section">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="section_id[]" value="{$section.id}" {$section.is_selected}> {$section.section_name}
+                          </label>
                     </foreach>
-                </select>
               </div>
             </div>
             <div class="form-group">
