@@ -36,10 +36,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
 
-          <ul class="nav nav-sidebar">
+<!--          <ul class="nav nav-sidebar">
              <li <if condition="$current_c eq 'Section' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Section/lists">栏目列表</a></li>
              <li <if condition="$current_c eq 'Section' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/Section/showadd">添加栏目</a></li>
-          </ul>
+          </ul>-->
           
           <ul class="nav nav-sidebar">
              <li <if condition="$current_c eq 'Edu' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Edu/lists">教育机构列表</a></li>
@@ -49,6 +49,10 @@
           <ul class="nav nav-sidebar">
              <li <if condition="$current_c eq 'User' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/User/lists">会员列表</a></li>
              <li <if condition="$current_c eq 'User' and $current_a eq 'showadd'">class="active"</if>><a href="__GROUP__/User/showadd">添加会员</a></li>
+          </ul>
+
+<ul class="nav nav-sidebar">
+             <li <if condition="$current_c eq 'Order' and $current_a eq 'lists'">class="active"</if>><a href="__GROUP__/Order/lists">订单列表</a></li>
           </ul>
 
         </div>

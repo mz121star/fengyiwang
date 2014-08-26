@@ -24,7 +24,7 @@ class EduAction extends PublicAction {
     public function modedu() {
         $eduid = $this->_get('eduid');
         $edu = M("edu");
-        $eduinfo = $edu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, section_id')->where('fy_edu.id='.$eduid)->join(' fy_section on fy_section.id=fy_edu.section_id')->find();
+        $eduinfo = $edu->where('id='.$eduid)->find();
         if (!$eduinfo) {
             $this->redirect('Edu/lists');
         }
@@ -32,7 +32,22 @@ class EduAction extends PublicAction {
 
         $section = M("section");
         $sectionlist = $section->select();
-        $this->assign('sectionlist', $sectionlist);
+        $edusection = array();
+        $sectionedu = M("sectionedu");
+        $edusectionlist = $sectionedu->where('edu_id = '.$eduid)->select();
+        $selectsection = array();
+        foreach ($edusectionlist as $value) {
+            $selectsection[] = $value['section_id'];
+        }
+        foreach ($sectionlist as $value) {
+            if (in_array($value['id'], $selectsection)) {
+                $value['is_selected'] = 'checked';
+            } else {
+                $value['is_selected'] = '';
+            }
+            $edusection[] = $value;
+        }
+        $this->assign('sectionlist', $edusection);
         $this->display();
     }
     
@@ -44,6 +59,8 @@ class EduAction extends PublicAction {
             $edunumber = $edu->where('id='.$eduid)->delete();
             if ($edunumber) {
                 unlink('./upload/'.$eduinfo['edu_image']);
+                $sectionedu = M("sectionedu");
+                $edunumber = $sectionedu->where('edu_id='.$eduid)->delete();
                 $this->redirect('Edu/lists');
             } else {
                 $this->error("删除机构失败", 'lists');
@@ -74,10 +91,16 @@ class EduAction extends PublicAction {
         }
         $edu = M("edu");
         $post = $this->filterAllParam('post');
+        $sectionedu = M("sectionedu");
         if (isset($post['id']) && $post['id']) {
             $edunumber = $edu->where('id='.$post['id'])->save($post);
+            $deletenumber = $sectionedu->where('edu_id='.$post['id'])->delete();
+            $eduid = $post['id'];
         } else {
             $eduid = $edu->add($post);
+        }
+        foreach ($post['section_id'] as $value) {
+            $sectionedu->add(array('edu_id'=>$eduid, 'section_id'=>$value));
         }
         $this->redirect('Edu/lists');
     }
