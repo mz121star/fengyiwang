@@ -2,21 +2,37 @@
 
 
     <!-- Content -->
-
+<form method="post" action="__GROUP__/edu/order" id="ordername" name="ordername">
     <h3 class="title">订单详情</h3>
+    <foreach name="edulist" item="edu">
     <div class="notifications success">
-       新东方
+        <input type="hidden" name="edu_id[]" value="{$edu.id}">
+        <input type="hidden" name="edu_name[]" value="{$edu.edu_name}">
+        {$edu.edu_name}
+        <i></i>
+    </div>
+    </foreach>
+    <div class="notifications success">
+        <input type="text" name="user_name" value="" required placeholder="请输入姓名">
         <i></i>
     </div>
     <div class="notifications success">
-        Success - your request was successful
-        <i></i>
-    </div>
-    <div class="notifications success">
-        Success - your request was successful
+        <input type="text" name="order_phone" value="" required placeholder="请输入电话">
         <i></i>
     </div>
         <!-- Menu navigation -->
+        <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">确认订单</a>
 
+</div>
+</form>
+      <script>
+    
+    $('#ordersub').on("touchstart",function(){
+        $('#ordername').submit();
+    })
+
+
+</script>
     <include file="Public:userleft"/>
  <include file="Public:footer"/>

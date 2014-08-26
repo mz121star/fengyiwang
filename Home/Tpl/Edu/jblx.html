@@ -1,0 +1,33 @@
+﻿<include file="Public:header"/>
+    <!-- Content -->
+<form method="post" action="__GROUP__/edu/subjblx" id="ordername" name="ordername">
+    <div class="mm-search">
+        <input placeholder="朋友姓名" type="text" autocomplete="off">
+        <input placeholder="联系方式" type="text" autocomplete="off">
+        <textarea placeholder="大致情况"  rows="10"  autocomplete="off"></textarea>
+        <foreach name="edulist" item="edu">
+            <div class="checkbox">
+  <label>
+   <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+        {$edu.edu_name}
+  </label>
+</div>
+    </foreach>
+    </div>
+
+    
+    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">提交信息</a>
+
+</div>
+</form>
+          <script>
+    
+    $('#ordersub').on("touchstart",function(){
+        $('#ordername').submit();
+    })
+
+
+</script>
+   <include file="Public:userleft"/>
+ <include file="Public:footer"/>

@@ -59,8 +59,6 @@ CREATE TABLE `fy_order` (
   `id` int(11) NOT NULL auto_increment,
   `user_id` varchar(250) NOT NULL,
   `user_name` varchar(250) NOT NULL,
-  `section_id` text NOT NULL,
-  `section_name` text NOT NULL,
   `edu_id` varchar(250) NOT NULL,
   `edu_name` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
@@ -69,3 +67,25 @@ CREATE TABLE `fy_order` (
   `order_discount` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+
+DROP TABLE IF EXISTS `fy_jborder`;
+CREATE TABLE `fy_jborder` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` varchar(250) NOT NULL,
+  `user_jbname` varchar(250) NOT NULL,
+  `user_jbphone` varchar(250) NOT NULL,
+  `user_jbdesc` text NOT NULL,
+  `order_date` datetime NOT NULL,
+  `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学表';
+
+DROP TABLE IF EXISTS `fy_jbedu`;
+CREATE TABLE `fy_jbedu` (
+  `id` int(11) NOT NULL auto_increment,
+  `jborder_id` varchar(250) NOT NULL,
+  `edu_id` varchar(250) NOT NULL,
+  `edu_name` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学机构表';

@@ -7,7 +7,7 @@ $private_config = array(
                         'URL_ROUTER_ON' => true,
                         'URL_CASE_INSENSITIVE' =>true,
                         'URL_ROUTE_RULES' => array(
-                                                  'edu/:sid' => 'Edu/lists'
+                                                  'edulist/:sid' => 'Edu/lists'
                                                   )
                         );
 
