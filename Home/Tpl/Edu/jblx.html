@@ -38,7 +38,7 @@
 
      $("#addPeople").on("touchend",function(){
          var parent= $("#peoples");
-          var a= $("#people").clone();
+          var a= $("#people").clone(true);
          parent.append(a);
       })
 
