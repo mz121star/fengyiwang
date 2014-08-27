@@ -1,22 +1,25 @@
 <include file="Public:header"/>
     <!-- Content -->
 <form method="post" action="__GROUP__/edu/subjblx" id="ordername" name="ordername">
-    <div class="mm-search">
+    <div id="peoples">
+    <div class="mm-search" id="people">
         <input placeholder="朋友姓名" type="text" autocomplete="off">
         <input placeholder="联系方式" type="text" autocomplete="off">
         <textarea placeholder="大致情况"  rows="10"  autocomplete="off"></textarea>
-        <foreach name="edulist" item="edu">
-            <div class="checkbox">
-  <label>
-      <img src="uploads/1403/image/2222.jpg"  width="40" height="40" />
-   <input type="checkbox" name="edu_id[]" value="{$edu.id}">
-    {$edu.edu_name}
-  </label>
 
-
-</div>
-    </foreach>
     </div>
+    </div>
+    <foreach name="edulist" item="edu">
+        <div class="checkbox">
+            <label>
+                <!-- <img src="/uploads/1403/image/22222.jpg" width="40" height="40">-->
+                <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                {$edu.edu_name}
+            </label>
+
+        </div>
+    </foreach>
+    <input type="button" id="addPeople" value="增加">
 
     
     <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
@@ -29,6 +32,11 @@
     $('#ordersub').on("touchstart",function(){
         $('#ordername').submit();
     })
+
+     $("#addPeople").on("click",function(){
+          var a= $("#people").clone();
+         $("#peoples").appendTo(a);
+      })
 
 
 </script>
