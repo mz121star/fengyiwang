@@ -36,9 +36,9 @@
         $('#ordername').submit();
     })
     var a= $("#people").clone(true);
-    var parent= $("#peoples");
-     $("#addPeople").on("touchend",function(){
 
+     $("#addPeople").on("touchend",function(){
+         var parent= $("#peoples");
          parent.append(a);
       })
 
