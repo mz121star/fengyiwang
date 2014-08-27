@@ -35,10 +35,10 @@
     $('#ordersub').on("touchstart",function(){
         $('#ordername').submit();
     })
-
+    var a= $("#people").clone(true);
      $("#addPeople").on("touchend",function(){
          var parent= $("#peoples");
-          var a= $("#people").clone(true);
+
          parent.append(a);
       })
 
