@@ -38,8 +38,9 @@
 
       var seq=1
      $("#addPeople").on("touchend",function(){
+        //   $("#peoples").append($("p").clone());
          seq= seq+1;
-         var a= $("#people").clone( );
+         var a= $("#people").clone();
          a.attr("id",seq);
          var parent= $("#peoples");
          parent.append(a);
