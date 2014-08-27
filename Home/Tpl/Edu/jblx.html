@@ -37,16 +37,14 @@
     })
 
       var seq=1
-     $("#addPeople").on("touchend",function(){
+     $("#addPeople").on("touchstart",function(){
         //   $("#peoples").append($("p").clone());
          seq= seq+1;
          console.log(seq);
          var a= $("#people").clone();
          a.attr("id",seq);
+          $("#peoples").append(a);
 
-         $("#peoples").append(a);
-         event.preventDefault();
-         return false;
       })
 
 
