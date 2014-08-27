@@ -9,7 +9,7 @@
 
     </div>
     </div>
-    <div class="clear:both">
+    <div class="clear:both;margin-bottom:30px">
     <foreach name="edulist" item="edu">
         <div class="checkbox">
             <label>
@@ -36,8 +36,9 @@
     })
 
      $("#addPeople").on("click",function(){
+         var parent= $("#peoples");
           var a= $("#people").clone();
-         a.appendTo($("#peoples"));
+         a.appendTo(parent);
       })
 
 
