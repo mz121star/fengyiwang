@@ -44,6 +44,8 @@
          a.attr("id",seq);
          var parent= $("#peoples");
          parent.append(a);
+         event.preventDefault();
+         return false;
       })
 
 
