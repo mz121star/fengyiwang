@@ -41,6 +41,10 @@ CREATE TABLE `fy_edu` (
   `edu_browse` int(11) unsigned NOT NULL,
   `edu_choose` int(11) unsigned NOT NULL,
   `edu_sign` int(11) unsigned NOT NULL,
+  `edu_jblx` enum('0','1') NOT NULL,
+  `edu_tglx` enum('0','1') NOT NULL,
+  `edu_jbxx` enum('0','1') NOT NULL,
+  `edu_tgxx` enum('0','1') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='教育机构表';
 
@@ -78,6 +82,7 @@ CREATE TABLE `fy_jborder` (
   `user_jbdesc` text NOT NULL,
   `order_date` datetime NOT NULL,
   `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
+  `order_parent` int(11) unsigned NOT NULL default 0,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学表';
 
@@ -86,6 +91,5 @@ CREATE TABLE `fy_jbedu` (
   `id` int(11) NOT NULL auto_increment,
   `jborder_id` varchar(250) NOT NULL,
   `edu_id` varchar(250) NOT NULL,
-  `edu_name` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学机构表';

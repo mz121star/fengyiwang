@@ -91,6 +91,18 @@ class EduAction extends PublicAction {
         }
         $edu = M("edu");
         $post = $this->filterAllParam('post');
+        if (!isset($post['edu_jblx'])) {
+            $post['edu_jblx'] = '0';
+        }
+        if (!isset($post['edu_tglx'])) {
+            $post['edu_tglx'] = '0';
+        }
+        if (!isset($post['edu_jbxx'])) {
+            $post['edu_jbxx'] = '0';
+        }
+        if (!isset($post['edu_tgxx'])) {
+            $post['edu_tgxx'] = '0';
+        }
         $sectionedu = M("sectionedu");
         if (isset($post['id']) && $post['id']) {
             $edunumber = $edu->where('id='.$post['id'])->save($post);
