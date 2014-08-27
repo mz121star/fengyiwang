@@ -1095,6 +1095,9 @@ header .l_tbn a:hover{color:#fff;}
 
 .mm-search .checkbox{width: 30%;
     float: left;}
+.mm-search .checkbox input{width: 50%;
+    float: left;}
+
 
 
 
