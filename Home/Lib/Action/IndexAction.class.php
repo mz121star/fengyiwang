@@ -3,44 +3,21 @@
 class IndexAction extends Action {
 
     public function index(){
+        $uid = $this->_get('uid');
+        $user = M('User');
+        $userinfo = session('userinfo');
+        if (!$userinfo['user_id'] || ($userinfo['user_id'] != $uid && $uid)) {
+            $userinfo = $user->field('id, user_id, user_type')->where('user_id = "'.$uid.'"')->find();
+            if (!empty($userinfo) && $userinfo['user_type'] == 2) {
+                session('userinfo', $userinfo);
+            } else {
+                $id = $user->add(array('user_id'=>$uid, 'user_pw'=>'827ccb0eea8a706c4c34a16891f84e7b'));
+                session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_type'=>2));
+            }
+        }
         $section = M("section");
         $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
         $this->assign('sectionlist', $sectionlist);
         $this->display();
-    }
-
-    public function showlogin(){
-        $userInfo = session('userinfo');
-        if(empty($userInfo) || $userInfo['user_type'] == 2){
-            $this->display();
-        } else {
-            $this->redirect('Index/index');
-        }
-    }
-
-    public function login(){
-        $userInfo = session('userinfo');
-        if(!empty($userInfo) && $userInfo['user_type'] != 2){
-            $this->redirect('Index/index');
-        }
-        $user = M("User");
-        $_POST['user_id'] = $this->_post('user_id');
-        $_POST['user_pw'] = md5($this->_post('user_pw'));
-        $_POST['user_status'] = 1;
-        $userInfo = $user->where($_POST)->field('id,user_id,user_type')->find();
-        if(!empty($userInfo) && $userInfo['user_type'] != 2){
-            session('userinfo', $userInfo);
-            $this->redirect('Index/index');
-        } else {
-            $this->redirect('Index/showlogin');
-        }
-    }
-
-    public function logout() {
-        $userInfo = session('userinfo');
-        if(!empty($userInfo)){
-            session('userinfo', null);
-        }
-        $this->redirect('Index/showlogin');
     }
 }

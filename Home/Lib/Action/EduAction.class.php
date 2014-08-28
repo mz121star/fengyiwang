@@ -61,7 +61,7 @@ class EduAction extends PublicAction {
         }
         $order = M("order");
         foreach ($post['edu_id'] as $key => $value) {
-            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post[$key]['edu_name'], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone']);
+            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone']);
             $order->add($insert);
         }
         $this->redirect('Index/index');
@@ -69,10 +69,19 @@ class EduAction extends PublicAction {
     
     public function jblx() {
         $edu = M("edu");
-        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jblx="1" or edu_tglx="1"';
+        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jblx="1"';
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 0);
+        $this->display();
+    }
+    
+    public function tglx() {
+        $edu = M("edu");
+        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_tglx="1"';
+        $edulist = $edu->query($sql);
+        $this->assign('edulist', $edulist);
+        $this->assign('is_tg', 1);
         $this->display();
     }
     
@@ -106,7 +115,16 @@ class EduAction extends PublicAction {
 
     public function jbpx() {
         $edu = M("edu");
-        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jbxx="1" or edu_tgxx="1"';
+        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jbxx="1"';
+        $edulist = $edu->query($sql);
+        $this->assign('edulist', $edulist);
+        $this->assign('is_tg', 0);
+        $this->display();
+    }
+    
+    public function tgpx() {
+        $edu = M("edu");
+        $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_tgxx="1"';
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 0);

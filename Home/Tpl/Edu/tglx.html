@@ -1,0 +1,57 @@
+<include file="Public:header"/>
+    <!-- Content -->
+<form method="post" action="__GROUP__/edu/savejblx" id="ordername" name="ordername">
+    <div id="peoples">
+    <div class="mm-search" id="people">
+        <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
+        <input placeholder="联系方式" type="text" autocomplete="off" name="user_jbphone[]">
+        <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_jbdesc[]"></textarea>
+
+    </div>
+    </div>
+    <if condition="$is_tg eq 1">
+    <input type="hidden" name="is_tg" value="1">
+    <input type="button" id="addPeople" value="增加">
+    </if>
+
+    <div class="clear:both ">
+    <foreach name="edulist" item="edu">
+        <div class="checkbox">
+            <label>
+                <!-- <img src="/uploads/1403/image/22222.jpg" width="40" height="40">-->
+                <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                {$edu.edu_name}
+            </label>
+
+        </div>
+    </foreach>
+    </div>
+
+    
+    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">提交信息</a>
+
+</div>
+</form>
+          <script>
+    
+    $('#ordersub').on("touchstart",function(){
+        $('#ordername').submit();
+    })
+
+      var seq=1
+
+     $("#addPeople").on("touchstart",function(){
+        //   $("#peoples").append($("p").clone());
+         seq= seq+1;
+         console.log(seq);
+         var a= $("#people").clone();
+         a.attr("id",seq);
+          $("#peoples").append(a);
+
+      })
+
+
+</script>
+   <include file="Public:userleft"/>
+ <include file="Public:footer"/>
