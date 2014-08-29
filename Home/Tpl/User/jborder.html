@@ -1,0 +1,29 @@
+<include file="Public:header"/>
+    <!-- Content -->
+
+    <div id="peoples">
+    <div class="mm-search" id="people">
+        <input type="text" disabled value="{$jborderinfo.user_jbname}">
+        <input type="text" disabled value="{$jborderinfo.user_jbphone}">
+        <input type="text" disabled value="{$jborderinfo.user_jbdesc}">
+
+    </div>
+    </div>
+
+    <div class="clear:both ">
+    <foreach name="jbeduorderinfo" item="jbedu">
+        <div class="checkbox">
+            <label>
+                <img src="/upload/{$jbedu.edu_image}" width="40" height="40">
+                {$jbedu.edu_name}
+            </label>
+
+        </div>
+    </foreach>
+    </div>
+
+
+</div>
+
+   <include file="Public:userleft"/>
+ <include file="Public:footer"/>

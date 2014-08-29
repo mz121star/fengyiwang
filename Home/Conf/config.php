@@ -8,6 +8,7 @@ $private_config = array(
                         'URL_CASE_INSENSITIVE' =>true,
                         'URL_ROUTE_RULES' => array(
                                                   'edulist/:sid' => 'Edu/lists',
+                                                  'detailorder/:joid/:jeid' => 'User/detailorder',
                                                   'wx/:uid' => 'Index/index'
                                                   )
                         );

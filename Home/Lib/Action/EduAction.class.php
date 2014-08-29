@@ -127,7 +127,7 @@ class EduAction extends PublicAction {
         $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_tgxx="1"';
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
-        $this->assign('is_tg', 0);
+        $this->assign('is_tg', 1);
         $this->display();
     }
     
