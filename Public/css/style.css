@@ -1106,3 +1106,4 @@ header .l_tbn a:hover{color:#fff;}
     float: left;
 }
 
+#addPeople{width: 100px;height: 40px;margin: 0px 0px 0px 10px;/* display: inline-block; */border: 0px;background-color: #008FFF;border-radius: 2px;color: #fff;font-size: 2rem;}
