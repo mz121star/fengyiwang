@@ -30,7 +30,7 @@ class IndexAction extends Action {
     }
 
     public function getcode() {
-        $code=1243456;
+        $code = substr(md5(time()), 0, 4);
         //短信接口机构代码 $jgid
         $jgid = '300';
         //短信接口用户名 $loginname
@@ -40,11 +40,43 @@ class IndexAction extends Action {
         //发送到的目标手机号码 $telphone，多个号码用半角分号分隔
         $telphone = $this->_post('phone');
         //短信内容 $message
-        $message = "尊敬的客户，您的验证码是：$code【风翼网】";
-        $gateway = "http://IP:8180/service.asmx/SendMessageStr?Id=$jgid&Name=$loginname&Psw=$passwd&Message=$message&Phone=$telphone&Timestamp=0";
+        $message = urlencode('尊敬的客户，您的验证码是：'.$code.'【风翼网】');
+        $gateway = 'http://223.4.21.214:8180/service.asmx/SendMessageStr?Id='.$jgid.'&Name='.$loginname.'&Psw='.$passwd.'&Message='.$message.'&Phone='.$telphone.'&Timestamp=0';
         $result = file_get_contents($gateway);
+        session('getcode', $code);
         echo $result;
         exit;
+    }
+
+    public function doregist() {
+        $post = $this->filterAllParam('post');
+        if (!$post['user_id']) {
+            $this->error("用户名不能为空", 'index');
+        }
+        if (!$post['user_pw1']) {
+            $this->error("密码不能为空", 'index');
+        }
+        if ($post['user_pw1'] != $post['user_pw2']) {
+            $this->error("密码不一致", 'index');
+        }
+        $user = M("User");
+        $userInfo = $user->where('user_id="'.$post['user_id'].'"')->field('id')->find();
+        if ($userInfo) {
+            $this->error("用户ID已存在", 'index');
+        }
+        $getcode = session('getcode');
+        if ($getcode != $post['code']) {
+            $this->error("验证码错误", 'index');
+        } else {
+            session('getcode', null);
+        }
+        $post['user_pw'] = md5($post['user_pw1']);
+        $userid = $user->add($post);
+        if ($userid) {
+            $people = M("People");
+            $peopleid = $people->add(array('user_id'=>$post['user_id'], 'people_email'=>$post['people_email']));
+        }
+        $this->redirect('User/changeinfo');
     }
 
     public function login() {
@@ -70,30 +102,5 @@ class IndexAction extends Action {
             unset($_SESSION['cart']);
         }
         $this->redirect('Index/index');
-    }
-    
-    public function doregist() {
-        $post = $this->filterAllParam('post');
-        if (!$post['user_id']) {
-            $this->error("用户名不能为空", 'index');
-        }
-        if (!$post['user_pw1']) {
-            $this->error("密码不能为空", 'index');
-        }
-        if ($post['user_pw1'] != $post['user_pw2']) {
-            $this->error("密码不一致", 'index');
-        }
-        $user = M("User");
-        $userInfo = $user->where('user_id="'.$post['user_id'].'"')->field('id')->find();
-        if ($userInfo) {
-            $this->error("用户ID已存在", 'index');
-        }
-        $post['user_pw'] = md5($post['user_pw1']);
-        $userid = $user->add($post);
-        if ($userid) {
-            $people = M("People");
-            $peopleid = $people->add(array('user_id'=>$post['user_id'], 'people_email'=>$post['people_email']));
-        }
-        $this->redirect('User/changeinfo');
     }
 }
