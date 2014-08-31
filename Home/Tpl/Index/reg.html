@@ -1,0 +1,36 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>风翼网</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $('#getcode').on("touchstart",function(){
+            var userphone = $("#user_phone").val();
+            $.post("/index.php/index/getcode", {"phone":userphone}).success(function(d){
+                alert(d);
+            })
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-signin" role="form" name="loginform" method="post" action="__GROUP__/Index/doregist">
+        <input type="text" id="user_id" name="user_id" class="form-control" placeholder="用户ID" required autofocus>
+        <input type="text" id="user_name" name="user_name" class="form-control" placeholder="用户名" required>
+        <input type="password" id="user_pw" name="user_pw" class="form-control" placeholder="请输入密码" required>
+        <input type="text" id="user_phone" name="user_phone" class="form-control" placeholder="电话" required>
+        <input type="text" id="user_email" name="code" class="form-control" placeholder="验证码" required>
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="getcode">获取验证码</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+      </form>
+    </div>
+  </body>
+</html>
