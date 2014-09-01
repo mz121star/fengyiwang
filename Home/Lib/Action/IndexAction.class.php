@@ -76,7 +76,7 @@ class IndexAction extends Action {
             session('getcode', null);
         }
         $userid = $user->where('user_id="'.$userinfo['user_id'].'"')->save($post);
-        $this->success('绑定成功', 'index/index');
+        $this->success('绑定成功', 'index');
     }
 
     public function showlogin() {
