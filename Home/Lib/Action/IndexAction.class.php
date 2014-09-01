@@ -63,9 +63,15 @@ class IndexAction extends Action {
         if (!$userInfo) {
             $this->error("用户不存在", 'index');
         }
+        if (!$post['user_name']) {
+            $this->error("请填写姓名", 'regphone');
+        }
+        if (!$post['code']) {
+            $this->error("请填写验证码", 'regphone');
+        }
         $getcode = session('getcode');
         if ($getcode != $post['code']) {
-            $this->error("验证码错误", 'index');
+            $this->error("验证码错误", 'regphone');
         } else {
             session('getcode', null);
         }
