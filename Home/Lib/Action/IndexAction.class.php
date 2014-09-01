@@ -46,13 +46,35 @@ class IndexAction extends Action {
     public function reg() {
         $this->display();
     }
+    
+    public function regphone() {
+        $this->display();
+    }
+    
+    public function doregphone() {
+        $userinfo = session('userinfo');
+        $post = $this->filterAllParam('post');
+        $user = M("User");
+        $userInfo = $user->where('user_id="'.$userinfo['user_id'].'"')->find();
+        if (!$userInfo) {
+            $this->error("用户不存在", 'index');
+        }
+        $getcode = session('getcode');
+        if ($getcode != $post['code']) {
+            $this->error("验证码错误", 'index');
+        } else {
+            session('getcode', null);
+        }
+        $userid = $user->where('user_id="'.$userinfo['user_id'].'"')->save($post);
+        $this->redirect('index/index');
+    }
 
     public function showlogin() {
         $this->display();
     }
 
     public function getcode() {
-        $code = rand(1000, 9999);
+        $code = rand(10000, 99999);
         //短信接口机构代码 $jgid
         $jgid = '300';
         //短信接口用户名 $loginname
@@ -62,7 +84,7 @@ class IndexAction extends Action {
         //发送到的目标手机号码 $telphone，多个号码用半角分号分隔
         $telphone = $this->_post('phone');
         //短信内容 $message
-        $message = urlencode('尊敬的客户，您的验证码是：'.$code);
+        $message = urlencode('尊敬的客户：'.$code.'（人人汇手机动态码以生成，请完成验证）');
         $gateway = 'http://223.4.21.214:8180/service.asmx/SendMessageStr?Id='.$jgid.'&Name='.$loginname.'&Psw='.$passwd.'&Message='.$message.'&Phone='.$telphone.'&Timestamp=0';
         $result = file_get_contents($gateway);
         session('getcode', $code);
