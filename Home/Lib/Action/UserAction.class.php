@@ -61,10 +61,23 @@ class UserAction extends PublicAction {
             $jborderinfo = $jborder->where('id = "'.$joid.'"')->find();
             $this->assign('jborderinfo', $jborderinfo);
             
-            $jbedu = M("jbedu");
-            $jbeduorderinfo = $jbedu->where('jborder_id = "'.$jborderinfo['id'].'"')->join(' fy_edu on fy_edu.id=fy_jbedu.edu_id')->select();
-            $this->assign('jbeduorderinfo', $jbeduorderinfo);
-            $this->display('jborder');
+            $tgorderinfo = $jborder->where('order_parent = "'.$jborderinfo['id'].'"')->select();
+            if (!$tgorderinfo) {
+                $jbedu = M("jbedu");
+                $jbeduorderinfo = $jbedu->where('jborder_id = "'.$jborderinfo['id'].'"')->join(' fy_edu on fy_edu.id=fy_jbedu.edu_id')->select();
+                $this->assign('jbeduorderinfo', $jbeduorderinfo);
+                $this->display('jborder');
+            } else {
+                $jbedu = M("jbedu");
+                $total = array();
+                foreach ($tgorderinfo as $tg) {
+                    $jbeduorderinfo = $jbedu->where('jborder_id = "'.$tg['id'].'"')->join(' fy_edu on fy_edu.id=fy_jbedu.edu_id')->select();
+                    $total = array_merge($total, $jbeduorderinfo);
+                }
+                $this->assign('tgorderinfo', $tgorderinfo);
+                $this->assign('jbeduorderinfo', $total);
+                $this->display('tgorder');
+            }
         }
     }
 }
