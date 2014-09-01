@@ -46,6 +46,10 @@ class IndexAction extends Action {
     public function reg() {
         $this->display();
     }
+
+    public function jump() {
+        $this->display();
+    }
     
     public function regphone() {
         $this->display();
@@ -66,7 +70,7 @@ class IndexAction extends Action {
             session('getcode', null);
         }
         $userid = $user->where('user_id="'.$userinfo['user_id'].'"')->save($post);
-        $this->redirect('index/index');
+        $this->success('绑定成功', 'index/index');
     }
 
     public function showlogin() {
