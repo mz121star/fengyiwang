@@ -3,6 +3,13 @@
 class IndexAction extends Action {
 
     public function index(){
+        $section = M("section");
+        $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
+        $this->assign('sectionlist', $sectionlist);
+        $this->display();
+    }
+    
+    public function home(){
         $uid = $this->_get('uid');
         
         $user = M('User');
