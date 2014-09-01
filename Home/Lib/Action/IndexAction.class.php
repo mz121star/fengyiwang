@@ -24,7 +24,7 @@ class IndexAction extends Action {
         $section = M("section");
         $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
         $this->assign('sectionlist', $sectionlist);
-        $this->display();
+        $this->display('index');
     }
     
     public function send() {
