@@ -73,16 +73,12 @@ class IndexAction extends Action {
     }
 
     public function login() {
-        $userInfo = session('userinfo');
-        if(!empty($userInfo) && $userInfo['user_type'] == 3 ){
-            $this->redirect('Index/index');
-        }
         $user = M("User");
         $_POST['user_id'] = $this->_post('user_id');
         $_POST['user_pw'] = md5($this->_post('user_pw'));
         $_POST['user_status'] = 1;
-        $userInfo = $user->where($_POST)->field('id,user_id,user_type')->find();
-        if(!empty($userInfo) && $userInfo['user_type'] == 3){
+        $userInfo = $user->where($_POST)->field('id,user_id,user_name,user_phone,user_type')->find();
+        if(!empty($userInfo) && $userInfo['user_type'] == 2){
             session('userinfo', $userInfo);
         }
         $this->redirect('Index/index');

@@ -13,9 +13,28 @@
     $(function () {
         $('#getcode').on("touchstart",function(){
             var userphone = $("#user_phone").val();
-            $.post("/index.php/index/getcode", {"phone":userphone}).success(function(d){
-                alert(d);
-            })
+            if (!userphone) {
+                alert("请填写手机号");
+            } else {
+                var btntext = $('#getcode').html();
+                $.post("/index.php/index/getcode", {"phone":userphone}).success(function(d){
+                    $('#getcode').attr('disabled', 1);
+                    var time = 50;
+                    var codetime = window.setInterval(function () {
+                        console.log(time);
+                        $('#getcode').html(btntext+" "+time);
+                        time--;
+                        if (time == 0) {
+                            $('#getcode').removeAttr('disabled');
+                            $('#getcode').html(btntext);
+                            window.clearInterval(codetime);
+                        }
+                    }, 1000);
+                });
+            }
+        });
+        $('#goback').on("touchstart",function(){
+            location.href = "__GROUP__/Index/index";
         });
     });
     </script>
@@ -30,6 +49,7 @@
         <input type="text" id="user_code" name="code" class="form-control" placeholder="验证码" required>
         <button class="btn btn-lg btn-primary btn-block" type="button" id="getcode">获取验证码</button>
         <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="goback">返回首页</button>
       </form>
     </div>
   </body>

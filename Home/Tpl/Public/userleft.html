@@ -1,13 +1,26 @@
 <nav id="menu">
     <ul>
+        <if condition="$Think.session.userinfo.user_id neq ''">
         <li <if condition="$current_c eq 'User' and $current_a eq 'center'">class="Selected"</if>>
             <a href="__GROUP__/user/center">
-                <i class="i-blog i-small"></i>个人中心
+                <i class="i-blog i-small"></i>{$Think.session.userinfo.user_name}，个人中心
             </a>
         </li>
+        <else />
+        <li <if condition="$current_c eq 'Index' and $current_a eq 'showlogin'">class="Selected"</if>>
+            <a href="__GROUP__/Index/showlogin">
+                <i class="i-blog i-small"></i>登录
+            </a>
+        </li>
+        <li <if condition="$current_c eq 'Index' and $current_a eq 'reg'">class="Selected"</if>>
+            <a href="__GROUP__/Index/reg">
+                <i class="i-blog i-small"></i>注册
+            </a>
+        </li>
+        </if>
         <li <if condition="$current_c eq 'Edu' and $current_a eq 'peixun'">class="Selected"</if>>
             <a href="__GROUP__/edu/peixun">
-                <i class="i-home i-small"></i>培训专栏{$current_c}{$current_a}
+                <i class="i-home i-small"></i>培训专栏
             </a>
         </li>
         <li <if condition="$current_c eq 'Edu' and $current_a eq 'liuxue'">class="Selected"</if>>
@@ -35,5 +48,12 @@
                 <i class="i-gallery i-small"></i>团购培训
             </a>
         </li>
+        <if condition="$Think.session.userinfo.user_id neq ''">
+        <li <if condition="$current_c eq 'Index' and $current_a eq 'logout'">class="Selected"</if>>
+            <a href="__GROUP__/index/logout">
+                <i class="i-blog i-small"></i>注销
+            </a>
+        </li>
+        </if>
     </ul>
 </nav>
