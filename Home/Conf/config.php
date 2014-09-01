@@ -9,7 +9,8 @@ $private_config = array(
                         'URL_ROUTE_RULES' => array(
                                                   'edulist/:sid' => 'Edu/lists',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
-                                                  'wx/:uid' => 'Index/index'
+                                                  'wx/:uid' => 'Index/index',
+                                                  'wx/:uid/:send' => 'Index/send'
                                                   )
                         );
 
