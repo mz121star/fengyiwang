@@ -15,11 +15,13 @@
             var user_name = $("#user_name").val();
             if (!user_name) {
                 alert("请填写姓名");
+                return;
             }
             
             var code = $("#code").val();
             if (!code) {
                 alert("请填写验证码");
+                return;
             }
             
             var userphone = $("#user_phone").val();
