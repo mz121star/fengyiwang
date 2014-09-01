@@ -12,18 +12,6 @@
     <script type="text/javascript">
     $(function () {
         $('#getcode').on("touchstart",function(){
-            var user_name = $("#user_name").val();
-            if (!user_name) {
-                alert("请填写姓名");
-                return;
-            }
-            
-            var code = $("#code").val();
-            if (!code) {
-                alert("请填写验证码");
-                return;
-            }
-            
             var userphone = $("#user_phone").val();
             if (!userphone) {
                 alert("请填写手机号");
