@@ -10,7 +10,7 @@ $private_config = array(
                                                   'edulist/:sid' => 'Edu/lists',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
                                                   'wx/:uid' => 'Index/index',
-                                                  'wx/:uid/:send' => 'Index/send'
+                                                  'weixin/:uid/:send' => 'Index/send'
                                                   )
                         );
 

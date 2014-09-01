@@ -52,15 +52,15 @@ class weixin {
         </item>
         ";
         if ($object->EventKey == 'fy_jblx') {
-            $item_str = sprintf($itemTpl, '结伴留学', '结伴留学', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName.'/jblx');
+            $item_str = sprintf($itemTpl, '结伴留学', '结伴留学', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/jblx');
         } elseif ($object->EventKey == 'fy_jbxx') {
-            $item_str = sprintf($itemTpl, '结伴学习', '结伴学习', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName.'/jbxx');
+            $item_str = sprintf($itemTpl, '结伴学习', '结伴学习', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/jbxx');
         } elseif ($object->EventKey == 'fy_tglx') {
-            $item_str = sprintf($itemTpl, '团购留学', '团购留学', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName.'/tglx');
+            $item_str = sprintf($itemTpl, '团购留学', '团购留学', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tglx');
         } elseif ($object->EventKey == 'fy_tgxx') {
-            $item_str = sprintf($itemTpl, '团购学习', '团购学习', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName.'/tgxx');
+            $item_str = sprintf($itemTpl, '团购学习', '团购学习', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tgxx');
         } elseif ($object->EventKey == 'fy_tjpy') {
-            $item_str = sprintf($itemTpl, '推荐朋友', '推荐朋友', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName.'/tjpy');
+            $item_str = sprintf($itemTpl, '推荐朋友', '推荐朋友', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tjpy');
         }
         
         $xmlTpl = "<xml>
