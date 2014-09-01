@@ -131,6 +131,10 @@ class EduAction extends PublicAction {
         $this->display();
     }
     
+    public function tjpy() {
+        
+    }
+    
     public function savejbpx() {
         $userid = $this->userInfo['user_id'];
         if (!$userid) {
