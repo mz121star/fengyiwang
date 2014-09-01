@@ -58,7 +58,7 @@ class UserAction extends PublicAction {
             $this->display('commonorder');
         } else {
             $jborder = M("jborder");
-            $jborderinfo = $jborder->where('id = "'.$jeid.'"')->find();
+            $jborderinfo = $jborder->where('id = "'.$joid.'"')->find();
             $this->assign('jborderinfo', $jborderinfo);
             
             $jbedu = M("jbedu");
