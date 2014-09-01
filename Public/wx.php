@@ -2,7 +2,7 @@
 
 define("TOKEN", "fengyiwang");
 $wxObj = new weixin();
-$wxObj->responseMsg();
+$wxObj->valid();
 
 class weixin {
 
