@@ -7,6 +7,7 @@ class EduAction extends PublicAction {
         $sectionedu = M("sectionedu");
         $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->select();
         $this->assign('edulist', $edulist);
+        $this->assign('pagetitle', '机构列表');
         $this->display();
     }
 
@@ -21,6 +22,7 @@ class EduAction extends PublicAction {
             $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('id = '.$value['edu_id'])->find();
         }
         $this->assign('edulist', $edulist);
+        $this->assign('pagetitle', '培训机构列表');
         $this->display('lists');
     }
 
@@ -35,6 +37,7 @@ class EduAction extends PublicAction {
             $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('id = '.$value['edu_id'])->find();
         }
         $this->assign('edulist', $edulist);
+        $this->assign('pagetitle', '留学机构列表');
         $this->display('lists');
     }
 
@@ -47,6 +50,7 @@ class EduAction extends PublicAction {
             $edulist[] = array('id'=>$value, 'edu_name'=>$eduinfo['edu_name']);
         }
         $this->assign('edulist', $edulist);
+        $this->assign('pagetitle', '订单详情');
         $this->display();
     }
     
@@ -73,6 +77,7 @@ class EduAction extends PublicAction {
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 0);
+        $this->assign('pagetitle', '结伴留学');
         $this->display();
     }
     
@@ -82,6 +87,7 @@ class EduAction extends PublicAction {
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 1);
+        $this->assign('pagetitle', '团购留学');
         $this->display();
     }
     
@@ -91,6 +97,9 @@ class EduAction extends PublicAction {
             $this->error("请先登录", 'jblx');
         }
         $post = $this->filterAllParam('post');
+        if (!count($post['edu_id'])) {
+            $this->error("请选择机构", 'jblx');
+        }
         $jborder = M("jborder");
         $post['user_id'] = $userid;
         $post['order_date'] = date('Y-m-d H:i:s');
@@ -100,6 +109,12 @@ class EduAction extends PublicAction {
                 $jborder->add(array('user_id'=>$post['user_id'], 'user_jbname'=>$value, 'user_jbphone'=>$post['user_jbphone'][$key], 'user_jbdesc'=>$post['user_jbdesc'][$key], 'order_date'=>$post['order_date'], 'order_parent'=>$jborder_id));
             }
         } else {
+            if (!$post['user_jbname'][0]) {
+                $this->error("请填写伙伴名", 'jblx');
+            }
+            if (!$post['user_jbphone'][0]) {
+                $this->error("请填写伙伴电话", 'jblx');
+            }
             $post['user_jbname'] = $post['user_jbname'][0];
             $post['user_jbphone'] = $post['user_jbphone'][0];
             $post['user_jbdesc'] = $post['user_jbdesc'][0];
@@ -119,6 +134,7 @@ class EduAction extends PublicAction {
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 0);
+        $this->assign('pagetitle', '结伴培训');
         $this->display();
     }
     
@@ -128,6 +144,7 @@ class EduAction extends PublicAction {
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
         $this->assign('is_tg', 1);
+        $this->assign('pagetitle', '团购培训');
         $this->display();
     }
     
@@ -141,6 +158,9 @@ class EduAction extends PublicAction {
             $this->error("请先登录", 'jbpx');
         }
         $post = $this->filterAllParam('post');
+        if (!count($post['edu_id'])) {
+            $this->error("请选择机构", 'jbpx');
+        }
         $jborder = M("jborder");
         $post['user_id'] = $userid;
         $post['order_date'] = date('Y-m-d H:i:s');
@@ -150,6 +170,12 @@ class EduAction extends PublicAction {
                 $jborder->add(array('user_id'=>$post['user_id'], 'user_jbname'=>$value, 'user_jbphone'=>$post['user_jbphone'][$key], 'user_jbdesc'=>$post['user_jbdesc'][$key], 'order_date'=>$post['order_date'], 'order_parent'=>$jborder_id));
             }
         } else {
+            if (!$post['user_jbname'][0]) {
+                $this->error("请填写伙伴名", 'jbpx');
+            }
+            if (!$post['user_jbphone'][0]) {
+                $this->error("请填写伙伴电话", 'jbpx');
+            }
             $post['user_jbname'] = $post['user_jbname'][0];
             $post['user_jbphone'] = $post['user_jbphone'][0];
             $post['user_jbdesc'] = $post['user_jbdesc'][0];

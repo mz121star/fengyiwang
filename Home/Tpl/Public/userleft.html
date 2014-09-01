@@ -1,9 +1,9 @@
 <nav id="menu">
     <ul>
         <if condition="$Think.session.userinfo.user_id neq ''">
-        <li <if condition="$current_c eq 'User' and $current_a eq 'center'">class="Selected"</if>>
+          <li <if condition="$current_c eq 'User' and $current_a eq 'center'">class="Selected"</if>>
             <a href="__GROUP__/user/center">
-                <i class="i-blog i-small"></i>个人中心
+                <i class="i-blog i-small"></i>订单中心
             </a>
         </li>
         <li <if condition="$current_c eq 'Index' and $current_a eq 'regphone'">class="Selected"</if>>

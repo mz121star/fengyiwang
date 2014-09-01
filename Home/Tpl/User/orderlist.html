@@ -1,0 +1,20 @@
+<include file="Public:header"/>
+
+    <!-- Content -->
+
+
+        <foreach name="orderlist" item="order">
+        <div class="list-item toggle_bright">
+            <a href="__GROUP__/detailorder/{$order.id}/0"><img class="list-item-pic" src="/upload/{$order.edu_image}" /></a>
+        <div class="list-item-infos">
+            <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$order.edu_name}</div>
+            <div class="list-item-address txt_ellipsis gray">{$order.order_date}</div>
+            <div class="list-item-address1 txt_ellipsis gray"> {$order.user_name}</div>
+        </div>
+    </div>
+      </foreach>
+
+
+    <!-- Menu navigation -->
+    <include file="Public:userleft"/>
+ <include file="Public:footer"/>
