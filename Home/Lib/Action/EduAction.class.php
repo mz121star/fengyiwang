@@ -64,7 +64,7 @@ class EduAction extends PublicAction {
             $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone']);
             $order->add($insert);
         }
-        $this->redirect('Index/index');
+        $this->success('下单成功', 'Index/index');
     }
     
     public function jblx() {
@@ -110,7 +110,7 @@ class EduAction extends PublicAction {
             $insert = array('jborder_id'=>$jborder_id, 'edu_id'=>$value);
             $jbedu->add($insert);
         }
-        $this->redirect('Index/index');
+        $this->success('下单成功', 'Index/index');
     }
 
     public function jbpx() {
@@ -160,6 +160,6 @@ class EduAction extends PublicAction {
             $insert = array('jborder_id'=>$jborder_id, 'edu_id'=>$value);
             $jbedu->add($insert);
         }
-        $this->redirect('Index/index');
+        $this->success('下单成功', 'Index/index');
     }
 }
