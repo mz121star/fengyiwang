@@ -4,7 +4,7 @@ class IndexAction extends Action {
 
     public function index(){
         $section = M("section");
-        $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
+        $sectionlist = $section->order(array('id'=>'asc'))->limit('0,6')->select();
         $this->assign('sectionlist', $sectionlist);
         $this->display();
     }
@@ -22,7 +22,7 @@ class IndexAction extends Action {
         }
         
         $section = M("section");
-        $sectionlist = $section->order(array('id'=>'desc'))->limit('0,6')->select();
+        $sectionlist = $section->order(array('id'=>'asc'))->limit('0,6')->select();
         $this->assign('sectionlist', $sectionlist);
         $this->display('index');
     }
@@ -39,8 +39,11 @@ class IndexAction extends Action {
             $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid));
             session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
         }
-
-        $this->redirect('edu/'.$send);
+        if ($send == 'regphone') {
+            $this->redirect('index/regphone');
+        } else {
+            $this->redirect('edu/'.$send);
+        }
     }
 
     public function reg() {

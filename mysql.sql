@@ -1,4 +1,13 @@
 
+DROP TABLE IF EXISTS `fy_systempic`;
+CREATE TABLE `fy_systempic` (
+  `id` int(11) NOT NULL auto_increment,
+  `system_pic` varchar(250) NOT NULL,
+  `system_picurl` varchar(250) NOT NULL default '',
+  `system_pictitle` varchar(250) NOT NULL default '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='首页广告图片表';
+
 DROP TABLE IF EXISTS `fy_user`;
 CREATE TABLE `fy_user` (
   `id` int(11) NOT NULL auto_increment,
@@ -24,11 +33,12 @@ CREATE TABLE `fy_section` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='板块表';
 INSERT INTO `fy_section` VALUES (1, '雅思', 'fa fa-paper-plane', '培训');
-INSERT INTO `fy_section` VALUES (2, '托福', 'fa fa-flag', '培训');
+INSERT INTO `fy_section` VALUES (2, '留学', 'fa fa-pencil', '留学');
 INSERT INTO `fy_section` VALUES (3, 'SAT', 'fa fa-globe', '培训');
-INSERT INTO `fy_section` VALUES (4, '4/6级', 'fa fa-book', '培训');
-INSERT INTO `fy_section` VALUES (5, '小语种', 'fa fa-graduation-cap', '培训');
-INSERT INTO `fy_section` VALUES (6, '留学', 'fa fa-pencil', '留学');
+INSERT INTO `fy_section` VALUES (4, '托福', 'fa fa-flag', '培训');
+INSERT INTO `fy_section` VALUES (5, '游学', 'fa fa-book', '培训');
+INSERT INTO `fy_section` VALUES (6, '小语种', 'fa fa-graduation-cap', '培训');
+
 
 
 DROP TABLE IF EXISTS `fy_edu`;
