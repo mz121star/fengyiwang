@@ -65,10 +65,11 @@ class EduAction extends PublicAction {
         }
         $order = M("order");
         foreach ($post['edu_id'] as $key => $value) {
-            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone']);
+            $order_number = time().rand(100, 999);
+            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone'], 'order_number'=>$order_number);
             $order->add($insert);
         }
-        $this->success('下单成功', 'peixun');
+        $this->success('下单成功', 'User/center');
     }
     
     public function jblx() {
@@ -89,43 +90,6 @@ class EduAction extends PublicAction {
         $this->assign('is_tg', 1);
         $this->assign('pagetitle', '团购留学');
         $this->display();
-    }
-    
-    public function savejblx() {
-        $userid = $this->userInfo['user_id'];
-        if (!$userid) {
-            $this->error("请先登录", 'jblx');
-        }
-        $post = $this->filterAllParam('post');
-        if (!count($post['edu_id'])) {
-            $this->error("请选择机构", 'jblx');
-        }
-        $jborder = M("jborder");
-        $post['user_id'] = $userid;
-        $post['order_date'] = date('Y-m-d H:i:s');
-        if ($post['is_tg'] == 1) {
-            $jborder_id = $jborder->add($post);
-            foreach ($post['user_jbname'] as $key => $value) {
-                $jborder->add(array('user_id'=>$post['user_id'], 'user_jbname'=>$value, 'user_jbphone'=>$post['user_jbphone'][$key], 'user_jbdesc'=>$post['user_jbdesc'][$key], 'order_date'=>$post['order_date'], 'order_parent'=>$jborder_id));
-            }
-        } else {
-            if (!$post['user_jbname'][0]) {
-                $this->error("请填写伙伴名", 'jblx');
-            }
-            if (!$post['user_jbphone'][0]) {
-                $this->error("请填写伙伴电话", 'jblx');
-            }
-            $post['user_jbname'] = $post['user_jbname'][0];
-            $post['user_jbphone'] = $post['user_jbphone'][0];
-            $post['user_jbdesc'] = $post['user_jbdesc'][0];
-            $jborder_id = $jborder->add($post);
-        }
-        $jbedu = M("jbedu");
-        foreach ($post['edu_id'] as $key => $value) {
-            $insert = array('jborder_id'=>$jborder_id, 'edu_id'=>$value);
-            $jbedu->add($insert);
-        }
-        $this->success('下单成功', 'peixun');
     }
 
     public function jbpx() {
@@ -152,18 +116,19 @@ class EduAction extends PublicAction {
         
     }
     
-    public function savejbpx() {
+    public function savejbtg() {
         $userid = $this->userInfo['user_id'];
         if (!$userid) {
-            $this->error("请先登录", 'jbpx');
+            $this->error("请先登录");
         }
         $post = $this->filterAllParam('post');
         if (!count($post['edu_id'])) {
-            $this->error("请选择机构", 'jbpx');
+            $this->error("请选择机构");
         }
         $jborder = M("jborder");
         $post['user_id'] = $userid;
         $post['order_date'] = date('Y-m-d H:i:s');
+        $post['order_number'] = time().rand(100, 999);
         if ($post['is_tg'] == 1) {
             $jborder_id = $jborder->add($post);
             foreach ($post['user_jbname'] as $key => $value) {
@@ -171,10 +136,10 @@ class EduAction extends PublicAction {
             }
         } else {
             if (!$post['user_jbname'][0]) {
-                $this->error("请填写伙伴名", 'jbpx');
+                $this->error("请填写伙伴名");
             }
             if (!$post['user_jbphone'][0]) {
-                $this->error("请填写伙伴电话", 'jbpx');
+                $this->error("请填写伙伴电话");
             }
             $post['user_jbname'] = $post['user_jbname'][0];
             $post['user_jbphone'] = $post['user_jbphone'][0];

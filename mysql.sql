@@ -8,6 +8,15 @@ CREATE TABLE `fy_systempic` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='首页广告图片表';
 
+
+DROP TABLE IF EXISTS `fy_business`;
+CREATE TABLE `fy_business` (
+  `id` int(11) NOT NULL auto_increment,
+  `business_content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='商务合作表';
+
+
 DROP TABLE IF EXISTS `fy_user`;
 CREATE TABLE `fy_user` (
   `id` int(11) NOT NULL auto_increment,
@@ -49,9 +58,10 @@ CREATE TABLE `fy_edu` (
   `edu_image` varchar(250) NOT NULL,
   `edu_discount` varchar(250) NOT NULL,
   `edu_desc` text NOT NULL,
-  `edu_browse` int(11) unsigned NOT NULL,
-  `edu_choose` int(11) unsigned NOT NULL,
-  `edu_sign` int(11) unsigned NOT NULL,
+  `edu_ask` int(11) unsigned NOT NULL COMMENT '咨询量',
+  `edu_browse` int(11) unsigned NOT NULL COMMENT '浏览量',
+  `edu_recommend` int(11) unsigned NOT NULL COMMENT '推荐量',
+  `edu_sign` int(11) unsigned NOT NULL COMMENT '签约量',
   `edu_jblx` enum('0','1') NOT NULL,
   `edu_tglx` enum('0','1') NOT NULL,
   `edu_jbxx` enum('0','1') NOT NULL,
@@ -76,10 +86,12 @@ CREATE TABLE `fy_order` (
   `user_name` varchar(250) NOT NULL,
   `edu_id` varchar(250) NOT NULL,
   `edu_name` varchar(250) NOT NULL,
+  `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
   `order_phone` varchar(250) NOT NULL,
   `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
   `order_discount` varchar(250) NOT NULL,
+  `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='订单表';
 
@@ -91,9 +103,11 @@ CREATE TABLE `fy_jborder` (
   `user_jbname` varchar(250) NOT NULL,
   `user_jbphone` varchar(250) NOT NULL,
   `user_jbdesc` text NOT NULL,
+  `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
   `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
   `order_parent` int(11) unsigned NOT NULL default 0,
+  `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学表';
 

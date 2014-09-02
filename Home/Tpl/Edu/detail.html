@@ -13,11 +13,11 @@
     </div>
     </foreach>
     <div class="notifications success">
-        <input type="text" name="user_name" value="" required placeholder="请输入姓名">
+        <input type="text" name="user_name" id="user_name" value="" required placeholder="请输入姓名">
         <i></i>
     </div>
     <div class="notifications success">
-        <input type="tel" name="order_phone" value="" required placeholder="请输入电话">
+        <input type="tel" name="order_phone" id="order_phone" value="" required placeholder="请输入电话">
         <i></i>
     </div>
         <!-- Menu navigation -->
@@ -29,6 +29,16 @@
       <script>
     
     $('#ordersub').on("touchstart",function(){
+        var user_name = $("#user_name").val();
+        if (!user_name) {
+            alert("请填写姓名");
+            return;
+        }
+        var order_phone = $("#order_phone").val();
+        if (!order_phone) {
+            alert("请填写电话");
+            return;
+        }
         $('#ordername').submit();
     })
 

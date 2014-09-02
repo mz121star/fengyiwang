@@ -1,20 +1,15 @@
 <include file="Public:header"/>
-			
-<div class="subHeader"><i class="i-home i-small"></i>Welcome friend!</div>
+
 <!-- Banner -->
 			<div class="bannerPane">
 			  <section class="slider">
 				<div class="flexslider">
 				  <ul class="slides">
+                    <foreach name="syspicinfo" item="pic">
 					<li>
-						<img src="/img/blog/1.jpg" />
+						<img src="/upload/{$pic.system_pic}" width="320" height="181"/>
 						</li>
-						<li>
-						<img src="/img/blog/2.jpg" />
-						</li>
-						<li>
-						<img src="/img/blog/3.jpg" />
-						</li>
+					</foreach>
 				  </ul>
 				</div>
 			  </section>

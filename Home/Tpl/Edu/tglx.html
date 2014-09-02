@@ -1,6 +1,6 @@
 <include file="Public:header"/>
     <!-- Content -->
-<form method="post" action="__GROUP__/edu/savejblx" id="ordername" name="ordername">
+<form method="post" action="__GROUP__/edu/savejbtg" id="ordername" name="ordername">
     <div id="peoples">
     <div class="mm-search" id="people">
         <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
@@ -36,10 +36,20 @@
           <script>
     
     $('#ordersub').on("touchstart",function(){
-        $('#ordername').submit();
-    })
+        var issub = 0;
+        $("input[name^='edu_id']").each(function () {
+            if (this.checked) {
+                issub = 1;
+            }
+        });
+        if (issub) {
+            $('#ordername').submit();
+        } else {
+            alert("请选择至少一个机构");
+        }
+    });
 
-      var seq=1
+      var seq=1;
 
      $("#addPeople").on("touchstart",function(){
         //   $("#peoples").append($("p").clone());
@@ -48,8 +58,7 @@
          var a= $("#people").clone();
          a.attr("id",seq);
           $("#peoples").append(a);
-
-      })
+      });
 
 
 </script>

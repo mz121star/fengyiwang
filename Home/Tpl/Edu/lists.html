@@ -26,7 +26,7 @@
       </foreach>
     </form>
 <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
-    <a href="javascript:;" id="ordersub">立即预订</a>
+    <a href="javascript:;" id="ordersub">预约推荐</a>
 
 </div>
     <!-- Menu navigation -->
@@ -45,7 +45,17 @@
     }})
     
     $('#ordersub').on("touchstart",function(){
-        $('#ordername').submit();
+        var issub = 0;
+        $("input[id^='edu_id']").each(function () {
+            if (this.checked) {
+                issub = 1;
+            }
+        });
+        if (issub) {
+            $('#ordername').submit();
+        } else {
+            alert("请选择至少一个机构");
+        }
     })
 
 

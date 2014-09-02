@@ -38,6 +38,7 @@ class SystemAction extends PublicAction {
         foreach ($info as $key => $value) {
             $id = explode('-', $value['key'])[1];
             $ishave = $system->where('id = '.$id)->count();
+            echo $ishave.'<br>';
             if ($ishave) {
                 $system->where('id = '.$id)->save(array('system_pic'=>$value['savename'], 'system_picurl'=>$post['system_picurl-'.$id]));
             } else {
@@ -54,5 +55,26 @@ class SystemAction extends PublicAction {
             }
         }
         $this->redirect('System/showimage');
+    }
+
+    public function business() {
+        $business = M("business");
+        $businessinfo = $business->select();
+        if ($businessinfo) {
+            $this->assign('businessinfo', $businessinfo[0]);
+        } else {
+            $this->assign('businessinfo', array());
+        }
+        $this->display();
+    }
+
+    public function savebusi() {
+        $business = M("business");
+        if ($_POST['id']) {
+            $businessinfo = $business->where('id = '.$_POST['id'])->save($_POST);
+        } else {
+            $businessinfo = $business->add($_POST);
+        }
+        $this->redirect('System/business');
     }
 }

@@ -6,6 +6,9 @@ class IndexAction extends Action {
         $section = M("section");
         $sectionlist = $section->order(array('id'=>'asc'))->limit('0,6')->select();
         $this->assign('sectionlist', $sectionlist);
+        $system = M("systempic");
+        $syspicinfo = $system->select();
+        $this->assign('syspicinfo', $syspicinfo);
         $this->display();
     }
     

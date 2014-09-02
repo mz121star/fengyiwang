@@ -34,12 +34,13 @@
 </div>
 <script type="text/javascript">
 $(function () {
-    var totalpic = {$totalpic};
+    var totalpic = {$totalpic|default=0};
     $("#add_image").click(function () {
+        totalpic = totalpic+1;
         var tb = document.getElementById("image_table");
         var row = tb.insertRow(tb.rows.length);
-        row.insertCell(0).innerHTML = '<input type="file" name="system_pic-'+(totalpic+1)+'">';
-        row.insertCell(1).innerHTML = '<input type="url" name="system_picurl-'+(totalpic+1)+'" value="">';
+        row.insertCell(0).innerHTML = '<input type="file" name="system_pic-'+totalpic+'">';
+        row.insertCell(1).innerHTML = '<input type="url" name="system_picurl-'+totalpic+'" value="">';
     });
 });
 </script>
