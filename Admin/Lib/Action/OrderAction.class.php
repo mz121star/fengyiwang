@@ -39,4 +39,24 @@ class OrderAction extends PublicAction {
         $this->assign('orderlist', $orderlist);
         $this->display('lists');
     }
+
+    public function recommend(){
+        
+        $this->redirect('Order/lists');
+    }
+
+    public function sign(){
+        
+        $this->redirect('Order/lists');
+    }
+
+    public function modorder(){
+        
+        $this->display();
+    }
+
+    public function delorder(){
+        
+        $this->redirect('Order/lists');
+    }
 }

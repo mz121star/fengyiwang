@@ -87,8 +87,10 @@
             <td class="col-sm-2">{$order.order_date}</td>
             <td class="col-sm-2">{$order.order_number}</td>
             <td class="col-sm-2">
-                <a href="__GROUP__/modedu/{$order.id}">编辑</a>
-                <a href="__GROUP__/deledu/{$order.id}">删除</a>
+                <a href="__GROUP__/recommend/{$order.id}">推荐确认</a>
+                <a href="__GROUP__/sign/{$order.id}">签约确认</a>
+                <a href="__GROUP__/modorder/{$order.id}">编辑</a>
+                <a href="__GROUP__/delorder/{$order.id}">删除</a>
             </td>
           </tr>
         </foreach>

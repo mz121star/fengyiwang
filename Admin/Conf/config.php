@@ -14,7 +14,11 @@ $private_config = array(
                                                   'deledu/:eduid' => 'Edu/deledu',
                                                   'moduser/:uid' => 'User/moduser',
                                                   'deluser/:uid' => 'User/deluser',
-                                                  'eduorder/:order' => 'Edu/eduorder'
+                                                  'eduorder/:order' => 'Edu/eduorder',
+                                                  'recommend/:oid' => 'Order/recommend',
+                                                  'sign/:oid' => 'Order/sign',
+                                                  'modorder/:oid' => 'Order/modorder',
+                                                  'delorder/:oid' => 'Order/delorder',
                                                   )
                         );
 

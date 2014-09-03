@@ -91,7 +91,7 @@ CREATE TABLE `fy_order` (
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
   `order_phone` varchar(250) NOT NULL,
-  `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
+  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
   `order_discount` varchar(250) NOT NULL,
   `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
@@ -107,7 +107,7 @@ CREATE TABLE `fy_jborder` (
   `user_jbdesc` text NOT NULL,
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
-  `order_status` enum('1','2','3','4','5') NOT NULL COMMENT '待沟通/沟通中/待报名/已报名/退费',
+  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
   `order_parent` int(11) unsigned NOT NULL default 0,
   `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
