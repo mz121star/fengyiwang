@@ -1,17 +1,28 @@
 <h1 class="page-header">搜索机构</h1>
     <div class="row placeholders">
         <div class="col-md-7">
-            <form class="form-horizontal" role="form" method="get" action="__GROUP__/edu/search">
+            <form class="form-horizontal" role="form" method="post" action="__GROUP__/edu/search">
                 <div class="form-group">
                   <label for="helpername" class="col-sm-2 control-label">机构名称</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="edu_name" name="edu_name">
+                      <input type="text" class="form-control" id="edu_name" name="edu_name" value="{$edu_name}">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="helpername" class="col-sm-2 control-label">机构属性</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="edu_attr" name="edu_attr">
+                     <label class="checkbox-inline">
+                         <input type="checkbox" name="edu_jblx" value="1" <if condition="$edu_jblx eq '1'">checked</if>> 结伴留学
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="edu_tglx" value="1" <if condition="$edu_tglx eq '1'">checked</if>> 团购留学
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="edu_jbxx" value="1" <if condition="$edu_jbxx eq '1'">checked</if>> 结伴学习
+                      </label>
+                      <label class="checkbox-inline">
+                        <input type="checkbox" name="edu_tgxx" value="1" <if condition="$edu_tgxx eq '1'">checked</if>> 团购学习
+                      </label>
                   </div>
                 </div>
                 <div class="form-group">
@@ -25,12 +36,22 @@
 
 <h2 class="sub-header">机构列表</h2>
     <div class="table-responsive">
+        <form name="searchform" id="searchform" method="post">
+        <select name="ordername" id="ordername">
+            <option value="0">默认排序</option>
+            <option value="edu_jblx" <if condition="$orderby eq 'edu_jblx'">selected</if>>结伴留学</option>
+            <option value="edu_tglx" <if condition="$orderby eq 'edu_tglx'">selected</if>>团购留学</option>
+            <option value="edu_jbxx" <if condition="$orderby eq 'edu_jbxx'">selected</if>>结伴学习</option>
+            <option value="edu_tgxx" <if condition="$orderby eq 'edu_tgxx'">selected</if>>团购学习</option>
+        </select>
+      </form>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>机构名称</th>
             <th>机构星级</th>
-            <th>机构优惠</th>
+            <th>展示佣金金额</th>
+            <th>投放佣金金额</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -39,7 +60,8 @@
           <tr>
             <td class="col-sm-2">{$edu.edu_name}</td>
             <td class="col-sm-2">{$edu.edu_star}</td>
-            <td class="col-sm-2">{$edu.edu_discount}</td>
+            <td class="col-sm-2">{$edu.edu_showprice}</td>
+            <td class="col-sm-2">{$edu.edu_giveprice}</td>
             <td class="col-sm-2">
                 <a href="__GROUP__/modedu/{$edu.id}">编辑</a>
                 <a href="__GROUP__/deledu/{$edu.id}">删除</a>
@@ -50,3 +72,9 @@
       </table>
       {$page}
     </div>
+<script>
+    $("#ordername").change(function () {
+        location.href = "__GROUP__/eduorder/"+this.value;
+    })
+    
+</script>

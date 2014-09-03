@@ -3,31 +3,67 @@
     <div class="col-md-7">
         <form class="form-horizontal" role="form" method="post" action="__GROUP__/Edu/save" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="userid" class="col-sm-2 control-label">机构名称</label>
-              <div class="col-sm-10">
+              <label for="userid" class="col-sm-3 control-label">机构名称</label>
+              <div class="col-sm-8">
                 <input type="text" class="form-control" id="edu_name" name="edu_name" value="" required autofocus>
               </div>
             </div>
             <div class="form-group">
-              <label for="userid" class="col-sm-2 control-label">机构星级</label>
-              <div class="col-sm-10">
+              <label for="userid" class="col-sm-3 control-label">机构星级</label>
+              <div class="col-sm-8">
                 <input type="text" class="form-control" id="edu_star" name="edu_star" value="">
               </div>
             </div>
             <div class="form-group">
-              <label for="userid" class="col-sm-2 control-label">机构折扣</label>
-              <div class="col-sm-10">
+              <label for="userid" class="col-sm-3 control-label">机构折扣</label>
+              <div class="col-sm-8">
                 <input type="text" class="form-control" id="edu_discount" name="edu_discount" value="">
               </div>
             </div>
             <div class="form-group">
-              <label for="type1" class="col-sm-2 control-label">机构介绍</label>
-              <div class="col-sm-5">
-                  <textarea id="edu_desc" name="edu_desc" class="form-control" rows="5"></textarea>
+              <label for="userid" class="col-sm-3 control-label">展示佣金金额</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_showprice" name="edu_showprice" value="">
               </div>
             </div>
             <div class="form-group">
-              <label for="userid" class="col-sm-2 control-label">所属板块</label>
+              <label for="userid" class="col-sm-3 control-label">投放佣金金额</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_giveprice" name="edu_giveprice" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">咨询量</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_ask" name="edu_ask" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">浏览量</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_browse" name="edu_browse" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">推荐量</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_recommend" name="edu_recommend" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">签约量</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_sign" name="edu_sign" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="type1" class="col-sm-3 control-label">机构介绍</label>
+              <div class="col-sm-5">
+                  <textarea id="edu_desc" name="edu_desc" rows="5" cols="60"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">所属板块</label>
               <div class="col-sm-8">
                     <foreach name="sectionlist" item="section">
                         <label class="checkbox-inline">
@@ -37,7 +73,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="userid" class="col-sm-2 control-label">属性</label>
+              <label for="userid" class="col-sm-3 control-label">属性</label>
               <div class="col-sm-8">
                   <label class="checkbox-inline">
                     <input type="checkbox" name="edu_jblx" value="1"> 结伴留学
@@ -54,7 +90,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="status" class="col-sm-2 control-label">图片</label>
+              <label for="status" class="col-sm-3 control-label">图片</label>
               <div class="col-sm-4">
                 <input type="file" id="edu_image" name="edu_image">
               </div>

@@ -13,6 +13,29 @@ class UserAction extends PublicAction {
         $this->assign('userlist', $userlist);
         $this->display();
     }
+    
+    public function search(){
+        $post = $this->filterAllParam('post');
+        $where = array();
+        if ($post['user_name']) {
+            $where['user_name'] = array('like', '%'.$post['user_name'].'%');
+        }
+        if ($post['user_phone']) {
+            $where['user_phone'] = array('like', '%'.$post['user_phone'].'%');
+        }
+        $where['user_id'] = array('neq', 'admin');
+        $user = M("user");
+        import('ORG.Util.Page');
+        $count = $user->where($where)->count();
+        $page = new Page($count, 10);
+        $userlist = $user->where($where)->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('userlist', $userlist);
+        $this->assign('user_name', $post['user_name']);
+        $this->assign('user_phone', $post['user_phone']);
+        $this->display('lists');
+    }
 
     public function showadd(){
         $this->display();

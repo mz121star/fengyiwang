@@ -11,7 +11,73 @@ class EduAction extends PublicAction {
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('edulist', $edulist);
+        
+        $section = M("section");
+        $sectionlist = $section->select();
+        $this->assign('sectionlist', $sectionlist);
         $this->display();
+    }
+    
+    public function eduorder(){
+        $order = $this->_get("order");
+        $edu = M("edu");
+        import('ORG.Util.Page');
+        $count = $edu->count();
+        $page = new Page($count, 10);
+        if ($order) {
+            $orderby = array($order=>'desc');
+        } else {
+            $orderby = array('id'=>'desc');
+        }
+        $edulist = $edu->order($orderby)->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('edulist', $edulist);
+        
+        $section = M("section");
+        $sectionlist = $section->select();
+        $this->assign('sectionlist', $sectionlist);
+        $this->assign('orderby', $order);
+        $this->display('lists');
+    }
+    
+    public function search(){
+        $post = $this->filterAllParam('post');
+        $where = array();
+        if ($post['edu_name']) {
+            $where['edu_name'] = array('like', '%'.$post['edu_name'].'%');
+        }
+        if ($post['edu_jblx']) {
+            $where['edu_jblx'] = "1";
+        }
+        if ($post['edu_tglx']) {
+            $where['edu_tglx'] = "1";
+        }
+        if ($post['edu_jbxx']) {
+            $where['edu_jbxx'] = "1";
+        }
+        if ($post['edu_tgxx']) {
+            $where['edu_tgxx'] = "1";
+        }
+        $edu = M("edu");
+        import('ORG.Util.Page');
+        $count = $edu->where($where)->count();
+        $page = new Page($count, 10);
+        $edulist = $edu->where($where)->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('edulist', $edulist);
+        
+        $section = M("section");
+        $sectionlist = $section->select();
+        $this->assign('sectionlist', $sectionlist);
+        
+        $this->assign('edu_name', $post['edu_name']);
+        $this->assign('edu_jblx', $post['edu_jblx']);
+        $this->assign('edu_tglx', $post['edu_tglx']);
+        $this->assign('edu_jbxx', $post['edu_jbxx']);
+        $this->assign('edu_tgxx', $post['edu_tgxx']);
+        $this->display('lists');
     }
 
     public function showadd(){
