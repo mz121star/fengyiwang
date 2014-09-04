@@ -5,9 +5,18 @@ class EduAction extends PublicAction {
     public function lists(){
         $sid = $this->_get('sid');
         $sectionedu = M("sectionedu");
-        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->select();
+        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->select();
         $this->assign('edulist', $edulist);
         $this->assign('pagetitle', '机构列表');
+        $this->display();
+    }
+    
+    public function detailedu(){
+        $eid = $this->_get('eid');
+        $edu = M("edu");
+        $eduinfo = $edu->where('id = '.$eid)->find();
+        $this->assign('eduinfo', $eduinfo);
+        $this->assign('pagetitle', '机构详情');
         $this->display();
     }
 
@@ -19,7 +28,7 @@ class EduAction extends PublicAction {
         $edulist = array();
         $edu = M("edu");
         foreach ($result as $value) {
-            $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('id = '.$value['edu_id'])->find();
+            $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('id = '.$value['edu_id'])->find();
         }
         $this->assign('edulist', $edulist);
         $this->assign('pagetitle', '培训机构列表');
@@ -34,7 +43,7 @@ class EduAction extends PublicAction {
         $edulist = array();
         $edu = M("edu");
         foreach ($result as $value) {
-            $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_choose, edu_sign')->where('id = '.$value['edu_id'])->find();
+            $edulist[] = $edu->field('id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('id = '.$value['edu_id'])->find();
         }
         $this->assign('edulist', $edulist);
         $this->assign('pagetitle', '留学机构列表');
@@ -66,7 +75,7 @@ class EduAction extends PublicAction {
         $order = M("order");
         foreach ($post['edu_id'] as $key => $value) {
             $order_number = time().rand(100, 999);
-            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone'], 'order_number'=>$order_number);
+            $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone'], 'order_remark'=>$post['order_remark'], 'order_number'=>$order_number);
             $order->add($insert);
         }
         $this->success('下单成功', 'User/center');

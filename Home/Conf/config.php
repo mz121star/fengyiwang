@@ -10,6 +10,7 @@ $private_config = array(
                         'URL_CASE_INSENSITIVE' =>true,
                         'URL_ROUTE_RULES' => array(
                                                   'edulist/:sid' => 'Edu/lists',
+                                                  'detailedu/:eid' => 'Edu/detailedu',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
                                                   'wx/:uid' => 'Index/home',
                                                   'weixin/:uid/:send' => 'Index/send'
