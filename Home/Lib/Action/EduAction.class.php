@@ -63,6 +63,10 @@ class EduAction extends PublicAction {
         $this->display();
     }
     
+    public function gotousercenter() {
+        $this->redirect('User/center');
+    }
+    
     public function order() {
         $userid = $this->userInfo['user_id'];
         if (!$userid) {
@@ -78,7 +82,7 @@ class EduAction extends PublicAction {
             $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone'], 'order_remark'=>$post['order_remark'], 'order_number'=>$order_number);
             $order->add($insert);
         }
-        $this->success('下单成功', 'User/center');
+        $this->success('下单成功', 'gotousercenter');
     }
     
     public function jblx() {
@@ -160,6 +164,6 @@ class EduAction extends PublicAction {
             $insert = array('jborder_id'=>$jborder_id, 'edu_id'=>$value);
             $jbedu->add($insert);
         }
-        $this->success('下单成功', 'peixun');
+        $this->success('下单成功', 'gotousercenter');
     }
 }
