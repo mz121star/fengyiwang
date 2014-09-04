@@ -63,6 +63,8 @@ class weixin {
             $item_str = sprintf($itemTpl, '推荐朋友', '推荐朋友', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tjpy');
         } elseif ($object->EventKey == 'fy_home') {
             $item_str = sprintf($itemTpl, '微官网', '微官网', '', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
+        } elseif ($object->EventKey == 'fy_swhz') {
+            $item_str = sprintf($itemTpl, '商务合作', '商务合作', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/swhz');
         } elseif ($object->Event == 'subscribe') {
             $item_str = sprintf($itemTpl, '绑定手机', '绑定手机享受更多服务', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
         }

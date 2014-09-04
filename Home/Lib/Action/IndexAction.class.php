@@ -49,11 +49,20 @@ class IndexAction extends Action {
         }
         if ($send == 'regphone') {
             $this->redirect('index/regphone');
+        } elseif ($send == 'swhz') {
+            $this->redirect('index/swhz');
         } else {
             $this->redirect('edu/'.$send);
         }
     }
 
+    public function swhz() {
+        $business = M("business");
+        $businessinfo = $business->find();
+        $this->assign('businessinfo', $businessinfo);
+        $this->display();
+    }
+    
     public function reg() {
         $this->display();
     }
