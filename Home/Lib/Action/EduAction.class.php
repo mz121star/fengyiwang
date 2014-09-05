@@ -15,6 +15,11 @@ class EduAction extends PublicAction {
         $eid = $this->_get('eid');
         $edu = M("edu");
         $eduinfo = $edu->where('id = '.$eid)->find();
+
+        $edu_browse = $eduinfo['edu_browse'];
+        $edu_browse = ($edu_browse) ? $edu_browse + 1 : 1;
+        $edu->where('id = '.$eid)->setField('edu_browse', $edu_browse);
+
         $this->assign('eduinfo', $eduinfo);
         $this->assign('pagetitle', '机构详情');
         $this->display();
@@ -77,10 +82,17 @@ class EduAction extends PublicAction {
             $post['user_name'] = $this->userInfo['user_name'];
         }
         $order = M("order");
+        $edu = M("edu");
         foreach ($post['edu_id'] as $key => $value) {
             $order_number = time().rand(100, 999);
             $insert = array('user_id'=>$userid, 'user_name'=>$post['user_name'], 'edu_id'=>$value, 'edu_name'=>$post['edu_name'][$key], 'order_date'=>date('Y-m-d H:i:s'), 'order_phone'=>$post['order_phone'], 'order_remark'=>$post['order_remark'], 'order_number'=>$order_number);
-            $order->add($insert);
+            $issuccess = $order->add($insert);
+            if ($issuccess) {
+                $eduinfo = $edu->where('id = '.$value)->find();
+                $edu_sign = $eduinfo['edu_sign'];
+                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+            }
         }
         $this->success('下单成功', 'gotousercenter');
     }
@@ -160,9 +172,16 @@ class EduAction extends PublicAction {
             $jborder_id = $jborder->add($post);
         }
         $jbedu = M("jbedu");
+        $edu = M("edu");
         foreach ($post['edu_id'] as $key => $value) {
             $insert = array('jborder_id'=>$jborder_id, 'edu_id'=>$value);
-            $jbedu->add($insert);
+            $issuccess = $jbedu->add($insert);
+            if ($issuccess) {
+                $eduinfo = $edu->where('id = '.$value)->find();
+                $edu_sign = $eduinfo['edu_sign'];
+                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+            }
         }
         $this->success('下单成功', 'gotousercenter');
     }
