@@ -69,6 +69,12 @@ CREATE TABLE `fy_edu` (
   `edu_tglx` enum('0','1') NOT NULL,
   `edu_jbxx` enum('0','1') NOT NULL,
   `edu_tgxx` enum('0','1') NOT NULL,
+  `edu_order1` int(11) unsigned NOT NULL default 0 COMMENT '雅思板块排序',
+  `edu_order2` int(11) unsigned NOT NULL default 0 COMMENT '留学板块排序',
+  `edu_order3` int(11) unsigned NOT NULL default 0 COMMENT 'SAT板块排序',
+  `edu_order4` int(11) unsigned NOT NULL default 0 COMMENT '托福板块排序',
+  `edu_order5` int(11) unsigned NOT NULL default 0 COMMENT '游学板块排序',
+  `edu_order6` int(11) unsigned NOT NULL default 0 COMMENT '小语种板块排序',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='教育机构表';
 
