@@ -21,7 +21,8 @@ class IndexAction extends Action {
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid));
+            $today = date('Y-m-d H:i:s');
+            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
             session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
         }
         
@@ -44,7 +45,8 @@ class IndexAction extends Action {
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid));
+            $today = date('Y-m-d H:i:s');
+            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
             session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
         }
         if ($send == 'regphone') {

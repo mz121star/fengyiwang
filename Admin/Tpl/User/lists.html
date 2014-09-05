@@ -28,8 +28,8 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>用户ID</th>
             <th>姓名</th>
+            <th>注册时间</th>
             <th>联系电话</th>
             <th>Action</th>
           </tr>
@@ -37,8 +37,8 @@
         <tbody>
         <foreach name="userlist" item="user">
           <tr>
-            <td class="col-sm-2">{$user.user_id}</td>
             <td class="col-sm-2">{$user.user_name}</td>
+            <td class="col-sm-2">{$user.user_regdate}</td>
             <td class="col-sm-2">{$user.user_phone}</td>
             <td class="col-sm-2">
                 <a href="__GROUP__/moduser/{$user.user_id}">编辑</a>
