@@ -30,8 +30,8 @@ class OrderAction extends PublicAction {
         if ($post['order_number']) {
             $where['order_number'] = array('like', '%'.$post['order_number'].'%');
         }
-        if ($post['user_id']) {
-            $where['user_id'] = $post['user_id'];
+        if ($post['user_name']) {
+            $where['user_name'] = array('like', '%'.$post['user_name'].'%');
         }
         $order = M("order");
         import('ORG.Util.Page');
@@ -47,7 +47,7 @@ class OrderAction extends PublicAction {
         
         $this->assign('order_date', $post['order_date']);
         $this->assign('order_number', $post['order_number']);
-        $this->assign('user_id', $post['user_id']);
+        $this->assign('user_name', $post['user_name']);
         $this->display('lists');
     }
     
@@ -79,11 +79,12 @@ class OrderAction extends PublicAction {
         if ($post['order_number']) {
             $where['order_number'] = array('like', '%'.$post['order_number'].'%');
         }
-        if ($post['user_id']) {
-            $where['user_id'] = $post['user_id'];
+        if ($post['user_jbname']) {
+            $where['user_jbname'] = array('like', '%'.$post['user_jbname'].'%');
+        } else {
+            $where['user_jbname'] = array('neq', '');
         }
         $where['order_parent'] = 0;
-        $where['user_jbname'] = array('neq', '');
         $jborder = M("jborder");
         import('ORG.Util.Page');
         $count = $jborder->where($where)->count();
@@ -98,7 +99,7 @@ class OrderAction extends PublicAction {
         
         $this->assign('order_date', $post['order_date']);
         $this->assign('order_number', $post['order_number']);
-        $this->assign('user_id', $post['user_id']);
+        $this->assign('user_jbname', $post['user_jbname']);
         $this->display('jblists');
     }
 
