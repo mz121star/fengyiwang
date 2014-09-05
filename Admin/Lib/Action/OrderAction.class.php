@@ -56,7 +56,7 @@ class OrderAction extends PublicAction {
         import('ORG.Util.Page');
         $count = $jborder->where('order_parent=0 and user_jbname != ""')->count();
         $page = new Page($count, 10);
-        $orderlist = $jborder->field('fy_jborder.id, fy_jbedu.id as jid, user_jbname, user_jbphone, user_jbdesc, order_date, order_status, edu_name, edu_image')->where('order_parent=0 and user_jbname != ""')->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->limit($page->firstRow.','.$page->listRows)->select();
+        $orderlist = $jborder->field('fy_jborder.id, fy_jbedu.id as jid, user_jbname, user_jbphone, user_jbdesc, order_number, order_date, order_status, edu_name, edu_image')->where('order_parent=0 and user_jbname != ""')->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('orderlist', $orderlist);
