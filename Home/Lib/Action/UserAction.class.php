@@ -6,7 +6,7 @@ class UserAction extends PublicAction {
         $this->assign('pagetitle', '订单中心');
         $this->display();
     }
-    
+
     public function orderlist() {
         $userid = $this->userInfo['user_id'];
         if(!$userid){
@@ -18,7 +18,7 @@ class UserAction extends PublicAction {
         $this->assign('pagetitle', '个人订单');
         $this->display();
     }
-    
+
     public function jborderlist() {
         $userid = $this->userInfo['user_id'];
         if(!$userid){
@@ -30,7 +30,7 @@ class UserAction extends PublicAction {
         $this->assign('pagetitle', '结伴订单');
         $this->display();
     }
-    
+
     public function tgorderlist() {
         $userid = $this->userInfo['user_id'];
         if(!$userid){
@@ -42,7 +42,7 @@ class UserAction extends PublicAction {
         $this->assign('pagetitle', '团购订单');
         $this->display();
     }
-    
+
     public function detailorder() {
         $userid = $this->userInfo['user_id'];
         if(!$userid){
@@ -53,7 +53,7 @@ class UserAction extends PublicAction {
         $this->assign('pagetitle', '订单详情');
         if (!$jeid) {
             $order = M("Order");
-            $orderinfo = $order->field('fy_order.id, user_name, fy_order.edu_name, order_date, edu_image')->where('fy_order.id = "'.$joid.'"')->join(' fy_edu on fy_order.edu_id=fy_edu.id')->find();
+            $orderinfo = $order->field('fy_order.id, user_name, fy_order.edu_name, order_date, edu_image, order_status, order_number')->where('fy_order.id = "'.$joid.'"')->join(' fy_edu on fy_order.edu_id=fy_edu.id')->find();
             $this->assign('orderinfo', $orderinfo);
             $this->display('commonorder');
         } else {
@@ -78,6 +78,33 @@ class UserAction extends PublicAction {
                 $this->assign('jbeduorderinfo', $total);
                 $this->display('tgorder');
             }
+        }
+    }
+
+    public function info() {
+        $userid = $this->userInfo['user_id'];
+        if(!$userid){
+            $this->redirect('Index/index');
+        }
+        $user = M("user");
+        $userinfo = $user->where('user_id = "'.$userid.'"')->find();
+        $this->assign('userinfom', $userinfo);
+        $this->display();
+    }
+
+    public function upinfo() {
+        $userid = $this->userInfo['user_id'];
+        if(!$userid){
+            $this->redirect('Index/index');
+        }
+        $post = $this->filterAllParam('post');
+        $infoarray = array('user_name'=>$post['user_name'], 'user_phone'=>$post['user_phone']);
+        $user = M("user");
+        $issucess = $user->where('user_id = "'.$userid.'"')->setField($infoarray);
+        if ($issucess) {
+            $this->success('修改成功', 'center');
+        } else {
+            $this->error('修改失败', 'info');
         }
     }
 }

@@ -123,15 +123,32 @@ class OrderAction extends PublicAction {
     public function sign(){
         $order_number = $this->_get('oid');
         $order = M("order");
+        $edu = M("edu");
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
-            $order->where('order_number="'.$order_number.'"')->setField('order_status','3');
+            $issuccess = $order->where('order_number="'.$order_number.'"')->setField('order_status','3');
+            if ($issuccess) {
+                $eduinfo = $edu->where('id = '.$orderinfo['edu_id'])->find();
+                $edu_sign = $eduinfo['edu_sign'];
+                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+            }
         } else {
             $jborder = M("jborder");
             $jborderinfo = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->find();
             if ($jborderinfo) {
-                $jborder->where('order_number="'.$order_number.'"')->setField('order_status','3');
+                $issuccess = $jborder->where('order_number="'.$order_number.'"')->setField('order_status','3');
                 $jborder->where('order_parent='.$jborderinfo['id'])->setField('order_status','3');
+                if ($issuccess) {
+                    $jbedu = M("jbedu");
+                    $edulists = $jbedu->field('edu_id')->where('jborder_id = "'.$jborderinfo['id'].'"')->select();
+                    foreach ($edulists as $eduinfo) {
+                        $eduinfo = $edu->where('id = '.$eduinfo['edu_id'])->find();
+                        $edu_sign = $eduinfo['edu_sign'];
+                        $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                        $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+                    }
+                }
             }
         }
         $this->redirect('Order/lists');
@@ -155,17 +172,34 @@ class OrderAction extends PublicAction {
 
     public function updateorder() {
         $order = M("order");
+        $edu = M("edu");
         $order_number = $this->_post('order_number');
         $order_status = $this->_post('order_status');
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
-            $order->where('order_number="'.$order_number.'"')->setField('order_status', $order_status);
+            $issuccess = $order->where('order_number="'.$order_number.'"')->setField('order_status', $order_status);
+            if ($issuccess && $order_status == 3) {
+                $eduinfo = $edu->where('id = '.$orderinfo['edu_id'])->find();
+                $edu_sign = $eduinfo['edu_sign'];
+                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+            }
         } else {
             $jborder = M("jborder");
             $jborderinfo = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->find();
             if ($jborderinfo) {
-                $this->where('order_number="'.$order_number.'" and order_parent = 0')->setField('order_status', $order_status);
+                $issuccess = $this->where('order_number="'.$order_number.'" and order_parent = 0')->setField('order_status', $order_status);
                 $this->where('order_parent = '.$jborderinfo['id'])->setField('order_status', $order_status);
+                if ($issuccess && $order_status == 3) {
+                    $jbedu = M("jbedu");
+                    $edulists = $jbedu->field('edu_id')->where('jborder_id = "'.$jborderinfo['id'].'"')->select();
+                    foreach ($edulists as $eduinfo) {
+                        $eduinfo = $edu->where('id = '.$eduinfo['edu_id'])->find();
+                        $edu_sign = $eduinfo['edu_sign'];
+                        $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
+                        $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+                    }
+                }
             }
         }
         $this->redirect('Order/lists');

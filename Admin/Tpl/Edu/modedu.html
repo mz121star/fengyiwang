@@ -57,6 +57,26 @@
                 <input type="text" class="form-control" id="edu_sign" name="edu_sign" value="{$eduinfo.edu_sign}">
               </div>
             </div>
+            <foreach name="sectionlist" item="section">
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">{$section.section_name}板块排序</label>
+              <div class="col-sm-8">
+                <if condition="$section.id eq 1">
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order1}">
+                <elseif condition="$section.id eq 2"/>
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order2}">
+                <elseif condition="$section.id eq 3"/>
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order3}">
+                <elseif condition="$section.id eq 4"/>
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order4}">
+                <elseif condition="$section.id eq 5"/>
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order5}">
+                <elseif condition="$section.id eq 6"/>
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="{$eduinfo.edu_order6}">
+                </if>
+              </div>
+            </div>
+            </foreach>
             <div class="form-group">
               <label for="type1" class="col-sm-3 control-label">机构介绍</label>
               <div class="col-sm-5">

@@ -3,10 +3,23 @@
 
     <div id="peoples">
     <div class="mm-search" id="people">
-        <input type="text" disabled value="{$jborderinfo.user_jbname}">
-        <input type="text" disabled value="{$jborderinfo.user_jbphone}">
-        <input type="text" disabled value="{$jborderinfo.user_jbdesc}">
-
+        <input type="text" disabled value="订单号：{$jborderinfo.order_number}">
+        <input type="text" disabled value="朋友名：{$jborderinfo.user_jbname}">
+        <input type="text" disabled value="电话：{$jborderinfo.user_jbphone}">
+        <input type="text" disabled value="描述：{$jborderinfo.user_jbdesc}">
+        <if condition="$jborderinfo.order_status eq '0'">
+        <input type="text" disabled value="订单状态：推荐确认">
+        <elseif condition="$jborderinfo.order_status eq '1'"/>
+        <input type="text" disabled value="订单状态：推荐成功">
+        <elseif condition="$jborderinfo.order_status eq '2'"/>
+        <input type="text" disabled value="订单状态：等待签约">
+        <elseif condition="$jborderinfo.order_status eq '3'"/>
+        <input type="text" disabled value="订单状态：签约成功">
+        <elseif condition="$jborderinfo.order_status eq '4'"/>
+        <input type="text" disabled value="订单状态：奖金发放">
+        <elseif condition="$jborderinfo.order_status eq '5'"/>
+        <input type="text" disabled value="订单状态：发放成功">
+        </if>
     </div>
     </div>
 

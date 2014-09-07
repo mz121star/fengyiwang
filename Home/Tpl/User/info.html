@@ -1,0 +1,27 @@
+<include file="Public:header"/>
+    <!-- Content -->
+<form method="post" action="__GROUP__/User/upinfo" id="ordername" name="ordername">
+    <div id="peoples">
+    <div class="mm-search" id="people">
+        <input type="text" name="user_name" value="{$userinfom.user_name}">
+        <input type="text" name="user_phone" value="{$userinfom.user_phone}">
+    </div>
+    </div>
+
+
+    
+    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">修改信息</a>
+
+</div>
+</form>
+          <script>
+    
+    $('#ordersub').on("touchstart",function(){
+        $('#ordername').submit();
+    });
+
+
+</script>
+   <include file="Public:userleft"/>
+ <include file="Public:footer"/>

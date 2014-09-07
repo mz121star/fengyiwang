@@ -59,6 +59,22 @@ class EduAction extends PublicAction {
         if ($post['edu_tgxx']) {
             $where['edu_tgxx'] = "1";
         }
+        $eduidlist = array();
+        if (count($post['section_id'])) {
+            $sectionedu = M("sectionedu");
+            $sections = implode(',', $post['section_id']);
+            $sectionwhere['section_id']  = array('in', $sections);
+            $sectioneduinfo = $sectionedu->field('distinct(edu_id) as edu_id')->where($sectionwhere)->select();
+            foreach ($sectioneduinfo as $info) {
+                $eduidlist[] = $info['edu_id'];
+            }
+        }
+        if (count($eduidlist)) {
+            $sectionids = implode(',', $eduidlist);
+            $where['id'] = array('in', $sectionids);
+        } elseif (count($post['section_id'])) {
+            $where['id'] = 0;
+        }
         $edu = M("edu");
         import('ORG.Util.Page');
         $count = $edu->where($where)->count();
@@ -70,7 +86,16 @@ class EduAction extends PublicAction {
         
         $section = M("section");
         $sectionlist = $section->select();
-        $this->assign('sectionlist', $sectionlist);
+        $sectionarray = array();
+        foreach ($sectionlist as $sinfo) {
+            if (in_array($sinfo['id'], $post['section_id'])) {
+                $sinfo['isselect'] = 1;
+            } else {
+                $sinfo['isselect'] = 0;
+            }
+            $sectionarray[] = $sinfo;
+        }
+        $this->assign('sectionlist', $sectionarray);
         
         $this->assign('edu_name', $post['edu_name']);
         $this->assign('edu_jblx', $post['edu_jblx']);

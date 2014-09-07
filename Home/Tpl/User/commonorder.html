@@ -3,10 +3,23 @@
 
     <div id="peoples">
     <div class="mm-search" id="people">
-        <input type="text" disabled value="{$orderinfo.user_name}">
-        <input type="text" disabled value="{$orderinfo.edu_name}">
-        <input type="text" disabled value="{$orderinfo.order_date}">
-
+        <input type="text" disabled value="订单号：{$orderinfo.order_number}">
+        <input type="text" disabled value="姓名：{$orderinfo.user_name}">
+        <input type="text" disabled value="机构名：{$orderinfo.edu_name}">
+        <input type="text" disabled value="下单时间：{$orderinfo.order_date}">
+        <if condition="$orderinfo.order_status eq '0'">
+        <input type="text" disabled value="订单状态：推荐确认">
+        <elseif condition="$orderinfo.order_status eq '1'"/>
+        <input type="text" disabled value="订单状态：推荐成功">
+        <elseif condition="$orderinfo.order_status eq '2'"/>
+        <input type="text" disabled value="订单状态：等待签约">
+        <elseif condition="$orderinfo.order_status eq '3'"/>
+        <input type="text" disabled value="订单状态：签约成功">
+        <elseif condition="$orderinfo.order_status eq '4'"/>
+        <input type="text" disabled value="订单状态：奖金发放">
+        <elseif condition="$orderinfo.order_status eq '5'"/>
+        <input type="text" disabled value="订单状态：发放成功">
+        </if>
     </div>
     </div>
 

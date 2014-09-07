@@ -56,6 +56,14 @@
                 <input type="text" class="form-control" id="edu_sign" name="edu_sign" value="">
               </div>
             </div>
+            <foreach name="sectionlist" item="section">
+            <div class="form-group">
+              <label for="userid" class="col-sm-3 control-label">{$section.section_name}板块排序</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="edu_order{$section.id}" name="edu_order{$section.id}" value="">
+              </div>
+            </div>
+            </foreach>
             <div class="form-group">
               <label for="type1" class="col-sm-3 control-label">机构介绍</label>
               <div class="col-sm-5">

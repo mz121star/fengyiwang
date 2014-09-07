@@ -5,7 +5,21 @@ class EduAction extends PublicAction {
     public function lists(){
         $sid = $this->_get('sid');
         $sectionedu = M("sectionedu");
-        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->select();
+        $orderby = array('fy_edu.id'=>'desc');
+        if ($sid == 1) {
+            $orderby = array('edu_order1'=>'asc');
+        } elseif ($sid == 2) {
+            $orderby = array('edu_order2'=>'asc');
+        } elseif ($sid == 3) {
+            $orderby = array('edu_order3'=>'asc');
+        } elseif ($sid == 4) {
+            $orderby = array('edu_order4'=>'asc');
+        } elseif ($sid == 5) {
+            $orderby = array('edu_order5'=>'asc');
+        } elseif ($sid == 6) {
+            $orderby = array('edu_order6'=>'asc');
+        }
+        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->order($orderby)->select();
         $this->assign('edulist', $edulist);
         $this->assign('pagetitle', '机构列表');
         $this->display();
@@ -89,9 +103,9 @@ class EduAction extends PublicAction {
             $issuccess = $order->add($insert);
             if ($issuccess) {
                 $eduinfo = $edu->where('id = '.$value)->find();
-                $edu_sign = $eduinfo['edu_sign'];
-                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
-                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+                $edu_ask = $eduinfo['edu_ask'];
+                $edu_ask = ($edu_ask) ? $edu_ask + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_ask', $edu_ask);
             }
         }
         $this->success('下单成功', 'gotousercenter');
@@ -178,9 +192,9 @@ class EduAction extends PublicAction {
             $issuccess = $jbedu->add($insert);
             if ($issuccess) {
                 $eduinfo = $edu->where('id = '.$value)->find();
-                $edu_sign = $eduinfo['edu_sign'];
-                $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
-                $edu->where('id = '.$value)->setField('edu_sign', $edu_sign);
+                $edu_ask = $eduinfo['edu_ask'];
+                $edu_ask = ($edu_ask) ? $edu_ask + 1 : 1;
+                $edu->where('id = '.$value)->setField('edu_ask', $edu_ask);
             }
         }
         $this->success('下单成功', 'gotousercenter');
