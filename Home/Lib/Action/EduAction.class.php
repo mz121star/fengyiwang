@@ -152,6 +152,7 @@ class EduAction extends PublicAction {
     }
     
     public function tjpy() {
+        $this->assign('pagetitle', '推荐朋友');
         $this->display();
     }
 
