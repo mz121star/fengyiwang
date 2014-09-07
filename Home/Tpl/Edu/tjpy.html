@@ -3,9 +3,9 @@
 <form method="post" action="__GROUP__/edu/savepy" id="ordername" name="ordername">
     <div id="peoples">
     <div class="mm-search" id="people">
-        <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname" id="user_pyname">
-        <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone" id="user_pyphone">
-        <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_jbdesc" id="user_pydesc"></textarea>
+        <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_pyname" id="user_pyname">
+        <input placeholder="联系电话" type="tel" autocomplete="off" name="user_pyphone" id="user_pyphone">
+        <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_pydesc" id="user_pydesc"></textarea>
 
     </div>
     </div>
@@ -19,13 +19,13 @@
           <script>
     
     $('#ordersub').on("touchstart",function(){
-        var user_jbname = $("#user_jbname").val();
-        if (!user_jbname) {
+        var user_pyname = $("#user_pyname").val();
+        if (!user_pyname) {
             alert("请填写朋友姓名");
             return;
         }
-        var user_jbphone = $("#user_jbphone").val();
-        if (!user_jbphone) {
+        var user_pyphone = $("#user_pyphone").val();
+        if (!user_pyphone) {
             alert("请填写朋友电话");
             return;
         }
