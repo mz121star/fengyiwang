@@ -89,6 +89,7 @@ class UserAction extends PublicAction {
         $user = M("user");
         $userinfo = $user->where('user_id = "'.$userid.'"')->find();
         $this->assign('userinfom', $userinfo);
+        $this->assign('pagetitle', '个人信息设定');
         $this->display();
     }
 
