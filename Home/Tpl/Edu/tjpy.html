@@ -1,0 +1,38 @@
+<include file="Public:header"/>
+    <!-- Content -->
+<form method="post" action="__GROUP__/edu/savepy" id="ordername" name="ordername">
+    <div id="peoples">
+    <div class="mm-search" id="people">
+        <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname" id="user_jbname">
+        <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone" id="user_jbphone">
+        <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_jbdesc" id="user_jbdesc"></textarea>
+
+    </div>
+    </div>
+
+    
+    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">提交信息</a>
+
+</div>
+</form>
+          <script>
+    
+    $('#ordersub').on("touchstart",function(){
+        var user_jbname = $("#user_jbname").val();
+        if (!user_jbname) {
+            alert("请填写朋友姓名");
+            return;
+        }
+        var user_jbphone = $("#user_jbphone").val();
+        if (!user_jbphone) {
+            alert("请填写朋友电话");
+            return;
+        }
+        $('#ordername').submit();
+    });
+
+
+</script>
+   <include file="Public:userleft"/>
+ <include file="Public:footer"/>

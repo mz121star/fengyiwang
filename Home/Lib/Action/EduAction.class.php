@@ -152,7 +152,21 @@ class EduAction extends PublicAction {
     }
     
     public function tjpy() {
-        
+        $this->display();
+    }
+
+    public function savepy() {
+        $userid = $this->userInfo['user_id'];
+        if (!$userid) {
+            $this->error("请先登录");
+        }
+        $post = $this->filterAllParam('post');
+        $jborder = M("jborder");
+        $post['user_id'] = $userid;
+        $post['order_date'] = date('Y-m-d H:i:s');
+        $post['order_number'] = time().rand(100, 999);
+        $jborder_id = $jborder->add($post);
+        $this->success('推荐成功', 'gotousercenter');
     }
     
     public function savejbtg() {
