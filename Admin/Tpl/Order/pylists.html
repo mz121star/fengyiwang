@@ -1,0 +1,81 @@
+<h1 class="page-header">搜索订单</h1>
+    <div class="row placeholders">
+        <div class="col-md-7">
+            <form class="form-horizontal" role="form" method="post" action="__GROUP__/Order/pysearch">
+                <div class="form-group">
+                  <label for="helpername" class="col-sm-2 control-label">下单时间</label>
+                  <div class="col-sm-10">
+                      <input type="date" class="form-control" id="order_date" name="order_date" value="{$order_date}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="helpername" class="col-sm-2 control-label">订单状态</label>
+                  <div class="col-sm-10">
+                      <foreach name="order_status_list" item="status" key="number">
+                      <label class="checkbox-inline">
+                         <input type="checkbox" name="order_status" value="{$number}"> {$status}
+                      </label>
+                      </foreach>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="helpername" class="col-sm-2 control-label">订单号</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="order_number" name="order_number" value="{$order_number}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="helpername" class="col-sm-2 control-label">推荐朋友</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="user_id" name="user_pyname" value="{$user_pyname}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">搜索</button>
+                  </div>
+                </div>
+              </form>
+      </div>
+    </div>
+
+<h2 class="sub-header">订单列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>推荐朋友</th>
+            <th>朋友电话</th>
+            <th>下单时间</th>
+            <th>订单号</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="orderlist" item="order">
+          <tr>
+            <td class="col-sm-2">{$order.user_pyname}</td>
+            <td class="col-sm-2">{$order.user_pyphone}</td>
+            <td class="col-sm-2">{$order.order_date}</td>
+            <td class="col-sm-2">{$order.order_number}</td>
+            <td class="col-sm-2">
+                <if condition="$order.order_status eq '0'">
+                <a href="__GROUP__/recommend/{$order.order_number}">推荐确认</a>
+                <else />
+                推荐成功
+                </if>
+          
+                <if condition="$order.order_status eq '2'">
+                <a href="__GROUP__/sign/{$order.order_number}">签约确认</a>
+                <else />
+                签约成功
+                </if>
+                <a href="__GROUP__/modorder/{$order.order_number}">编辑</a>
+                <a href="__GROUP__/delorder/{$order.order_number}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>

@@ -19,6 +19,18 @@ class UserAction extends PublicAction {
         $this->display();
     }
 
+    public function pyorderlist() {
+        $userid = $this->userInfo['user_id'];
+        if(!$userid){
+            $this->redirect('Index/index');
+        }
+        $pyorder = M("pyorder");
+        $orderlist = $pyorder->where('user_id = "'.$userid.'"')->select();
+        $this->assign('orderlist', $orderlist);
+        $this->assign('pagetitle', '我的推荐');
+        $this->display();
+    }
+
     public function jborderlist() {
         $userid = $this->userInfo['user_id'];
         if(!$userid){

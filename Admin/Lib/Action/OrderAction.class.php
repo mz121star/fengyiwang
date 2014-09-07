@@ -103,6 +103,55 @@ class OrderAction extends PublicAction {
         $this->display('jblists');
     }
 
+    public function pylists(){
+        $pyorder = M("pyorder");
+        import('ORG.Util.Page');
+        $count = $pyorder->count();
+        $page = new Page($count, 10);
+        $orderlist = $pyorder->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('orderlist', $orderlist);
+        
+        $order_status_list = C('ORDER_STATUS');
+        $this->assign('order_status_list', $order_status_list);
+        $this->display();
+    }
+
+    public function pysearch(){
+        $post = $this->filterAllParam('post');
+        $where = array();
+        if ($post['order_date']) {
+            $where['order_date'] = $post['order_date'];
+        }
+        if ($post['order_status']) {
+            $order_status = implode(',', $post['order_status']);
+            $where['order_status'] = array('in', $order_status);
+        }
+        if ($post['order_number']) {
+            $where['order_number'] = array('like', '%'.$post['order_number'].'%');
+        }
+        if ($post['user_pyname']) {
+            $where['user_pyname'] = array('like', '%'.$post['user_pyname'].'%');
+        }
+        $pyorder = M("pyorder");
+        import('ORG.Util.Page');
+        $count = $pyorder->where($where)->count();
+        $page = new Page($count, 10);
+        $orderlist = $pyorder->where($where)->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('orderlist', $orderlist);
+        
+        $order_status_list = C('ORDER_STATUS');
+        $this->assign('order_status_list', $order_status_list);
+        
+        $this->assign('order_date', $post['order_date']);
+        $this->assign('order_number', $post['order_number']);
+        $this->assign('user_pyname', $post['user_pyname']);
+        $this->display('pylists');
+    }
+
     public function recommend(){
         $order_number = $this->_get('oid');
         $order = M("order");
@@ -206,9 +255,8 @@ class OrderAction extends PublicAction {
     }
     
     public function delorder(){
+        $order_number = $this->_get('oid');
         $order = M("order");
-        $order_number = $this->_post('order_number');
-        $order_status = $this->_post('order_status');
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
             $order->where('order_number="'.$order_number.'"')->delete();
@@ -216,8 +264,8 @@ class OrderAction extends PublicAction {
             $jborder = M("jborder");
             $jborderinfo = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->find();
             if ($jborderinfo) {
-                $this->where('order_number="'.$order_number.'" and order_parent = 0')->delete();
-                $this->where('order_parent = '.$jborderinfo['id'])->delete();
+                $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->delete();
+                $jborder->where('order_parent = '.$jborderinfo['id'])->delete();
             }
         }
         $this->redirect('Order/lists');

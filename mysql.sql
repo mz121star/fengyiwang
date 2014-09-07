@@ -105,6 +105,20 @@ CREATE TABLE `fy_order` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 
+DROP TABLE IF EXISTS `fy_pyorder`;
+CREATE TABLE `fy_pyorder` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` varchar(250) NOT NULL,
+  `user_pyname` varchar(250) NOT NULL,
+  `user_pyphone` varchar(250) NOT NULL,
+  `user_pydesc` text NOT NULL,
+  `order_number` varchar(250) NOT NULL,
+  `order_date` datetime NOT NULL,
+  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='推荐朋友表';
+
+
 DROP TABLE IF EXISTS `fy_jborder`;
 CREATE TABLE `fy_jborder` (
   `id` int(11) NOT NULL auto_increment,

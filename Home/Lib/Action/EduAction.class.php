@@ -162,11 +162,11 @@ class EduAction extends PublicAction {
             $this->error("请先登录");
         }
         $post = $this->filterAllParam('post');
-        $jborder = M("jborder");
+        $pyorder = M("pyorder");
         $post['user_id'] = $userid;
         $post['order_date'] = date('Y-m-d H:i:s');
         $post['order_number'] = time().rand(100, 999);
-        $jborder_id = $jborder->add($post);
+        $pyorder_id = $pyorder->add($post);
         $this->success('推荐成功', 'gotousercenter');
     }
     
