@@ -131,7 +131,7 @@ CREATE TABLE `fy_jborder` (
   `user_jbdesc` text NOT NULL,
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
-  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/等待签约/奖金发放/发放成功',
+  `order_status` enum('0','1','2','3') NOT NULL COMMENT '推荐确认/等待签约/奖金发放/发放成功',
   `order_parent` int(11) unsigned NOT NULL default 0,
   `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)

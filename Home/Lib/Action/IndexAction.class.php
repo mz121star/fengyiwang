@@ -17,13 +17,13 @@ class IndexAction extends Action {
         $uid = $this->_get('uid');
         
         $user = M('User');
-        $userinfo = $user->field('id, user_id, user_name, user_phone, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
+        $userinfo = $user->field('id, user_id, user_name, user_phone, user_school, user_zhuanye, user_age, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
             $today = date('Y-m-d H:i:s');
             $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
         }
         
         $section = M("section");
@@ -41,13 +41,13 @@ class IndexAction extends Action {
         $send = $this->_get('send');
 
         $user = M('User');
-        $userinfo = $user->field('id, user_id, user_name, user_phone, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
+        $userinfo = $user->field('id, user_id, user_name, user_phone, user_school, user_zhuanye, user_age, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
             $today = date('Y-m-d H:i:s');
             $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
         }
         if ($send == 'regphone') {
             $this->redirect('index/regphone');
@@ -153,7 +153,7 @@ class IndexAction extends Action {
         $_POST['user_id'] = $this->_post('user_id');
         $_POST['user_pw'] = md5($this->_post('user_pw'));
         $_POST['user_status'] = 1;
-        $userInfo = $user->where($_POST)->field('id,user_id,user_name,user_phone,user_type')->find();
+        $userInfo = $user->where($_POST)->field('id,user_id,user_name,user_phone,user_school,user_zhuanye,user_age,user_type')->find();
         if(!empty($userInfo) && $userInfo['user_type'] == 2){
             session('userinfo', $userInfo);
         }

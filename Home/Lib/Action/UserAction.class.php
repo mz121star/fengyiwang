@@ -111,7 +111,7 @@ class UserAction extends PublicAction {
             $this->redirect('Index/index');
         }
         $post = $this->filterAllParam('post');
-        $infoarray = array('user_name'=>$post['user_name'], 'user_phone'=>$post['user_phone']);
+        $infoarray = array('user_name'=>$post['user_name'], 'user_phone'=>$post['user_phone'], 'user_school'=>$post['user_school'], 'user_zhuanye'=>$post['user_zhuanye'], 'user_age'=>$post['user_age']);
         $user = M("user");
         $issucess = $user->where('user_id = "'.$userid.'"')->setField($infoarray);
         if ($issucess) {

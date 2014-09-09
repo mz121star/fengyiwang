@@ -99,6 +99,7 @@ class UserAction extends PublicAction {
         } else {
             $post['user_pw'] = md5($post['user_pw']);
             $post['user_status'] = '1';
+            $post['user_regdate'] = date('Y-m-d H:i:s');
             $userid = $user->add($post);
         }
         $this->redirect('User/lists');
