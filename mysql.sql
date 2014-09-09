@@ -24,6 +24,9 @@ CREATE TABLE `fy_user` (
   `user_pw` varchar(250) NOT NULL,
   `user_name` varchar(250) NOT NULL,
   `user_phone` varchar(250) NOT NULL,
+  `user_school` varchar(250) NOT NULL,
+  `user_zhuanye` varchar(250) NOT NULL,
+  `user_age` tinyint(3) unsigned NOT NULL,
   `user_weixin` varchar(250) NOT NULL,
   `user_regdate` datetime NOT NULL,
   `user_status` enum('1','0') NOT NULL,
@@ -31,7 +34,7 @@ CREATE TABLE `fy_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';
-INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '', '', now(), '1', 1);
+INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '', '', '', '', '', now(), '1', 1);
 
 
 DROP TABLE IF EXISTS `fy_section`;
@@ -57,7 +60,7 @@ CREATE TABLE `fy_edu` (
   `edu_name` varchar(250) NOT NULL,
   `edu_star` tinyint(3) unsigned NOT NULL ,
   `edu_image` varchar(250) NOT NULL,
-  `edu_discount` varchar(250) NOT NULL,
+  `edu_discount` varchar(250) NOT NULL COMMENT '奖学金',
   `edu_desc` text NOT NULL,
   `edu_showprice` int(11) unsigned NOT NULL COMMENT '展示佣金金额',
   `edu_giveprice` int(11) unsigned NOT NULL COMMENT '投放佣金金额',
@@ -98,7 +101,7 @@ CREATE TABLE `fy_order` (
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
   `order_phone` varchar(250) NOT NULL,
-  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
+  `order_status` enum('0','1','2','3') NOT NULL COMMENT '推荐确认/等待签约/奖金发放/发放成功',
   `order_discount` varchar(250) NOT NULL,
   `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
@@ -114,7 +117,7 @@ CREATE TABLE `fy_pyorder` (
   `user_pydesc` text NOT NULL,
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
-  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
+  `order_status` enum('0','1','2','3') NOT NULL COMMENT '推荐确认/等待签约/奖金发放/发放成功',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='推荐朋友表';
 
@@ -128,11 +131,12 @@ CREATE TABLE `fy_jborder` (
   `user_jbdesc` text NOT NULL,
   `order_number` varchar(250) NOT NULL,
   `order_date` datetime NOT NULL,
-  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/推荐成功/等待签约/签约成功/奖金发放/发放成功',
+  `order_status` enum('0','1','2','3','4','5') NOT NULL COMMENT '推荐确认/等待签约/奖金发放/发放成功',
   `order_parent` int(11) unsigned NOT NULL default 0,
   `order_remark` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='结伴留学表';
+
 
 DROP TABLE IF EXISTS `fy_jbedu`;
 CREATE TABLE `fy_jbedu` (
