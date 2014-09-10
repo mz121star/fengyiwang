@@ -45,6 +45,7 @@
         <thead>
           <tr>
             <th>订单号</th>
+            <th>下单会员</th>
             <th>下单时间</th>
             <th>结伴会员</th>
             <th>Action</th>
@@ -54,6 +55,7 @@
         <foreach name="orderlist" item="order">
           <tr>
             <td class="col-sm-2">{$order.order_number}</td>
+            <td class="col-sm-2">{$order.user_name}</td>
             <td class="col-sm-2">{$order.order_date}</td>
             <td class="col-sm-2">{$order.user_jbname}</td>
             <td class="col-sm-2">
