@@ -175,7 +175,7 @@ class OrderAction extends PublicAction {
         $edu = M("edu");
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
-            $issuccess = $order->where('order_number="'.$order_number.'"')->setField('order_status','3');
+            $issuccess = $order->where('order_number="'.$order_number.'"')->setField('order_status','2');
             if ($issuccess) {
                 $eduinfo = $edu->where('id = '.$orderinfo['edu_id'])->find();
                 $edu_sign = $eduinfo['edu_sign'];
@@ -186,8 +186,8 @@ class OrderAction extends PublicAction {
             $jborder = M("jborder");
             $jborderinfo = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->find();
             if ($jborderinfo) {
-                $issuccess = $jborder->where('order_number="'.$order_number.'"')->setField('order_status','3');
-                $jborder->where('order_parent='.$jborderinfo['id'])->setField('order_status','3');
+                $issuccess = $jborder->where('order_number="'.$order_number.'"')->setField('order_status','2');
+                $jborder->where('order_parent='.$jborderinfo['id'])->setField('order_status','2');
                 if ($issuccess) {
                     $jbedu = M("jbedu");
                     $edulists = $jbedu->field('edu_id')->where('jborder_id = "'.$jborderinfo['id'].'"')->select();
@@ -209,14 +209,28 @@ class OrderAction extends PublicAction {
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
             $this->assign('orderinfo', $orderinfo);
+            $this->display();
         } else {
             $jborder = M("jborder");
             $jborderinfo = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->find();
             if ($jborderinfo) {
-                $this->assign('orderinfo', $jborderinfo);
+                $this->assign('jborderinfo', $jborderinfo);
+                
+                $jblistinfo = $jborder->where('order_parent = '.$jborderinfo['id'])->select();
+                $this->assign('jblistinfo', $jblistinfo);
+                
+                $jbedu = M("jbedu");
+                $jbeduinfo = $jbedu->field('edu_name')->where('jborder_id = '.$jborderinfo['id'])->join(' fy_edu on fy_edu.id = fy_jbedu.edu_id')->select();
+                $this->assign('jbeduinfo', $jbeduinfo);
+                
+                $this->display('modjborder');
+            } else {
+                $pyorder = M("pyorder");
+                $pyorderinfo = $pyorder->where('order_number="'.$order_number.'"')->find();
+                $this->assign('pyorderinfo', $pyorderinfo);
+                $this->display('modpyorder');
             }
         }
-        $this->display();
     }
 
     public function updateorder() {

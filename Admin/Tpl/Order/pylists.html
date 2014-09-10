@@ -61,16 +61,18 @@
             <td class="col-sm-2">{$order.order_date}</td>
             <td class="col-sm-2">{$order.user_pyname}</td>
             <td class="col-sm-2">
-                <if condition="$order.order_status eq '0'">
+               <if condition="$order.order_status eq '0'">
                 <a href="__GROUP__/recommend/{$order.order_number}">推荐确认</a>
-                <else />
-                推荐成功
                 </if>
           
-                <if condition="$order.order_status eq '2'">
-                <a href="__GROUP__/sign/{$order.order_number}">签约确认</a>
-                <else />
-                签约成功
+                <if condition="$order.order_status eq '1'">
+                <a href="__GROUP__/sign/{$order.order_number}">等待签约</a>
+                </if>
+                 <if condition="$order.order_status eq '2'">
+                奖金发放
+                </if>
+                <if condition="$order.order_status eq '3'">
+                发放成功
                 </if>
                 <a href="__GROUP__/modorder/{$order.order_number}">编辑</a>
                 <a href="__GROUP__/delorder/{$order.order_number}">删除</a>
