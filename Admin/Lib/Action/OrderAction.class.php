@@ -217,6 +217,9 @@ class OrderAction extends PublicAction {
                 $this->assign('jborderinfo', $jborderinfo);
                 
                 $jblistinfo = $jborder->where('order_parent = '.$jborderinfo['id'])->select();
+                if (!count($jblistinfo)) {
+                    $jblistinfo[] = $jborderinfo;
+                }
                 $this->assign('jblistinfo', $jblistinfo);
                 
                 $jbedu = M("jbedu");
