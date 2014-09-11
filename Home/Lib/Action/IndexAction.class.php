@@ -116,7 +116,7 @@ class IndexAction extends Action {
         //发送到的目标手机号码 $telphone，多个号码用半角分号分隔
         $telphone = $this->_post('phone');
         //短信内容 $message
-        $message = urlencode('尊敬的客户：'.$code.'（人人汇手机动态码以生成，请完成验证）');
+        $message = urlencode('尊敬的客户：'.$code.'（人人汇手机动态验证码以生成，请完成验证）');
         $gateway = 'http://223.4.21.214:8180/service.asmx/SendMessageStr?Id='.$jgid.'&Name='.$loginname.'&Psw='.$passwd.'&Message='.$message.'&Phone='.$telphone.'&Timestamp=0';
         $result = file_get_contents($gateway);
         session('getcode', $code);
