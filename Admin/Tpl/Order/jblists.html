@@ -48,6 +48,7 @@
             <th>下单会员</th>
             <th>下单时间</th>
             <th>结伴会员</th>
+            <th>联系电话</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -58,6 +59,7 @@
             <td class="col-sm-2">{$order.user_name}</td>
             <td class="col-sm-2">{$order.order_date}</td>
             <td class="col-sm-2">{$order.user_jbname}</td>
+            <td class="col-sm-2">{$order.user_pyphone}</td>
             <td class="col-sm-2">
                 <if condition="$order.order_status eq '0'">
                 <a href="__GROUP__/recommend/{$order.order_number}">推荐确认</a>
