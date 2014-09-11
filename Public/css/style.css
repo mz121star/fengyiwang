@@ -398,6 +398,13 @@ html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolli
 
 
 .list-item{position:relative;min-height: 94px;padding: 10px 0px;margin: 10px;/* border-bottom:1px solid #d2d2d2; */opacity: 0.7;border-radius: 10px;background-color: #004788;margin-bottom: 10px;box-shadow: 0px 2px rgb(32, 27, 27);}
+.small{
+    min-height: 10px;
+    padding: 0;
+    position: relative;
+    margin: 10px;    opacity: 0.7;    background-color: #004788;
+    box-shadow: 0px 2px rgb(32, 27, 27);
+}
 .list-item-pic{position:absolute;left:10px;top:10px;width:65px;height:60px;background:#efefef;}
 .list-item-infos{position:relative;margin:0 90px;}
 .list-item-title,.list-item-tags,.list-item-address,.list-item-address1{font-size:12px;line-height:20px;}
