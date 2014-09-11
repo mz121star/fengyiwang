@@ -1117,6 +1117,8 @@ header .l_tbn a:hover{color:#fff;}
 #ordername .checkbox input{
     height:40px
 
+;
+    width: 40px;
 }
 
 .small .list-item-title   {padding: 10px 0 2px 0; }
