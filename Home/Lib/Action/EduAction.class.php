@@ -116,7 +116,7 @@ class EduAction extends PublicAction {
         $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jblx="1"';
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
-        $this->assign('is_tg', 0);
+        $this->assign('is_tg', 1);
         $this->assign('pagetitle', '结伴留学');
         $this->display();
     }
@@ -136,7 +136,7 @@ class EduAction extends PublicAction {
         $sql = 'SELECT id,edu_name,edu_image FROM `fy_edu` WHERE edu_jbxx="1"';
         $edulist = $edu->query($sql);
         $this->assign('edulist', $edulist);
-        $this->assign('is_tg', 0);
+        $this->assign('is_tg', 1);
         $this->assign('pagetitle', '结伴培训');
         $this->display();
     }
@@ -186,7 +186,7 @@ class EduAction extends PublicAction {
         if ($post['is_tg'] == 1) {
             $jborder_id = $jborder->add($post);
             foreach ($post['user_jbname'] as $key => $value) {
-                $jborder->add(array('user_id'=>$post['user_id'], 'user_jbname'=>$value, 'user_jbphone'=>$post['user_jbphone'][$key], 'user_jbdesc'=>$post['user_jbdesc'][$key], 'order_date'=>$post['order_date'], 'order_parent'=>$jborder_id));
+                $jborder->add(array('user_id'=>$post['user_id'], 'user_jbname'=>$value, 'user_jbphone'=>$post['user_jbphone'][$key], 'user_jbdesc'=>$post['user_jbdesc'][$key], 'order_type'=>$post['order_type'], 'order_date'=>$post['order_date'], 'order_parent'=>$jborder_id));
             }
         } else {
             if (!$post['user_jbname'][0]) {
@@ -198,6 +198,7 @@ class EduAction extends PublicAction {
             $post['user_jbname'] = $post['user_jbname'][0];
             $post['user_jbphone'] = $post['user_jbphone'][0];
             $post['user_jbdesc'] = $post['user_jbdesc'][0];
+            $post['order_type'] = 1;
             $jborder_id = $jborder->add($post);
         }
         $jbedu = M("jbedu");

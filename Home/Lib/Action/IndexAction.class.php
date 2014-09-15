@@ -17,13 +17,14 @@ class IndexAction extends Action {
         $uid = $this->_get('uid');
         
         $user = M('User');
-        $userinfo = $user->field('id, user_id, user_name, user_phone, user_school, user_zhuanye, user_age, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
+        $userinfo = $user->field('user_pw', true)->where('user_id = "'.$uid.'"')->find();
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
             $today = date('Y-m-d H:i:s');
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
+            $recommend_number = rand(100000, 999999);
+            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
         }
         
         $section = M("section");
@@ -41,13 +42,14 @@ class IndexAction extends Action {
         $send = $this->_get('send');
 
         $user = M('User');
-        $userinfo = $user->field('id, user_id, user_name, user_phone, user_school, user_zhuanye, user_age, user_weixin, user_type')->where('user_id = "'.$uid.'"')->find();
+        $userinfo = $user->field('user_pw', true)->where('user_id = "'.$uid.'"')->find();
         if ($userinfo) {
             session('userinfo', $userinfo);
         } else {
             $today = date('Y-m-d H:i:s');
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_type'=>2));
+            $recommend_number = rand(100000, 999999);
+            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
         }
         if ($send == 'regphone') {
             $this->redirect('index/regphone');
