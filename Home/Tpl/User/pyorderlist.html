@@ -12,15 +12,11 @@
             <if condition="$order.order_status eq '0'">
             <div class="list-item-address1 txt_ellipsis gray"> 状态：推荐确认</div>
             <elseif condition="$order.order_status eq '1'"/>
-            <div class="list-item-address1 txt_ellipsis gray"> 状态：推荐成功</div>
-            <elseif condition="$order.order_status eq '2'"/>
             <div class="list-item-address1 txt_ellipsis gray"> 状态：等待签约</div>
-            <elseif condition="$order.order_status eq '3'"/>
-            <div class="list-item-address1 txt_ellipsis gray"> 状态：签约成功</div>
-            <elseif condition="$order.order_status eq '4'"/>
+            <elseif condition="$order.order_status eq '2'"/>
             <div class="list-item-address1 txt_ellipsis gray"> 状态：奖金发放</div>
-            <elseif condition="$order.order_status eq '5'"/>
-            <div class="list-item-address1 txt_ellipsis gray"> 状态：发放成功</div>
+            <elseif condition="$order.order_status eq '3'"/>
+            <div class="list-item-address1 txt_ellipsis gray"> 状态：奖金发放成功</div>
             </if>
             
         </div>

@@ -6,9 +6,23 @@
         <div class="list-item toggle_bright">
             <a href="__GROUP__/detailorder/{$order.id}/{$order.jid}"><img class="list-item-pic" src="/upload/{$order.edu_image}" /></a>
         <div class="list-item-infos">
-            <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$order.edu_name}</div>
-            <div class="list-item-address txt_ellipsis gray">{$order.order_date}</div>
-            <div class="list-item-address1 txt_ellipsis gray"> {$order.user_name}</div>
+            <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> 奖学金:{$order.edu_discount}</div>
+            <div class="list-item-address txt_ellipsis gray">下单时间:{$order.order_date}</div>
+            <div class="list-item-address1 txt_ellipsis gray"> 姓名:{$order.user_name}</div>
+            <div class="list-item-address2 txt_ellipsis gray"> 
+                <if condition="$order.order_status eq '0'">
+                订单状态:推荐确认
+                </if>
+                <if condition="$order.order_status eq '1'">
+                订单状态:等待签约
+                </if>
+                 <if condition="$order.order_status eq '2'">
+                订单状态:奖金发放
+                </if>
+                <if condition="$order.order_status eq '3'">
+                订单状态:奖金发放成功
+                </if>
+            </div>
         </div>
     </div>
       </foreach>

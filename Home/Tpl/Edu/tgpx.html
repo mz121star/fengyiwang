@@ -45,7 +45,27 @@
             }
         });
         if (issub) {
-            $('#ordername').submit();
+            var issub1 = 1;
+            $("input[name^='user_jbname']").each(function () {
+                if (!this.value) {
+                    issub1 = 0;
+                }
+            });
+            if (issub1) {
+                var issub2 = 1;
+                $("input[name^='user_jbphone']").each(function () {
+                    if (!this.value) {
+                        issub2 = 0;
+                    }
+                });
+                if (issub2) {
+                    $('#ordername').submit();
+                } else {
+                    alert("请填写所有朋友联系电话");
+                }
+            } else {
+                alert("请填写所有朋友姓名");
+            }
         } else {
             alert("请选择至少一个机构");
         }
