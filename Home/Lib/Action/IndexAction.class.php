@@ -74,9 +74,9 @@ class IndexAction extends Action {
     }
     
     public function regphone() {
-        $userid = $this->userInfo['user_id'];
+        $userinfo = session('userinfo');
         $user = M("user");
-        $userinfo = $user->where('user_id = "'.$userid.'"')->find();
+        $userinfo = $user->where('user_id = "'.$userinfo['user_id'].'"')->find();
         if ($userinfo['user_phone']) {
             $this->error("已经绑定过手机", 'index');
         } else {
