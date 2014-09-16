@@ -2,8 +2,9 @@
     <!-- Content -->
 <form method="post" action="__GROUP__/edu/savejbtg" id="ordername" name="ordername">
     <input type="hidden" name="order_type" value="1">
-    <div class="clear:both ">
-        <h3>可选机构列表</h3>
+    <h3>可选机构列表</h3>
+    <div class="jglb">
+
         <foreach name="edulist" item="edu">
             <div class="checkbox">
                 <label>
@@ -16,7 +17,7 @@
         </foreach>
     </div>
     <div id="peoples">
-        <h3>信息录入</h3>
+        <h3>推荐信息</h3>
     <div class="mm-search" id="people">
         <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
         <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone[]">

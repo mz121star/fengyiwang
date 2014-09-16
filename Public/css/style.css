@@ -1123,4 +1123,7 @@ header .l_tbn a:hover{color:#fff;}
 
 .small .list-item-title   {padding: 10px 0 2px 0; }
 .small .list-item-title  a  {text-decoration: none }
+.jglb{clear: both;
+    height: 150px;
+    overflow-y: scroll;}
 #addPeople{width: 100px;height: 40px;margin: 0px 0px 0px 10px;/* display: inline-block; */border: 0px;background-color: #008FFF;border-radius: 2px;color: #fff;font-size: 2rem;}
