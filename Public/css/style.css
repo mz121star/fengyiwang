@@ -1109,9 +1109,9 @@ header .l_tbn a:hover{color:#fff;}
 #ordername{padding-bottom: 53px;}
 
 #ordername .checkbox{
-    width: 100%;
+    width: 30%;
     height: 30px;
-    /* float: left; */
+    float: left;
     /* min-height: 59px; */
     padding-left: 10px;
 }

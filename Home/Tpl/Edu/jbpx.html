@@ -2,6 +2,19 @@
     <!-- Content -->
 <form method="post" action="__GROUP__/edu/savejbtg" id="ordername" name="ordername">
     <input type="hidden" name="order_type" value="1">
+    <div class="clear:both ">
+        <h3>可选机构列表</h3>
+        <foreach name="edulist" item="edu">
+            <div class="checkbox">
+                <label>
+                    <!-- <img src="/uploads/1403/image/22222.jpg" width="40" height="40">-->
+                    <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                    {$edu.edu_name}
+                </label>
+
+            </div>
+        </foreach>
+    </div>
     <div id="peoples">
         <h3>信息录入</h3>
     <div class="mm-search" id="people">
@@ -16,19 +29,7 @@
     <input type="button" id="addPeople" value="增加">
     </if>
 
-    <div class="clear:both ">
-        <h3>可选机构列表</h3>
-    <foreach name="edulist" item="edu">
-        <div class="checkbox">
-            <label>
-                <!-- <img src="/uploads/1403/image/22222.jpg" width="40" height="40">-->
-                <input type="checkbox" name="edu_id[]" value="{$edu.id}">
-                {$edu.edu_name}
-            </label>
 
-        </div>
-    </foreach>
-    </div>
 
     
     <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
