@@ -1129,5 +1129,5 @@ header .l_tbn a:hover{color:#fff;}
 #addPeople{width: 100px;height: 40px;margin: 0px 0px 0px 10px;/* display: inline-block; */border: 0px;background-color: #008FFF;border-radius: 2px;color: #fff;font-size: 2rem;}
 
 .no-border input{border: 0;
-    background: transparent;
+    background: transparent !important;
     color: white;}
