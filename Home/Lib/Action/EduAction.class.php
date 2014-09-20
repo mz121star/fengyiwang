@@ -34,6 +34,10 @@ class EduAction extends PublicAction {
         $edu_browse = ($edu_browse) ? $edu_browse + 1 : 1;
         $edu->where('id = '.$eid)->setField('edu_browse', $edu_browse);
 
+        $edu_ask = $eduinfo['edu_ask'];
+        $edu_ask = ($edu_ask) ? $edu_ask + 1 : 1;
+        $edu->where('id = '.$eid)->setField('edu_ask', $edu_ask);
+
         $this->assign('eduinfo', $eduinfo);
         $this->assign('pagetitle', '机构详情');
         $this->display();
