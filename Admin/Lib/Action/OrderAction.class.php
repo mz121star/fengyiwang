@@ -244,7 +244,7 @@ class OrderAction extends PublicAction {
         $orderinfo = $order->where('order_number="'.$order_number.'"')->find();
         if ($orderinfo) {
             $issuccess = $order->where('order_number="'.$order_number.'"')->setField('order_status', $order_status);
-            if ($issuccess && $order_status == 3) {
+            if ($issuccess && $order_status == 2) {
                 $eduinfo = $edu->where('id = '.$orderinfo['edu_id'])->find();
                 $edu_sign = $eduinfo['edu_sign'];
                 $edu_sign = ($edu_sign) ? $edu_sign + 1 : 1;
@@ -256,7 +256,7 @@ class OrderAction extends PublicAction {
             if ($jborderinfo) {
                 $issuccess = $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->setField('order_status', $order_status);
                 $jborder->where('order_parent = '.$jborderinfo['id'])->setField('order_status', $order_status);
-                if ($issuccess && $order_status == 3) {
+                if ($issuccess && $order_status == 2) {
                     $jbedu = M("jbedu");
                     $edulists = $jbedu->field('edu_id')->where('jborder_id = "'.$jborderinfo['id'].'"')->select();
                     foreach ($edulists as $eduinfo) {
