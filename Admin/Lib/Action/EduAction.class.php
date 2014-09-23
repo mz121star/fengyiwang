@@ -182,6 +182,7 @@ class EduAction extends PublicAction {
         }
         $edu = M("edu");
         $post = $this->filterAllParam('post');
+        $post['edu_desc'] = $_POST['edu_desc'];
         if (!isset($post['edu_jblx'])) {
             $post['edu_jblx'] = '0';
         }
