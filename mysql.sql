@@ -29,13 +29,14 @@ CREATE TABLE `fy_user` (
   `user_age` tinyint(3) unsigned NOT NULL,
   `user_weixin` varchar(250) NOT NULL,
   `user_recommend` varchar(250) NOT NULL,
+  `user_isrecommend` varchar(250) NOT NULL,
   `user_regdate` datetime NOT NULL,
   `user_status` enum('1','0') NOT NULL,
   `user_type` tinyint(3) unsigned NOT NULL default 2 COMMENT '用户类型，1是后台管理员，2是普通用户',
   PRIMARY KEY (`id`),
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';
-INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '', '', '', '', '', '', now(), '1', 1);
+INSERT INTO `fy_user` VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', '', '', '', '', '', '', '', now(), '1', 1);
 
 
 DROP TABLE IF EXISTS `fy_section`;
