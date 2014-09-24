@@ -95,6 +95,11 @@ class EduAction extends PublicAction {
         if (!$userid) {
             $this->error("请先登录", 'lists');
         }
+        $user = M("user");
+        $userinfo = $user->where('user_id = "'.$userid.'"')->find();
+        if (!$userinfo['user_phone']) {
+            $this->error("请先绑定手机再下单", 'lists');
+        }
         $post = $this->filterAllParam('post');
         if (!$post['user_name']) {
             $post['user_name'] = $this->userInfo['user_name'];
@@ -165,6 +170,11 @@ class EduAction extends PublicAction {
         if (!$userid) {
             $this->error("请先登录");
         }
+        $user = M("user");
+        $userinfo = $user->where('user_id = "'.$userid.'"')->find();
+        if (!$userinfo['user_phone']) {
+            $this->error("请先绑定手机再下单");
+        }
         $post = $this->filterAllParam('post');
         $pyorder = M("pyorder");
         $post['user_id'] = $userid;
@@ -178,6 +188,11 @@ class EduAction extends PublicAction {
         $userid = $this->userInfo['user_id'];
         if (!$userid) {
             $this->error("请先登录");
+        }
+        $user = M("user");
+        $userinfo = $user->where('user_id = "'.$userid.'"')->find();
+        if (!$userinfo['user_phone']) {
+            $this->error("请先绑定手机再下单");
         }
         $post = $this->filterAllParam('post');
         if (!count($post['edu_id'])) {

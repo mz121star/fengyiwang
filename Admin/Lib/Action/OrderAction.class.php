@@ -14,6 +14,10 @@ class OrderAction extends PublicAction {
         
         $order_status = C('ORDER_STATUS');
         $this->assign('order_status_list', $order_status);
+        
+        $section = M("section");
+        $sectionlist = $section->order(array('id'=>'asc'))->select();
+        $this->assign('sectionlist', $sectionlist);
         $this->display();
     }
     
@@ -32,6 +36,20 @@ class OrderAction extends PublicAction {
         }
         if ($post['user_name']) {
             $where['user_name'] = array('like', '%'.$post['user_name'].'%');
+        }
+        if (count($post['section'])) {
+            $sectionedu = M("sectionedu");
+            $sectionids = implode(',', $post['section']);
+            $w['section_id'] = array('in', $sectionids);
+            $eduids = $sectionedu->where($w)->select();
+            $eid = array();
+            foreach ($eduids as $value) {
+                $eid[] = $value['edu_id'];
+            }
+            if (count($eid)) {
+                $eid = implode(',', $eid);
+                $where['edu_id'] = array('in', $order_status);
+            }
         }
         $order = M("order");
         import('ORG.Util.Page');
