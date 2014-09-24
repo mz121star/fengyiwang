@@ -52,7 +52,7 @@ INSERT INTO `fy_section` VALUES (2, '留学', 'fa fa-pencil', '留学');
 INSERT INTO `fy_section` VALUES (3, 'SAT', 'fa fa-globe', '培训');
 INSERT INTO `fy_section` VALUES (4, '托福', 'fa fa-flag', '培训');
 INSERT INTO `fy_section` VALUES (5, '游学', 'fa fa-book', '培训');
-INSERT INTO `fy_section` VALUES (6, '小语种', 'fa fa-graduation-cap', '培训');
+INSERT INTO `fy_section` VALUES (6, '银行', 'fa fa-graduation-cap', '培训');
 
 
 
