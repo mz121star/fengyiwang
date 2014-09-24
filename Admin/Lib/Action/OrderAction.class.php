@@ -63,6 +63,10 @@ class OrderAction extends PublicAction {
         $order_status_list = C('ORDER_STATUS');
         $this->assign('order_status_list', $order_status_list);
         
+        $section = M("section");
+        $sectionlist = $section->order(array('id'=>'asc'))->select();
+        $this->assign('sectionlist', $sectionlist);
+        
         $this->assign('order_date', $post['order_date']);
         $this->assign('order_number', $post['order_number']);
         $this->assign('user_name', $post['user_name']);
