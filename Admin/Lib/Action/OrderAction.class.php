@@ -48,7 +48,7 @@ class OrderAction extends PublicAction {
             }
             if (count($eid)) {
                 $eid = implode(',', $eid);
-                $where['edu_id'] = array('in', $order_status);
+                $where['edu_id'] = array('in', $eid);
             }
         }
         $order = M("order");
