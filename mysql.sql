@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS `fy_systempic`;
 CREATE TABLE `fy_systempic` (
   `id` int(11) NOT NULL auto_increment,
   `system_pic` varchar(250) NOT NULL,
-  `system_picurl` varchar(250) NOT NULL default '',
-  `system_pictitle` varchar(250) NOT NULL default '',
+  `system_picurl` varchar(500) NOT NULL default '',
+  `system_pictitle` varchar(500) NOT NULL default '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='首页广告图片表';
 

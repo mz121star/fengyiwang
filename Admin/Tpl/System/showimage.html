@@ -9,7 +9,7 @@
                 <table id="image_table" class="table">
                     <tr>
                         <td>图片</td>
-                        <td>URL</td>
+                        <td>介绍</td>
                     </tr>
                     <foreach name="syspicinfo" item="pic">
                     <tr>
@@ -18,7 +18,7 @@
                         <img src="/upload/{$pic.system_pic}" width="80" height="80" style="border:none;">
                         <input type="checkbox" name="del_image[{$pic.id}]" value="{$pic.system_pic}" style="border:none;">
                         </td>
-                        <td><input type="url" name="system_picurl-{$pic.id}" value="{$pic.system_picurl}"></td>
+                        <td><textarea name="system_picurl-{$pic.id}" rows="3" cols="40">{$pic.system_picurl}</textarea></td>
                     </tr>
                     </foreach>
                 </table>
@@ -40,7 +40,7 @@ $(function () {
         var tb = document.getElementById("image_table");
         var row = tb.insertRow(tb.rows.length);
         row.insertCell(0).innerHTML = '<input type="file" name="system_pic-'+totalpic+'">';
-        row.insertCell(1).innerHTML = '<input type="url" name="system_picurl-'+totalpic+'" value="">';
+        row.insertCell(1).innerHTML = '<textarea name="system_picurl-'+totalpic+'" rows="3" cols="40"></textarea>';
     });
 });
 </script>

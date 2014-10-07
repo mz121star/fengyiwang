@@ -177,7 +177,20 @@ class IndexAction extends Action {
         }
         $this->redirect('Index/index');
     }
-    
+
+    public function syspic() {
+        $picid = $this->_get('picid');
+        $system = M("systempic");
+        $syspicinfo = $system->where('id = "'.$picid.'"')->find();
+        if ($syspicinfo) {
+            $syspic = nl2br($syspicinfo['system_picurl']);
+            $this->assign('syspic', $syspic);
+            $this->display();
+        } else {
+            $this->error("无此图片", 'index');
+        }
+    }
+
     protected function filterAllParam($type = 'get') {
         $param = array();
         if ($type == 'get') {
