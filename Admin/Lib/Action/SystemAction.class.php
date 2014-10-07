@@ -12,7 +12,7 @@ class SystemAction extends PublicAction {
     }
 
     public function setimage() {
-        $post = $this->filterAllParam('post');
+        $post = $this->_post();
         $isdelimage = $post['del_image'];
         $del_image = array();
         if (count($isdelimage)) {

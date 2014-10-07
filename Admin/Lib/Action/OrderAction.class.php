@@ -4,13 +4,21 @@ class OrderAction extends PublicAction {
 
     public function lists(){
         $order = M("order");
+        $user = M("user");
         import('ORG.Util.Page');
         $count = $order->count();
         $page = new Page($count, 10);
         $orderlist = $order->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $orders = array();
+        foreach ($orderlist as $order) {
+            $userinfo = $user->field('user_name, user_phone')->where('user_id = "'.$order['user_id'].'"')->find();
+            $order['user_realname'] = $userinfo['user_name'];
+            $order['user_realphone'] = $userinfo['user_phone'];
+            $orders[] = $order;
+        }
         $show = $page->show();
         $this->assign('page',$show);
-        $this->assign('orderlist', $orderlist);
+        $this->assign('orderlist', $orders);
         
         $order_status = C('ORDER_STATUS');
         $this->assign('order_status_list', $order_status);

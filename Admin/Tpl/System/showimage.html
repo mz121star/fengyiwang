@@ -5,7 +5,6 @@
             <div class="form-group">
               <label for="userid" class="col-sm-2 control-label">首页广告图片</label>
               <div class="col-sm-10">
-                <button type="button" class="btn btn-default" id="add_image">点击添加多张图片</button>
                 <table id="image_table" class="table">
                     <tr>
                         <td>图片</td>
@@ -18,7 +17,7 @@
                         <img src="/upload/{$pic.system_pic}" width="80" height="80" style="border:none;">
                         <input type="checkbox" name="del_image[{$pic.id}]" value="{$pic.system_pic}" style="border:none;">
                         </td>
-                        <td><textarea name="system_picurl-{$pic.id}" rows="3" cols="40">{$pic.system_picurl}</textarea></td>
+                        <td><textarea name="system_picurl-{$pic.id}" id="system_picurl-{$pic.id}">{$pic.system_picurl}</textarea></td>
                     </tr>
                     </foreach>
                 </table>
@@ -32,15 +31,39 @@
           </form>
   </div>
 </div>
+<script type="text/javascript " src="/ueditor/ueditor.config.js "></script>
+<script type="text/javascript " src="/ueditor/ueditor.all.js "></script>
 <script type="text/javascript">
 $(function () {
-    var totalpic = {$totalpic|default=0};
-    $("#add_image").click(function () {
-        totalpic = totalpic+1;
-        var tb = document.getElementById("image_table");
-        var row = tb.insertRow(tb.rows.length);
-        row.insertCell(0).innerHTML = '<input type="file" name="system_pic-'+totalpic+'">';
-        row.insertCell(1).innerHTML = '<textarea name="system_picurl-'+totalpic+'" rows="3" cols="40"></textarea>';
+    var editor = UE.getEditor('system_picurl-1', {
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo', 'simpleupload', 'insertimage'],
+            ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        initialFrameHeight:150,
+        initialFrameWidth:400
+    });
+    var editor = UE.getEditor('system_picurl-2', {
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo', 'simpleupload', 'insertimage'],
+            ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        initialFrameHeight:150,
+        initialFrameWidth:400
+    });
+    var editor = UE.getEditor('system_picurl-3', {
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo', 'simpleupload', 'insertimage'],
+            ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        initialFrameHeight:150,
+        initialFrameWidth:400
     });
 });
 </script>
