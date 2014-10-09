@@ -405,7 +405,7 @@ html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolli
     margin: 10px;    opacity: 0.7;    background-color: #004788;
     box-shadow: 0px 2px rgb(32, 27, 27);
 }
-.list-item-pic{position:absolute;left:10px;top:10px;width:65px;height:60px;background:#efefef;}
+.list-item-pic{position:absolute;left:10px;top:10px;width:65px;height:60px;background: transparent;border: 0px;}
 .list-item-infos{position:relative;margin:0 90px;}
 .list-item-title,.list-item-tags,.list-item-address,.list-item-address1{font-size:12px;line-height:20px;}
 .list-item-title{width:140px;font-size:14px;font-weight:700;color: #FFFFFF;}
