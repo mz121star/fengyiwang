@@ -21,6 +21,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="helpername" class="col-sm-2 control-label">被邀请码</label>
+                  <div class="col-sm-10">
+                     <input type="text" class="form-control" id="user_isrecommend" name="user_isrecommend" value="{$user_isrecommend}">
+                  </div>
+                </div>
+                <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">搜索</button>
                   </div>
@@ -38,6 +44,7 @@
             <th>注册时间</th>
             <th>联系电话</th>
             <th>邀请码</th>
+            <th>被邀请码</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -48,6 +55,7 @@
             <td class="col-sm-2">{$user.user_regdate}</td>
             <td class="col-sm-2">{$user.user_phone}</td>
             <td class="col-sm-2">{$user.user_recommend}</td>
+            <td class="col-sm-2">{$user.user_isrecommend}</td>
             <td class="col-sm-2">
                 <a href="__GROUP__/moduser/{$user.user_id}">编辑</a>
                 <a href="__GROUP__/deluser/{$user.user_id}">删除</a>

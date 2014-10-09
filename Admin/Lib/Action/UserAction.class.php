@@ -23,6 +23,12 @@ class UserAction extends PublicAction {
         if ($post['user_phone']) {
             $where['user_phone'] = array('like', '%'.$post['user_phone'].'%');
         }
+        if ($post['user_recommend']) {
+            $where['user_recommend'] = array('eq', $post['user_recommend']);
+        }
+        if ($post['user_isrecommend']) {
+            $where['user_isrecommend'] = array('eq', $post['user_isrecommend']);
+        }
         $where['user_id'] = array('neq', 'admin');
         $user = M("user");
         import('ORG.Util.Page');
@@ -34,6 +40,8 @@ class UserAction extends PublicAction {
         $this->assign('userlist', $userlist);
         $this->assign('user_name', $post['user_name']);
         $this->assign('user_phone', $post['user_phone']);
+        $this->assign('user_recommend', $post['user_recommend']);
+        $this->assign('user_isrecommend', $post['user_isrecommend']);
         $this->display('lists');
     }
 

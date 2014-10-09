@@ -11,9 +11,10 @@ class OrderAction extends PublicAction {
         $orderlist = $order->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
         $orders = array();
         foreach ($orderlist as $order) {
-            $userinfo = $user->field('user_name, user_phone')->where('user_id = "'.$order['user_id'].'"')->find();
+            $userinfo = $user->field('user_name, user_phone, user_recommend')->where('user_id = "'.$order['user_id'].'"')->find();
             $order['user_realname'] = $userinfo['user_name'];
             $order['user_realphone'] = $userinfo['user_phone'];
+            $order['user_realrecommend'] = $userinfo['user_recommend'];
             $orders[] = $order;
         }
         $show = $page->show();
@@ -84,9 +85,9 @@ class OrderAction extends PublicAction {
     public function jblists(){
         $jborder = M("jborder");
         import('ORG.Util.Page');
-        $count = $jborder->where('order_parent=0 and user_jbname != ""')->count();
+        $count = $jborder->where('order_parent=0 and order_type = "1"')->count();
         $page = new Page($count, 10);
-        $orderlist = $jborder->order(array('fy_jborder.id'=>'desc'))->field('fy_jborder.id, fy_jbedu.id as jid, user_name, user_jbname, user_jbphone, user_jbdesc, order_number, order_date, order_status, edu_name, edu_image')->where('order_parent=0 and user_jbname != ""')->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->join(' fy_user on fy_user.user_id=fy_jborder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
+        $orderlist = $jborder->order(array('fy_jborder.id'=>'desc'))->field('fy_jborder.id, fy_jbedu.id as jid, user_name, user_jbname, user_jbphone, user_jbdesc, order_number, order_date, order_status, edu_name, edu_image')->where('order_parent=0 and order_type = "1"')->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->join(' fy_user on fy_user.user_id=fy_jborder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('orderlist', $orderlist);
@@ -115,6 +116,7 @@ class OrderAction extends PublicAction {
             $where['user_jbname'] = array('neq', '');
         }
         $where['order_parent'] = 0;
+        $where['order_type'] = 1;
         $jborder = M("jborder");
         import('ORG.Util.Page');
         $count = $jborder->where($where)->count();
@@ -133,12 +135,65 @@ class OrderAction extends PublicAction {
         $this->display('jblists');
     }
 
+    public function tglists(){
+        $jborder = M("jborder");
+        import('ORG.Util.Page');
+        $count = $jborder->where('order_parent=0 and order_type = "2"')->count();
+        $page = new Page($count, 10);
+        $orderlist = $jborder->order(array('fy_jborder.id'=>'desc'))->field('fy_jborder.id, fy_jbedu.id as jid, user_name, user_jbname, user_jbphone, user_jbdesc, order_number, order_date, order_status, edu_name, edu_image')->where('order_parent=0 and order_type = "2"')->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->join(' fy_user on fy_user.user_id=fy_jborder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('orderlist', $orderlist);
+        
+        $order_status_list = C('ORDER_STATUS');
+        $this->assign('order_status_list', $order_status_list);
+        $this->display();
+    }
+
+    public function tgsearch(){
+        $post = $this->filterAllParam('post');
+        $where = array();
+        if ($post['order_date']) {
+            $where['order_date'] = $post['order_date'];
+        }
+        if ($post['order_status']) {
+            $order_status = implode(',', $post['order_status']);
+            $where['order_status'] = array('in', $order_status);
+        }
+        if ($post['order_number']) {
+            $where['order_number'] = array('like', '%'.$post['order_number'].'%');
+        }
+        if ($post['user_jbname']) {
+            $where['user_jbname'] = array('like', '%'.$post['user_jbname'].'%');
+        } else {
+            $where['user_jbname'] = array('neq', '');
+        }
+        $where['order_parent'] = 0;
+        $where['order_type'] = 2;
+        $jborder = M("jborder");
+        import('ORG.Util.Page');
+        $count = $jborder->where($where)->count();
+        $page = new Page($count, 10);
+        $orderlist = $jborder->field('fy_jborder.id, fy_jbedu.id as jid, user_name, user_jbname, user_jbphone, user_jbdesc, order_date, order_status, edu_name, edu_image')->where($where)->join(' fy_jbedu on fy_jbedu.jborder_id=fy_jborder.id')->join(' fy_edu on fy_jbedu.edu_id=fy_edu.id')->join(' fy_user on fy_user.user_id=fy_jborder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('orderlist', $orderlist);
+        
+        $order_status_list = C('ORDER_STATUS');
+        $this->assign('order_status_list', $order_status_list);
+        
+        $this->assign('order_date', $post['order_date']);
+        $this->assign('order_number', $post['order_number']);
+        $this->assign('user_jbname', $post['user_jbname']);
+        $this->display('tglists');
+    }
+
     public function pylists(){
         $pyorder = M("pyorder");
         import('ORG.Util.Page');
         $count = $pyorder->count();
         $page = new Page($count, 10);
-        $orderlist = $pyorder->order(array('fy_pyorder.id'=>'desc'))->field('order_number, user_name, user_pyphone, order_date, user_pyname, order_status')->join(' fy_user on fy_user.user_id=fy_pyorder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
+        $orderlist = $pyorder->order(array('fy_pyorder.id'=>'desc'))->field('order_number, user_name, user_pyphone, order_date, user_pyname, order_status, user_phone')->join(' fy_user on fy_user.user_id=fy_pyorder.user_id')->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('orderlist', $orderlist);
@@ -313,6 +368,12 @@ class OrderAction extends PublicAction {
             if ($jborderinfo) {
                 $jborder->where('order_number="'.$order_number.'" and order_parent = 0')->delete();
                 $jborder->where('order_parent = '.$jborderinfo['id'])->delete();
+            } else {
+                $pyorder = M("pyorder");
+                $pyorderinfo = $pyorder->where('order_number="'.$order_number.'"')->find();
+                if ($pyorderinfo) {
+                    $pyorder->where('order_number="'.$order_number.'"')->delete();
+                }
             }
         }
         $this->redirect('Order/lists');

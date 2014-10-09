@@ -1,7 +1,7 @@
 <h1 class="page-header">搜索订单</h1>
     <div class="row placeholders">
         <div class="col-md-7">
-            <form class="form-horizontal" role="form" method="post" action="__GROUP__/Order/search">
+            <form class="form-horizontal" role="form" method="post" action="__GROUP__/Order/tgsearch">
                 <div class="form-group">
                   <label for="helpername" class="col-sm-2 control-label">下单时间</label>
                   <div class="col-sm-10">
@@ -19,16 +19,6 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="helpername" class="col-sm-2 control-label">订单类型</label>
-                  <div class="col-sm-10">
-                      <foreach name="sectionlist" item="section">
-                      <label class="checkbox-inline">
-                         <input type="checkbox" name="section[]" value="{$section.id}"> {$section.section_name}
-                      </label>
-                      </foreach>
-                  </div>
-                </div>
-                <div class="form-group">
                   <label for="helpername" class="col-sm-2 control-label">订单号</label>
                   <div class="col-sm-10">
                       <input type="text" class="form-control" id="order_number" name="order_number" value="{$order_number}">
@@ -37,7 +27,7 @@
                 <div class="form-group">
                   <label for="helpername" class="col-sm-2 control-label">会员</label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="user_id" name="user_name" value="{$user_name}">
+                      <input type="text" class="form-control" id="user_id" name="user_jbname" value="{$user_jbname}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -49,17 +39,15 @@
       </div>
     </div>
 
-<h2 class="sub-header">订单列表</h2>
+<h2 class="sub-header">团购订单列表</h2>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
             <th>订单号</th>
-            <th>推荐人</th>
-            <th>推荐人电话</th>
-            <th>邀请码</th>
             <th>下单会员</th>
             <th>下单时间</th>
+            <th>结伴会员</th>
             <th>联系电话</th>
             <th>Action</th>
           </tr>
@@ -68,12 +56,10 @@
         <foreach name="orderlist" item="order">
           <tr>
             <td class="col-sm-2">{$order.order_number}</td>
-            <td class="col-sm-2">{$order.user_realname}</td>
-            <td class="col-sm-2">{$order.user_realphone}</td>
-            <td class="col-sm-2">{$order.user_realrecommend}</td>
             <td class="col-sm-2">{$order.user_name}</td>
             <td class="col-sm-2">{$order.order_date}</td>
-            <td class="col-sm-2">{$order.order_phone}</td>
+            <td class="col-sm-2">{$order.user_jbname}</td>
+            <td class="col-sm-2">{$order.user_pyphone}</td>
             <td class="col-sm-2">
                 <if condition="$order.order_status eq '0'">
                 <a href="__GROUP__/recommend/{$order.order_number}">推荐确认</a>
