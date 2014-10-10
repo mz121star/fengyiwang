@@ -5,6 +5,11 @@ class EduAction extends PublicAction {
     public function lists(){
         $sid = $this->_get('sid');
         $sectionedu = M("sectionedu");
+        $sectionedulist = $sectionedu->where('section_id = '.$sid)->select();
+        $eud_is_list = array();
+        foreach ($sectionedulist as $value) {
+            $eud_is_list = $value['edu_id'];
+        }
         $orderby = array('fy_edu.id'=>'desc');
         if ($sid == 1) {
             $orderby = array('edu_order1'=>'asc');
@@ -19,7 +24,9 @@ class EduAction extends PublicAction {
         } elseif ($sid == 6) {
             $orderby = array('edu_order6'=>'asc');
         }
-        $edulist = $sectionedu->field('fy_edu.id, edu_name, edu_star, edu_image, edu_discount, edu_desc, edu_browse, edu_showprice, edu_sign, edu_giveprice, edu_ask, edu_recommend')->where('section_id = '.$sid)->join(' fy_edu on fy_edu.id=fy_sectionedu.edu_id')->order($orderby)->select();
+        $edu = M("edu");
+        $where['id']  = array('in', $eud_is_list);
+        $edulist = $edu->where($where)->order($orderby)->select();
         $this->assign('edulist', $edulist);
         $this->assign('pagetitle', '机构列表');
         $this->display();
