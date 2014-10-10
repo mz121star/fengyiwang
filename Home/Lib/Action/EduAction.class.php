@@ -8,7 +8,7 @@ class EduAction extends PublicAction {
         $sectionedulist = $sectionedu->where('section_id = '.$sid)->select();
         $eud_is_list = array();
         foreach ($sectionedulist as $value) {
-            $eud_is_list = $value['edu_id'];
+            $eud_is_list[] = $value['edu_id'];
         }
         $orderby = array('fy_edu.id'=>'desc');
         if ($sid == 1) {
