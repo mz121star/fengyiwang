@@ -162,6 +162,9 @@ class EduAction extends PublicAction {
     }
 
     public function save(){
+        if (!isset($_POST['edu_name']) || !$_POST['edu_name']) {
+            $this->error("请填写机构名称");
+        }
         $isdelimage = $this->_post('deledu_image');
         if ($isdelimage) {
             $_POST['edu_image'] = '';
