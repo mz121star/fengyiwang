@@ -77,4 +77,50 @@ class SystemAction extends PublicAction {
         }
         $this->redirect('System/business');
     }
+    
+    public function uploadlogo() {
+        import('ORG.Net.UploadFile');
+        $upload = new UploadFile();
+        $upload->maxSize = 5242880;//5M
+        $upload->allowExts = array('jpg', 'gif', 'png', 'jpeg');
+        $upload->savePath = './upload/';
+        $info = array();
+        if($upload->upload()) {
+            $info = $upload->getUploadFileInfo();
+            echo json_encode($info);
+            exit;
+        } else {
+//            echo $upload->getErrorMsg();
+//            exit;
+        }
+    }
+    
+    public function addlogo() {
+        $post = $this->filterAllParam('post');
+        $logo = M('logo');
+        $today = date('Y-m-d H:i:s');
+        foreach ($post['savename'] as $key => $value) {
+            $insert = array('logo_name'=>$post['logo_name'][$key], 'logo_uploader'=>$post['logo_uploader'][$key], 'logo_content'=>$value, 'logo_number'=>0, 'logo_date'=>$today);
+            $logo->add($insert);
+        }
+        $this->success("Logo上传成功", 'showlogo');
+    }
+    
+    public function showlogo() {
+        $logo = M('logo');
+        $logolist = $logo->order('logo_number desc')->select();
+        $this->assign('logolist', $logolist);
+        $this->display();
+    }
+    
+    public function dellogo() {
+        $logoid = $this->_get('logoid');
+        $logo = M('logo');
+        $isok = $logo->where('id = "'.$logoid.'"')->delete();
+        if ($isok) {
+            $this->success("Logo删除成功");
+        } else {
+            $this->error("Logo删除失败");
+        }
+    }
 }

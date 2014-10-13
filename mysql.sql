@@ -19,6 +19,18 @@ CREATE TABLE `fy_business` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='商务合作表';
 
 
+DROP TABLE IF EXISTS `fy_logo`;
+CREATE TABLE `fy_logo` (
+  `id` int(11) NOT NULL auto_increment,
+  `logo_name` varchar(250) NOT NULL,
+  `logo_uploader` varchar(250) NOT NULL,
+  `logo_content` varchar(250) NOT NULL,
+  `logo_number` int(11) NOT NULL,
+  `logo_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='logo表';
+
+
 DROP TABLE IF EXISTS `fy_user`;
 CREATE TABLE `fy_user` (
   `id` int(11) NOT NULL auto_increment,
@@ -35,6 +47,8 @@ CREATE TABLE `fy_user` (
   `user_regdate` datetime NOT NULL,
   `user_status` enum('1','0') NOT NULL,
   `user_type` tinyint(3) unsigned NOT NULL default 2 COMMENT '用户类型，1是后台管理员，2是普通用户',
+  `user_logo` tinyint(4) unsigned NOT NULL default 0,
+  `user_logodate` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';

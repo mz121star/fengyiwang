@@ -1,0 +1,38 @@
+<h2 class="sub-header">Logo列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>名称</th>
+            <th>上传者</th>
+            <th>得票数</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="logolist" item="logo">
+          <tr>
+              <td class="col-sm-2"><img src="/upload/{$logo.logo_content}" width="150" height="50"></td>
+            <td class="col-sm-2">{$logo.logo_name}</td>
+            <td class="col-sm-2">{$logo.logo_uploader}</td>
+            <td class="col-sm-2">{$logo.logo_number}</td>
+            <td class="col-sm-2">
+                <a href="javascript:;" id="dellogo_{$logo.id}">删除</a>
+            </td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>
+<script type="text/javascript">
+$(function () {
+    $("a[id^='dellogo_']").click(function () {
+        if (confirm("确认要删除此Logo吗？")) {
+            var id = this.id.split("_");
+            location.href = "__GROUP__/dellogo/"+id[1];
+        }
+    });
+});
+</script>

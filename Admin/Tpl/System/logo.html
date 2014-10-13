@@ -1,0 +1,86 @@
+<h2 class="sub-header">上传Logo</h2>
+<div class="row placeholders">
+    <div class="col-md-7">
+        <form class="form-horizontal" role="form" method="post" id="logoform" action="__GROUP__/System/addlogo">
+            <div class="form-group">
+              <label for="type1" class="col-sm-3 control-label">Logo</label>
+              <div class="col-sm-5">
+                  <div id="mulitplefileuploader">选择文件</div>
+                  <div>
+                      <table id="status" class="table">
+                          
+                      </table>
+                  </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                  <button type="button" class="btn btn-default" id="beginupload">开始上传</button>
+                  <button type="button" class="btn btn-default" id="savelogo" style="display: none;">保存Logo信息</button>
+              </div>
+            </div>
+          </form>
+  </div>
+</div>
+<link href="/css/uploadfile.css" rel="stylesheet">
+<script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.uploadfile.min.js"></script>
+<script>
+$(document).ready(function(){
+    var settings = {
+            url: "__GROUP__/System/uploadlogo",
+            returnType:"json",
+            allowedTypes:"jpg,png,gif",
+            fileName: "syslogo",
+            multiple: true,
+            autoSubmit:false,
+            showProgress:true,
+            showStatusAfterSuccess:false,
+            dragDropStr: "<span><b>将要上传的多个文件拖拽到此框内</b></span>",
+            cancelStr:"取消",
+            onSuccess:function(files,data,xhr){
+                if (data) {
+                    var uphtml = '<tr><td>'+files+'<input type="hidden" name="savename['+files+']" value="'+data[0].savename+'"></td><td>logo名称<input type="text" name="logo_name['+files+']" value=""></td><td>上传者<input type="text" name="logo_uploader['+files+']" value=""></td>';
+                    $("#status").append(uphtml);
+                    $("#beginupload").hide();
+                    $("#savelogo").show();
+                } else {
+                    alert("上传文件失败");
+                }
+            },
+            onError: function(files,status,errMsg){		
+                $("#status").html("<font color='red'>Upload is Failed</font>");
+            },
+            onSelect:function(files){
+                $("#status").html("");
+                $("#beginupload").show();
+                $("#savelogo").hide();
+                return true;
+            }
+    }
+    var uploadObj = $("#mulitplefileuploader").uploadFile(settings);
+    $("#beginupload").click(function () {
+        uploadObj.startUpload();
+    });
+    $("#savelogo").click(function () {
+        var isup = 1;
+        $("input[name^='logo_name']").each(function () {
+            var logoname = $.trim(this.value);
+            if (!logoname) {
+                isup = 0;
+            }
+        });
+        $("input[name^='logo_uploader']").each(function () {
+            var uploader = $.trim(this.value);
+            if (!uploader) {
+                isup = 0;
+            }
+        });
+        if (isup) {
+            $("#logoform").submit();
+        } else {
+            alert("请填写所有Logo名称与上传者");
+        }
+    });
+});
+</script>

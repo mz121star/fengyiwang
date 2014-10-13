@@ -19,6 +19,7 @@ $private_config = array(
                                                   'sign/:oid' => 'Order/sign',
                                                   'modorder/:oid' => 'Order/modorder',
                                                   'delorder/:oid' => 'Order/delorder',
+                                                  'dellogo/:logoid' => 'System/dellogo',
                                                   )
                         );
 
