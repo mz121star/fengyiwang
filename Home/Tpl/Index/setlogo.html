@@ -39,8 +39,12 @@
             });
             function vote(id){
                 $.get("__GROUP__/putlogo/"+id).success(function(d){
-                    alert("投票成功！");
-                    window.location.reload();
+                    if (d == 1) {
+                        alert("投票成功");
+                        window.location.reload();
+                    } else {
+                        alert("不能重复投票");
+                    }
                 })
             }
         </script>

@@ -83,9 +83,9 @@ class IndexAction extends Action {
             $logo->where('id = "'.$logoid.'"')->setInc('logo_number');
             $userdata = array('user_logo'=>$logoid, 'user_logodate'=>date('Y-m-d H:i:s'));
             $userobj->where('user_id = "'.$userinfo['user_id'].'"')->setField($userdata);
-            $this->success("投票成功", 'setlogo');
+            echo 1;exit;
         } else {
-            $this->redirect('index/setlogo');
+            echo 0;exit;
         }
     }
 
