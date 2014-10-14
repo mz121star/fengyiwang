@@ -69,6 +69,8 @@ class IndexAction extends Action {
         $logo = M('logo');
         $logolist = $logo->order('logo_number desc')->select();
         $this->assign('logolist', $logolist);
+        echo '<pre>';
+        print_r($user_logo);
         $this->assign('user_logo', $user_logo);
         $this->display();
     }
