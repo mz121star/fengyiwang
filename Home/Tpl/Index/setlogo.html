@@ -2,6 +2,7 @@
         <style>
 /* = About
 -------------------------------------------------------------- */
+            a{text-decoration: none}
 #wrap{}
 .c{text-align:center;}
 #topmsg{display:block;position:fixed;left:0;top:0;z-index:2147483646;width:100%;background-color:#333;}
@@ -98,10 +99,10 @@ li.item_text div span b{font-size:24px;font-style:italic;}
         <foreach name="logolist" item="logo">
         <li class="item_img gray clearfix"><a
                 href="javascript:;" title="上传者：{$logo.logo_uploader}"
-                target="_target"><img src="/upload/{$logo.logo_content}"
+                target="_target"><img class="uploadpic" src="/upload/{$logo.logo_content}"
                                       all="上传者：{$logo.logo_uploader}" style="width:100px;height:120px;"></a><a
                 href="javascript:;" title="上传者：{$logo.logo_uploader}"
-                target="_target"><h2>上传者：{$logo.logo_uploader}</h2></a>
+                target="_target"><h2>{$logo.logo_uploader}</h2></a>
 
             <div class="clearfix">
                 <if condition="$user_logo eq 0 "> <a href="javascript:;" onclick="vote({$logo.id});return false;" class="ipt_btn">投票</a><br>    </if>
@@ -111,7 +112,18 @@ li.item_text div span b{font-size:24px;font-style:italic;}
     </ul>
 </div>
 
-
+   <div class="bigpic">
+       <img class="preview" style="width: 100%;height: auto"  />
+   </div>
+        <script>
+            $('.uploadpic').on("click",function(e) {
+                var picsrc=$(this).attr("src") ;
+                $(".preview").attr("src",picsrc) ;
+                $(".bigpic").overlay({
+                    closeOnClick: true
+                });
+            });
+        </script>
 <!-- Menu navigation -->
 <include file="Public:userleft"/>
 <include file="Public:footer"/>
