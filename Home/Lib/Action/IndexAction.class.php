@@ -64,7 +64,7 @@ class IndexAction extends Action {
     
     public function setlogo() {
         $userinfo = session('userinfo');
-        $userid = $userinfo['user_id'];
+        $userobj = M('user');
         $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
         $logo = M('logo');
         $logolist = $logo->order('logo_number desc')->select();
