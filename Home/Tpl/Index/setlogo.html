@@ -36,6 +36,11 @@
 
                 });
             });
+            function vote(id){
+                $.get("__GROUP__/putlogo/"+id).success(function(d){
+                    alert(d);
+                })
+            }
         </script>
 <!-- Menu navigation -->
 <include file="Public:userleft"/>

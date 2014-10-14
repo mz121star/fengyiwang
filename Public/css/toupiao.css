@@ -52,7 +52,7 @@ li.item_img{float:left;padding:10px;margin:5px;border:1px solid #ccc;text-align:
 li.item_img img{border:1px solid #ccc;padding:1px;margin:0 auto;}
 li.item_img h2{font-size:16px;font-weight:bold;height:25px;line-height:25px;margin:5px 0 15px 0;cursor:pointer;color: black;}
 li.item_img div{float:left;}
-li.item_img div a{float:left;margin-right:10px;}
+li.item_img div a{float:left;margin-right:10px;text-decoration: none;}
 li.item_img div span{float:left;}
 li.item_img div span b{font-size:24px;font-style:italic;}
 
