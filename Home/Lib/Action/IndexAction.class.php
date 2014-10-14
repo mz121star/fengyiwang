@@ -56,13 +56,13 @@ class IndexAction extends Action {
         } elseif ($send == 'swhz') {
             $this->redirect('index/swhz');
         } elseif ($send == 'logo') {
-            $this->redirect('index/logo');
+            $this->redirect('index/setlogo');
         } else {
             $this->redirect('edu/'.$send);
         }
     }
     
-    public function logo() {
+    public function setlogo() {
         $userinfo = session('userinfo');
         $userid = $userinfo['user_id'];
         $user_logo = $userinfo['user_logo'];
@@ -74,7 +74,7 @@ class IndexAction extends Action {
     }
     
     public function gotologo() {
-        $this->redirect('index/logo');
+        $this->redirect('index/setlogo');
     }
     
     public function putlogo() {
