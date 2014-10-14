@@ -73,19 +73,23 @@ class IndexAction extends Action {
         $this->display();
     }
     
+    public function gotologo() {
+        $this->redirect('index/logo');
+    }
+    
     public function putlogo() {
         $logoid = $this->_get('logoid');
         $userinfo = session('userinfo');
         $userobj = M('user');
         $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
-        if ($userinfo['user_logo'] == 0) {
+        if ($userinfo && $userinfo['user_logo'] == 0) {
             $logo = M('logo');
             $logo->where('id = "'.$logoid.'"')->setInc('logo_number');
             $userdata = array('user_logo'=>$logoid, 'user_logodate'=>date('Y-m-d H:i:s'));
             $userobj-> where('user_id = "'.$userinfo['user_id'].'"')->setField($userdata);
-            $this->success("投票成功", 'logo');
+            $this->success("投票成功", 'gotologo');
         } else {
-            $this->error("你已经投过票", 'logo');
+            $this->error("你已经投过票", 'gotologo');
         }
     }
 

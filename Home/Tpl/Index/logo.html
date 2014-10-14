@@ -7,19 +7,19 @@
             <th>上传者</th>
             <th>得票数</th>
         <if condition="$user_logo eq 0 ">
-            <th>Action</th>
+            <th>操作</th>
             </if>
           </tr>
         </thead>
         <tbody>
         <foreach name="logolist" item="logo">
           <tr>
-            <td class="col-sm-2"><img src="/upload/{$logo.logo_content}" width="150" height="50"></td>
+            <td class="col-sm-2"><img src="/upload/{$logo.logo_content}" width="100" height="30"></td>
             <td class="col-sm-2">{$logo.logo_uploader}</td>
             <td class="col-sm-2">{$logo.logo_number}</td>
             <if condition="$user_logo eq 0 ">
             <td class="col-sm-2">
-                <a href="__GROUP__/putlogo/{$logo.id}">投票</a>
+                <a href="__GROUP__/putlogo/{$logo.id}" style="color:red;">投票</a>
             </td>
             </if>
           </tr>
