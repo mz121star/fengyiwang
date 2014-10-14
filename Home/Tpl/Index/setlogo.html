@@ -38,7 +38,8 @@
             });
             function vote(id){
                 $.get("__GROUP__/putlogo/"+id).success(function(d){
-                    alert(d);
+                    alert("投票成功！");
+                    window.location.reload();
                 })
             }
         </script>
