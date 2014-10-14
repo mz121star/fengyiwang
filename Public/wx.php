@@ -70,6 +70,7 @@ class weixin {
         } elseif ($object->EventKey == 'fy_logo') {
             $item_str = sprintf($itemTpl, 'Logo', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
         } elseif ($object->Event == 'subscribe') {
+            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '', '', '');
             $item_str1 = sprintf($itemTpl, '绑定手机', '绑定手机享受更多服务', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
             $item_str2 = sprintf($itemTpl, 'Logo投票', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
             $xmlTpl = "<xml>
@@ -79,11 +80,12 @@ class weixin {
             <MsgType><![CDATA[news]]></MsgType>
             <ArticleCount>%s</ArticleCount>
             <Articles>
+            $item_str
             $item_str1
             $item_str2
             </Articles>
             </xml>";
-            $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), 2);
+            $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), 3);
             return $result;
         }
         
