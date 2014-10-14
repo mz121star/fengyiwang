@@ -123,7 +123,14 @@ li.item_text div span b{font-size:24px;font-style:italic;}
                 var picsrc=$(this).attr("src") ;
                 $(".preview").attr("src",picsrc) ;
                 $(".bigpic").overlay({
-                    closeOnClick: true
+                    closeOnClick: true,
+                    onShow: function() {
+                        $('.preview').show()
+                    },
+                    onHide: function() {
+                        $('.preview').hide()
+                    }
+
                 });
             });
         </script>
