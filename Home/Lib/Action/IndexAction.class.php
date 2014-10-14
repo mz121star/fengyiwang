@@ -65,13 +65,11 @@ class IndexAction extends Action {
     public function setlogo() {
         $userinfo = session('userinfo');
         $userid = $userinfo['user_id'];
-        $user_logo = $userinfo['user_logo'];
+        $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
         $logo = M('logo');
         $logolist = $logo->order('logo_number desc')->select();
         $this->assign('logolist', $logolist);
-        echo '<pre>';
-        print_r($user_logo);
-        $this->assign('user_logo', $user_logo);
+        $this->assign('user_logo', $userinfo['user_logo']);
         $this->display();
     }
     
