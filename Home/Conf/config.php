@@ -14,7 +14,8 @@ $private_config = array(
                                                   'detailedu/:eid' => 'Edu/detailedu',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
                                                   'wx/:uid' => 'Index/home',
-                                                  'weixin/:uid/:send' => 'Index/send'
+                                                  'weixin/:uid/:send' => 'Index/send',
+                                                  'putlogo/:logoid' => 'Index/putlogo',
                                                   )
                         );
 

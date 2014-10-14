@@ -48,15 +48,44 @@ class IndexAction extends Action {
         } else {
             $today = date('Y-m-d H:i:s');
             $recommend_number = rand(100000, 999999);
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
+            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_logo'=>0));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2, 'user_logo'=>0));
         }
         if ($send == 'regphone') {
             $this->redirect('index/regphone');
         } elseif ($send == 'swhz') {
             $this->redirect('index/swhz');
+        } elseif ($send == 'logo') {
+            $this->redirect('index/logo');
         } else {
             $this->redirect('edu/'.$send);
+        }
+    }
+    
+    public function logo() {
+        $userinfo = session('userinfo');
+        $userid = $userinfo['user_id'];
+        $user_logo = $userinfo['user_logo'];
+        $logo = M('logo');
+        $logolist = $logo->order('logo_number desc')->select();
+        $this->assign('logolist', $logolist);
+        $this->assign('user_logo', $user_logo);
+        $this->display();
+    }
+    
+    public function putlogo() {
+        $logoid = $this->_get('logoid');
+        $userinfo = session('userinfo');
+        $userobj = M('user');
+        $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
+        if ($userinfo['user_logo'] == 0) {
+            $logo = M('logo');
+            $logo->where('id = "'.$logoid.'"')->setInc('logo_number');
+            $userdata = array('user_logo'=>$logoid, 'user_logodate'=>date('Y-m-d H:i:s'));
+            $userobj-> where('user_id = "'.$userinfo['user_id'].'"')->setField($userdata);
+            $this->success("投票成功", 'logo');
+        } else {
+            $this->error("你已经投过票", 'logo');
         }
     }
 
