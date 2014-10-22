@@ -62,7 +62,7 @@ class weixin {
         } elseif ($object->EventKey == 'fy_tjpy') {
             $item_str = sprintf($itemTpl, '推荐朋友', '同学们想挣钱吗？别告诉我你不想，想的话，就把想留学的同学和想学习的同学介绍过来吧', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tjpy');
         } elseif ($object->EventKey == 'fy_home') {
-            $item_str = sprintf($itemTpl, '微官网', '欢迎同学们进入微官网', $_SERVER['SERVER_NAME'].'/uploads/xiaoyuanzhixing.jpg', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
+            $item_str = sprintf($itemTpl, '微官网', '欢迎同学们进入微官网', 'http://'.$_SERVER['SERVER_NAME'].'/uploads/xiaoyuanzhixing.jpg', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
         } elseif ($object->EventKey == 'fy_bindphone') {
             $item_str = sprintf($itemTpl, '手机绑定', '手机绑定后，才可以进行预约咨询', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
         } elseif ($object->EventKey == 'fy_swhz') {
