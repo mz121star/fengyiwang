@@ -70,23 +70,24 @@ class weixin {
         } elseif ($object->EventKey == 'fy_logo') {
             $item_str = sprintf($itemTpl, 'Logo', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
         } elseif ($object->Event == 'subscribe') {
-            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '', '', '');
-            $item_str1 = sprintf($itemTpl, '绑定手机', '手机绑定后，才可以进行预约咨询', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
-            $item_str2 = sprintf($itemTpl, 'Logo投票', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
-            $xmlTpl = "<xml>
-            <ToUserName><![CDATA[%s]]></ToUserName>
-            <FromUserName><![CDATA[%s]]></FromUserName>
-            <CreateTime>%s</CreateTime>
-            <MsgType><![CDATA[news]]></MsgType>
-            <ArticleCount>%s</ArticleCount>
-            <Articles>
-            $item_str
-            $item_str1
-            $item_str2
-            </Articles>
-            </xml>";
-            $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), 3);
-            return $result;
+            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '欢迎同学们进入微官网', 'http://'.$_SERVER['SERVER_NAME'].'/uploads/xiaoyuanzhixing.jpg', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
+//            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '', '', '');
+//            $item_str1 = sprintf($itemTpl, '绑定手机', '手机绑定后，才可以进行预约咨询', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
+//            $item_str2 = sprintf($itemTpl, 'Logo投票', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
+//            $xmlTpl = "<xml>
+//            <ToUserName><![CDATA[%s]]></ToUserName>
+//            <FromUserName><![CDATA[%s]]></FromUserName>
+//            <CreateTime>%s</CreateTime>
+//            <MsgType><![CDATA[news]]></MsgType>
+//            <ArticleCount>%s</ArticleCount>
+//            <Articles>
+//            $item_str
+//            $item_str1
+//            $item_str2
+//            </Articles>
+//            </xml>";
+//            $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), 3);
+//            return $result;
         }
         
         $xmlTpl = "<xml>
