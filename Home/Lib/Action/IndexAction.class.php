@@ -23,8 +23,8 @@ class IndexAction extends Action {
         } else {
             $today = date('Y-m-d H:i:s');
             $recommend_number = rand(100000, 999999);
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
+            $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客',  'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'访客', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
         }
         
         $section = M("section");
@@ -48,8 +48,8 @@ class IndexAction extends Action {
         } else {
             $today = date('Y-m-d H:i:s');
             $recommend_number = rand(100000, 999999);
-            $id = $user->add(array('user_id'=>$uid, 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_logo'=>0));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2, 'user_logo'=>0));
+            $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客', 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_logo'=>0));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'访客', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2, 'user_logo'=>0));
         }
         if ($send == 'regphone') {
             $this->redirect('index/regphone');
@@ -125,6 +125,9 @@ class IndexAction extends Action {
         }
         if (!$post['user_name']) {
             $this->error("请填写姓名", 'regphone');
+        }
+        if (!$post['user_phone']) {
+            $this->error("请填写手机号", 'regphone');
         }
         if (!$post['code']) {
             $this->error("请填写验证码", 'regphone');
