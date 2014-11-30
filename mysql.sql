@@ -19,6 +19,16 @@ CREATE TABLE `fy_business` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='商务合作表';
 
 
+DROP TABLE IF EXISTS `fy_qrcode`;
+CREATE TABLE `fy_qrcode` (
+  `id` int(11) NOT NULL auto_increment,
+  `source_name` varchar(250) NOT NULL,
+  `qrcode_ticket` varchar(500) NOT NULL,
+  `qrcode_url` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='二维码表';
+
+
 DROP TABLE IF EXISTS `fy_logo`;
 CREATE TABLE `fy_logo` (
   `id` int(11) NOT NULL auto_increment,
