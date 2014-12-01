@@ -20,9 +20,14 @@ class IndexAction extends Action {
             $from = 0;
         }
         $user = M('User');
-        $today = date('Y-m-d H:i:s');
-        $recommend_number = rand(100000, 999999);
-        $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客',  'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_from'=>$from));
+        $userinfo = $user->field('user_pw', true)->where('user_id = "'.$uid.'"')->find();
+        if ($userinfo) {
+            $isok = $user->where('user_id = "'.$uid.'"')->setField('user_from', $from);
+        } else {
+            $today = date('Y-m-d H:i:s');
+            $recommend_number = rand(100000, 999999);
+            $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客', 'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_from'=>$from));
+        }
     }
     
     public function home(){
