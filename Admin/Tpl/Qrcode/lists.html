@@ -12,7 +12,7 @@
         <foreach name="qrlist" item="qr">
           <tr>
             <td class="col-sm-2">{$qr.source_name}</td>
-            <td class="col-sm-2"><img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$qr.qrcode_ticket|urlencode}" alt="{$qr.source_name}" style="border:none;"></td>
+            <td class="col-sm-2"><img width="150" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$qr.qrcode_ticket|urlencode}" alt="{$qr.source_name}" style="border:none;"></td>
             <td class="col-sm-2">
                 <a href="__GROUP__/delqrcode/{$qr.id}">删除</a>
             </td>

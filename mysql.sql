@@ -59,6 +59,7 @@ CREATE TABLE `fy_user` (
   `user_type` tinyint(3) unsigned NOT NULL default 2 COMMENT '用户类型，1是后台管理员，2是普通用户',
   `user_logo` tinyint(4) unsigned NOT NULL default 0,
   `user_logodate` datetime NOT NULL,
+  `user_from` int(11) unsigned NOT NULL default 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY user_id (user_id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户表';
