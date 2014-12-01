@@ -15,6 +15,10 @@ class IndexAction extends Action {
     
     public function home(){
         $uid = $this->_get('uid');
+        $from = $this->_get('from');
+        if (!$from) {
+            $from = 0;
+        }
         
         $user = M('User');
         $userinfo = $user->field('user_pw', true)->where('user_id = "'.$uid.'"')->find();
@@ -23,8 +27,8 @@ class IndexAction extends Action {
         } else {
             $today = date('Y-m-d H:i:s');
             $recommend_number = rand(100000, 999999);
-            $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客',  'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number));
-            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'访客', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2));
+            $id = $user->add(array('user_id'=>$uid, 'user_name'=>'访客',  'user_pw'=>  md5($uid), 'user_weixin'=>$uid, 'user_regdate'=>$today, 'user_recommend'=>$recommend_number, 'user_from'=>$from));
+            session('userinfo', array('id'=>$id, 'user_id'=>$uid, 'user_name'=>'访客', 'user_phone'=>'', 'user_school'=>'', 'user_zhuanye'=>'', 'user_age'=>'', 'user_weixin'=>$uid, 'user_recommend'=>$recommend_number, 'user_type'=>2, 'user_from'=>$from));
         }
         
         $section = M("section");
