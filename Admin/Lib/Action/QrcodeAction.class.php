@@ -41,23 +41,27 @@ class QrcodeAction extends PublicAction {
         $post['qrcode_url'] = '0';
         $qrcodeid = $qrcode->add($post);
         if ($qrcodeid) {
-            $access_token = session('access_token');
-            if (!$access_token) {
+//            $access_token = session('access_token');
+//            if (!$access_token) {
                 $access_token_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxccf0766ad3d06490&secret=caa282ed24424a7f999f5196b4352ee6';
                 $access_token = $this->_getpage($access_token_url);
                 $access_token = json_decode($access_token);
                 $access_token = $access_token->{'access_token'};
                 session('access_token', $access_token);
-            }
+//            }
             $postdata = json_encode(array('action_name'=>'QR_LIMIT_SCENE', 'action_info'=>array('scene'=>array('scene_id'=>$qrcodeid))));
             $qr_info = $this->_getpage('https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token='.$access_token, 'post', $postdata);
             $qr_info = json_decode($qr_info);
-            $isok = $qrcode->where('id = "'.$qrcodeid.'"')->setField(array('qrcode_ticket'=>$qr_info->{ticket},'qrcode_url'=>$qr_info->{'url'}));
+            if ($qr_info->{'ticket'} == '' || $qr_info->{'url'} == '') {
+                $isok = '';
+            } else {
+                $isok = $qrcode->where('id = "'.$qrcodeid.'"')->setField(array('qrcode_ticket'=>$qr_info->{'ticket'},'qrcode_url'=>$qr_info->{'url'}));
+            }
             if ($isok) {
                 $this->redirect('Qrcode/lists');
             } else {
                 $qrcode->where('id = "'.$qrcodeid.'"')->delete();
-                $this->error('生成二维码失败，请重新添加');
+                $this->error('获取二维码失败，请重新添加');
             }
         } else {
             $this->error('生成二维码失败，请重新添加');
