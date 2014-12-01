@@ -7,10 +7,21 @@ class UserAction extends PublicAction {
         import('ORG.Util.Page');
         $count = $user->where('user_id != "admin"')->count();
         $page = new Page($count, 10);
-        $userlist = $user->field('user_name,user_regdate,user_phone,user_recommend,user_isrecommend,user_id,source_name')->where('user_id != "admin"')->join(' fy_qrcode on fy_qrcode.id=fy_user.user_from')->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $userlist = $user->where('user_id != "admin"')->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
-        $this->assign('userlist', $userlist);
+        $qrcode = M("qrcode");
+        $lists = array();
+        foreach ($userlist as $user) {
+            $source = $qrcode->where('id = "'.$user['source_name'].'"')->find();
+            if ($source) {
+                $user['source_name'] = $source['source_name'];
+            } else {
+                $user['source_name'] = '';
+            }
+            $lists[] = $user;
+        }
+        $this->assign('userlist', $lists);
         $this->display();
     }
     
