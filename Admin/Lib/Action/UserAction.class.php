@@ -13,7 +13,7 @@ class UserAction extends PublicAction {
         $qrcode = M("qrcode");
         $lists = array();
         foreach ($userlist as $user) {
-            $source = $qrcode->where('id = "'.$user['source_name'].'"')->find();
+            $source = $qrcode->where('id = "'.$user['user_from'].'"')->find();
             if ($source) {
                 $user['source_name'] = $source['source_name'];
             } else {
