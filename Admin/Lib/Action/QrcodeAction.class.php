@@ -37,8 +37,8 @@ class QrcodeAction extends PublicAction {
     public function save(){
         $qrcode = M("qrcode");
         $post = $this->filterAllParam('post');
-        $post['qrcode_ticket'] = '';
-        $post['qrcode_url'] = '';
+        $post['qrcode_ticket'] = '0';
+        $post['qrcode_url'] = '0';
         $qrcodeid = $qrcode->add($post);
         if ($qrcodeid) {
             $access_token = session('access_token');
