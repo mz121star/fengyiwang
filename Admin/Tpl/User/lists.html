@@ -45,6 +45,7 @@
             <th>联系电话</th>
             <th>邀请码</th>
             <th>被邀请码</th>
+            <th>来源渠道</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -54,8 +55,9 @@
             <td class="col-sm-2">{$user.user_name}</td>
             <td class="col-sm-2">{$user.user_regdate}</td>
             <td class="col-sm-2">{$user.user_phone}</td>
-            <td class="col-sm-2">{$user.user_recommend}</td>
-            <td class="col-sm-2">{$user.user_isrecommend}</td>
+            <td class="col-sm-1">{$user.user_recommend}</td>
+            <td class="col-sm-1">{$user.user_isrecommend}</td>
+            <td class="col-sm-2">{$user.source_name}</td>
             <td class="col-sm-2">
                 <a href="__GROUP__/moduser/{$user.user_id}">编辑</a>
                 <a href="__GROUP__/deluser/{$user.user_id}">删除</a>

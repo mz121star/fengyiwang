@@ -13,7 +13,8 @@ $private_config = array(
                                                   'syspic/:picid' => 'Index/syspic',
                                                   'detailedu/:eid' => 'Edu/detailedu',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
-                                                  'wx/:uid/:from' => 'Index/home',
+                                                  'wx/:uid' => 'Index/home',
+                                                  'setsource/:uid/:from' => 'Index/sendsource',
                                                   'weixin/:uid/:send' => 'Index/send',
                                                   'putlogo/:logoid' => 'Index/putlogo',
                                                   )

@@ -10,7 +10,18 @@ class UserAction extends PublicAction {
         $userlist = $user->where('user_id != "admin"')->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
-        $this->assign('userlist', $userlist);
+        $qrcode = M("qrcode");
+        $lists = array();
+        foreach ($userlist as $user) {
+            $source = $qrcode->where('id = "'.$user['user_from'].'"')->find();
+            if ($source) {
+                $user['source_name'] = $source['source_name'];
+            } else {
+                $user['source_name'] = '';
+            }
+            $lists[] = $user;
+        }
+        $this->assign('userlist', $lists);
         $this->display();
     }
     
