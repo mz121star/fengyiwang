@@ -41,6 +41,28 @@ CREATE TABLE `fy_logo` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='logo表';
 
 
+DROP TABLE IF EXISTS `fy_tuan`;
+CREATE TABLE `fy_tuan` (
+  `id` int(11) NOT NULL auto_increment,
+  `tuan_name` varchar(250) NOT NULL,
+  `tuan_uploader` varchar(250) NOT NULL,
+  `tuan_content` varchar(250) NOT NULL,
+  `tuan_number` int(11) NOT NULL,
+  `tuan_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='团购表';
+
+
+DROP TABLE IF EXISTS `fy_usertuan`;
+CREATE TABLE `fy_usertuan` (
+  `id` int(11) NOT NULL auto_increment,
+  `tuan_id` int(4) unsigned NOT NULL default 0,
+  `user_id` int(4) unsigned NOT NULL default 0,
+  `tuan_date` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户团购表';
+
+
 DROP TABLE IF EXISTS `fy_user`;
 CREATE TABLE `fy_user` (
   `id` int(11) NOT NULL auto_increment,
