@@ -106,6 +106,17 @@ class IndexAction extends Action {
         }
     }
 
+    public function settuan() {
+        $userinfo = session('userinfo');
+        $userobj = M('user');
+        $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
+        $tuan = M('tuan');
+        $logolist = $tuan->order('tuan_number desc')->select();
+        $this->assign('logolist', $logolist);
+        $this->assign('user_logo', $userinfo['user_logo']);
+        $this->display();
+    }
+
     public function swhz() {
         $business = M("business");
         $businessinfo = $business->find();

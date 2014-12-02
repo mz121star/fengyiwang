@@ -20,6 +20,7 @@ $private_config = array(
                                                   'modorder/:oid' => 'Order/modorder',
                                                   'delorder/:oid' => 'Order/delorder',
                                                   'dellogo/:logoid' => 'System/dellogo',
+                                                  'deltuan/:tuanid' => 'System/deltuan',
                                                   'delqrcode/:qrid' => 'Qrcode/delqrcode',
                                                   )
                         );

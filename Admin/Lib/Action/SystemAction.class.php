@@ -123,4 +123,50 @@ class SystemAction extends PublicAction {
             $this->error("Logo删除失败");
         }
     }
+
+    public function uploadtuan() {
+        import('ORG.Net.UploadFile');
+        $upload = new UploadFile();
+        $upload->maxSize = 5242880;//5M
+        $upload->allowExts = array('jpg', 'gif', 'png', 'jpeg');
+        $upload->savePath = './upload/';
+        $info = array();
+        if($upload->upload()) {
+            $info = $upload->getUploadFileInfo();
+            echo json_encode($info);
+            exit;
+        } else {
+//            echo $upload->getErrorMsg();
+//            exit;
+        }
+    }
+    
+    public function addtuan() {
+        $post = $this->filterAllParam('post');
+        $tuan = M('tuan');
+        $today = date('Y-m-d H:i:s');
+        foreach ($post['savename'] as $key => $value) {
+            $insert = array('tuan_name'=>$post['tuan_name'][$key], 'tuan_uploader'=>$post['tuan_uploader'][$key], 'tuan_content'=>$value, 'tuan_number'=>0, 'tuan_date'=>$today);
+            $tuan->add($insert);
+        }
+        $this->success("团购图片上传成功", 'showtuan');
+    }
+
+    public function showtuan() {
+        $tuan = M('tuan');
+        $logolist = $tuan->order('tuan_number desc')->select();
+        $this->assign('logolist', $logolist);
+        $this->display();
+    }
+    
+    public function deltuan() {
+        $tuanid = $this->_get('tuanid');
+        $tuan = M('tuan');
+        $isok = $tuan->where('id = "'.$tuanid.'"')->delete();
+        if ($isok) {
+            $this->success("团购图片删除成功");
+        } else {
+            $this->error("团购图片删除失败");
+        }
+    }
 }
