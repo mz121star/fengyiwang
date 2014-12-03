@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS `fy_usertuan`;
 CREATE TABLE `fy_usertuan` (
   `id` int(11) NOT NULL auto_increment,
   `tuan_id` int(4) unsigned NOT NULL default 0,
-  `user_id` int(4) unsigned NOT NULL default 0,
+  `user_id` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户团购表';
 

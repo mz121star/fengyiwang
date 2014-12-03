@@ -1,53 +1,30 @@
 <include file="Public:header"/>
    <link type="text/css" rel="stylesheet" href="/css/toupiao.css">
+   <form action="__GROUP__/index/puttuan" method="post">
 <div id="wrap">
     <ul id="optionlist" class="clearfix">
         <foreach name="logolist" item="logo">
         <li class="item_img gray clearfix"><a
-                href="javascript:;" title="上传者：{$logo.logo_uploader}"
-                target="_target"><img class="uploadpic" src="/upload/{$logo.logo_content}"
-                                      all="上传者：{$logo.logo_uploader}" style="width:100px;height:120px;"></a><a
-                href="javascript:;" title="上传者：{$logo.logo_uploader}"
-                target="_target"><h2>{$logo.logo_uploader}</h2></a>
+                href="javascript:;" title="上传者：{$logo.tuan_uploader}"
+                target="_target"><img class="uploadpic" src="/upload/{$logo.tuan_content}"
+                                      all="上传者：{$logo.tuan_uploader}" style="width:100px;height:120px;"></a><a
+                href="javascript:;" title="上传者：{$logo.tuan_uploader}"
+                target="_target"><h2>{$logo.tuan_uploader}</h2></a>
 
             <div class="clearfix">
-                <if condition="$user_logo eq 0 "> <a href="javascript:;" onclick="vote({$logo.id});return false;" class="ipt_btn">投票</a><br>    </if>
-                <span><b id="votes_1013">{$logo.logo_number}</b> 票</span></div>
+                <if condition="$usertuan_count eq 0 "> <input type="checkbox" name="tuan_id[]" value="{$logo.id}"投票<br>    </if>
+                <span><b id="votes_1013">{$logo.tuan_number}</b> 票</span></div>
         </li>
         </foreach>
     </ul>
 </div>
 
    <div class="bigpic">
-       <img class="preview" style="width: 100%;height: auto;z-index: 99999"  />
+       <input name="user_tuanphone" value="" placeholder="请输入电话">
+       <input name="user_tuanaddr" value="" placeholder="请输入地址">
+       <input type="submit" value="投票">
    </div>
-        <script>
-            $('.uploadpic').on("click",function(e) {
-                var picsrc=$(this).attr("src") ;
-                $(".preview").attr("src",picsrc) ;
-                $(".bigpic").overlay({
-                    closeOnClick: true,
-                    onShow: function() {
-                        $('.preview').css("top", $(".overlay").position().top +20+"px")
-                        $('.preview').show()
-                    },
-                    onHide: function() {
-                        $('.preview').hide()
-                    }
-
-                });
-            });
-            function vote(id){
-                $.get("__GROUP__/putlogo/"+id).success(function(d){
-                    if (d == 1) {
-                        alert("投票成功");
-                        window.location.reload();
-                    } else {
-                        alert("不能重复投票");
-                    }
-                })
-            }
-        </script>
+       </form>
 <!-- Menu navigation -->
 <include file="Public:userleft"/>
 <include file="Public:footer"/>

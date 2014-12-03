@@ -113,8 +113,48 @@ class IndexAction extends Action {
         $tuan = M('tuan');
         $logolist = $tuan->order('tuan_number desc')->select();
         $this->assign('logolist', $logolist);
-        $this->assign('user_logo', $userinfo['user_logo']);
+        $usertuan = M('usertuan');
+        $usertuan_count = $usertuan->where('user_id = "'.$userinfo['user_id'].'"')->count();
+        $this->assign('usertuan_count', $usertuan_count);
         $this->display();
+    }
+    
+    public function puttuan() {
+        $tuan_id = $this->_post('tuan_id');
+        $user_tuanphone = $this->_post('user_tuanphone');
+        $user_tuanaddr = $this->_post('user_tuanaddr');
+
+        $userinfo = session('userinfo');
+        
+        $usertuan = M('usertuan');
+        $usertuan_count = $usertuan->where('user_id = "'.$userinfo['user_id'].'"')->count();
+        if ($usertuan_count) {
+            $this->error("已经团购过了");
+        }
+        if (!$user_tuanphone) {
+            $this->error("请输入电话");
+        }
+        if (!$user_tuanaddr) {
+            $this->error("请输入地址");
+        }
+        if (!count($tuan_id)) {
+            $this->error("请选择团购项目");
+        }
+        $userobj = M('user');
+        $userinfo = $userobj->where('user_id = "'.$userinfo['user_id'].'"')->find();
+        if ($userinfo) {
+            $tuan = M('tuan');
+            foreach ($tuan_id as $value) {
+                $tuan->where('id = "'.$value.'"')->setInc('tuan_number');
+                $usertuan->add(array('tuan_id'=>$value, 'user_id'=>$userinfo['user_id']));
+            }
+            
+            $userdata = array('user_tuanphone'=>$user_tuanphone, 'user_tuanaddr'=>$user_tuanaddr, 'user_tuandate'=>date('Y-m-d H:i:s'));
+            $userobj->where('user_id = "'.$userinfo['user_id'].'"')->setField($userdata);
+            $this->success('投票成功');
+        } else {
+            $this->error("用户不存在");
+        }
     }
 
     public function swhz() {
