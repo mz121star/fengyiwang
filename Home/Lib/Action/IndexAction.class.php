@@ -74,6 +74,8 @@ class IndexAction extends Action {
             $this->redirect('index/swhz');
         } elseif ($send == 'logo') {
             $this->redirect('index/setlogo');
+        } elseif ($send == 'tuan') {
+            $this->redirect('index/settuan');
         } else {
             $this->redirect('edu/'.$send);
         }

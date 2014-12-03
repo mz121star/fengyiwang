@@ -69,6 +69,8 @@ class weixin {
             $item_str = sprintf($itemTpl, '商务合作', '商务合作', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/swhz');
         } elseif ($object->EventKey == 'fy_logo') {
             $item_str = sprintf($itemTpl, 'Logo', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
+        } elseif ($object->EventKey == 'fy_tuan') {
+            $item_str = sprintf($itemTpl, '团购', '团购', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/tuan');
         } elseif ($object->Event == 'SCAN') {
             $fromsource = $object->EventKey;
             file_get_contents('http://'.$_SERVER['SERVER_NAME'].'/index.php/setsource/'.$object->FromUserName.'/'.$fromsource);
