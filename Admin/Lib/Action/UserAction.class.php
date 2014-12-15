@@ -21,6 +21,7 @@ class UserAction extends PublicAction {
             }
             $lists[] = $user;
         }
+        $this->assign('userlist', $lists);
         $qrlist = $qrcode->order(array('id'=>'desc'))->select();
         $this->assign('qrlist', $qrlist);
         $this->display();
@@ -46,18 +47,32 @@ class UserAction extends PublicAction {
         }
         $where['user_id'] = array('neq', 'admin');
         $user = M("user");
+        $qrcode = M("qrcode");
         import('ORG.Util.Page');
         $count = $user->where($where)->count();
         $page = new Page($count, 10);
         $userlist = $user->where($where)->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $lists = array();
+        foreach ($userlist as $user) {
+            $source = $qrcode->where('id = "'.$user['user_from'].'"')->find();
+            if ($source) {
+                $user['source_name'] = $source['source_name'];
+            } else {
+                $user['source_name'] = '';
+            }
+            $lists[] = $user;
+        }
         $show = $page->show();
         $this->assign('page',$show);
-        $this->assign('userlist', $userlist);
+        $this->assign('userlist', $lists);
         $this->assign('user_name', $post['user_name']);
         $this->assign('user_phone', $post['user_phone']);
         $this->assign('user_recommend', $post['user_recommend']);
         $this->assign('user_isrecommend', $post['user_isrecommend']);
         $this->assign('user_from', $post['user_from']);
+        
+        $qrlist = $qrcode->order(array('id'=>'desc'))->select();
+        $this->assign('qrlist', $qrlist);
         $this->display('lists');
     }
 
