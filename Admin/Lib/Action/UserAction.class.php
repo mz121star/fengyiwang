@@ -21,7 +21,8 @@ class UserAction extends PublicAction {
             }
             $lists[] = $user;
         }
-        $this->assign('userlist', $lists);
+        $qrlist = $qrcode->order(array('id'=>'desc'))->select();
+        $this->assign('qrlist', $qrlist);
         $this->display();
     }
     
@@ -40,6 +41,9 @@ class UserAction extends PublicAction {
         if ($post['user_isrecommend']) {
             $where['user_isrecommend'] = array('eq', $post['user_isrecommend']);
         }
+        if ($post['user_from']) {
+            $where['user_from'] = array('eq', $post['user_from']);
+        }
         $where['user_id'] = array('neq', 'admin');
         $user = M("user");
         import('ORG.Util.Page');
@@ -53,6 +57,7 @@ class UserAction extends PublicAction {
         $this->assign('user_phone', $post['user_phone']);
         $this->assign('user_recommend', $post['user_recommend']);
         $this->assign('user_isrecommend', $post['user_isrecommend']);
+        $this->assign('user_from', $post['user_from']);
         $this->display('lists');
     }
 
