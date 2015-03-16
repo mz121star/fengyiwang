@@ -21,7 +21,7 @@ class ShakeAction extends Action
         $this->redirect('index/' . $actionto);
     }
 
-    public function gotoOauthAction()
+    public function gotoOauth()
     {
         $parent = $_GET['parentid'];
 
