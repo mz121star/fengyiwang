@@ -217,7 +217,7 @@
         $.ajax({
             type: "POST" ,
             url: "/index.php/Shake/sendmoney",
-            data: {openid:'{$userinfo.openid}'}
+            data: {"openid":"{$userinfo.openid}"}
 
         }).success(function(d){
             $(".infomsg").html(d);
