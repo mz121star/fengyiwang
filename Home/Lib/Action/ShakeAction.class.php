@@ -57,7 +57,8 @@ class ShakeAction extends Action
               $access_token = $this->_getpage($access_token_url);
               $access_token = json_decode($access_token);
               $access_token = $access_token->{'access_token'};
-              $wxuser->save(array("token"=>$access_token,"expires_time"=>date('Y-m-d H:i:s',strtotime('+7200 secone'))));
+
+              $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date($expires_time,strtotime('+7200 secone'))));
 
         }
       }
