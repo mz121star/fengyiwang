@@ -47,6 +47,7 @@ class ShakeAction extends Action
   public  function  getToken(){
       $user = M("token");
       $wxuser = $user->where('id =1')->find();
+      var_dump($wxuser);
       if ($wxuser) {
           $expires_time= $wxuser["expires_time"];
           if(strtotime(date('y-m-d h:i:s',time()))<strtotime($expires_time)){
@@ -58,7 +59,7 @@ class ShakeAction extends Action
               $access_token = json_decode($access_token);
               $access_token = $access_token->{'access_token'};
 
-              $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date($expires_time,strtotime('+7200 secone'))));
+              $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date($expires_time,strtotime('+7200 second'))));
 
         }
       }
