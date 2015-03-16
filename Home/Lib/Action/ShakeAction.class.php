@@ -23,7 +23,7 @@ class ShakeAction extends Action
 
     public function gotoOauthAction()
     {
-        $parent = $_GET('parentid');
+        $parent = $_GET['parentid'];
 
         $redirect_url = urlencode('http://' . $_SERVER['SERVER_NAME'] . '/index.php/Shake/index?parentid=' . $parent . '&from=singlemessage&isappinstalled=0');
 
@@ -43,8 +43,8 @@ class ShakeAction extends Action
 //-------------------------------------------------------------------------------------------------------------------------
         $packet = new \Packet();
         $refresh_token = session('refresh_token');
-        $parentid = $_GET('parentid');
-        $code =  $_GET('code');
+        $parentid = $_GET['parentid'];
+        $code =  $_GET['code'];
 
         $jssdk = new \JSSDK($this->app_id, $this->app_secret);
         $signPackage = $jssdk->GetSignPackage();
