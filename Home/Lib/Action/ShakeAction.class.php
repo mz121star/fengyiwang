@@ -52,7 +52,7 @@ class ShakeAction extends Action
           $expires_time= $wxuser["expires_time"];
           if(strtotime(date('y-m-d h:i:s',time()))<strtotime($expires_time)){
              //还没有过期
-              echo "没过期";
+
               return $wxuser["token"];
          }else{
               echo "过期了";
@@ -63,7 +63,7 @@ class ShakeAction extends Action
               $access_token = $access_token->{'access_token'};
 
               $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date('y-m-d h:i:s',strtotime('+7200 second'))));
-
+                return $access_token;
         }
       }
 
@@ -81,12 +81,16 @@ class ShakeAction extends Action
 
     public function subscribe($openid){
 
-      $url= 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.ACCESS_TOKEN.'&openid='.$openid.'&lang=zh_CN';
+      $url= 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->getToken().'&openid='.$openid.'&lang=zh_CN';
+        $userinfo = $this->_getpage($url);
+        $userinfo = json_decode($userinfo);
+        return $userinfo->{'subscribe'};
+
     }
     public function index()
     {
 
-       echo $this->getToken();exit;
+
         require_once APP_PATH . "Common/jssdk.php";
         require_once APP_PATH . "Common/pay.php";
 
@@ -128,50 +132,7 @@ class ShakeAction extends Action
 
             $this->redirect('gotoOauth', array('parentid' => $parentid));
         }
-   //    $packet->_route('wxpacket',array('openid'=>$userinfo['openid']));
-        /*    $money = M('money');
-        $setting = M("setting");
-        $user = M('user');
-        $setinfo = $setting->where('set_id = 1')->find();
-        $my_money_list = array();
-        $totel_money = 0;
-        if ($userinfo) {
-        $wxuser = $user->where('user_id = "'.$userinfo['openid'].'"')->find();
-        if (!$wxuser) {
-        $data = array('user_id'=>$userinfo['openid'], 'user_name'=>$userinfo['nickname'], 'user_regdate'=>date('Y-m-d H:i:s'), 'user_image'=>$userinfo['headimgurl'], 'user_status'=>'1', 'user_money'=>0);
-        $user_result = $user->add($data);
-        }
-        //设置自己的初始资金
-        $own_money = $money->where('money_owner = "'.$userinfo['openid'].'" and money_from = "0"')->find();
-        if ($own_money) {
-        $this->assign('is_get_money', 1);
-        } else {
-        $data = array('money_owner'=>$userinfo['openid'], 'money_number'=>$setinfo['set_beginmoney'], 'money_from'=>'0', 'money_time'=>date('Y-m-d H:i:s'));
-        $own_money_result = $money->add($data);
-        if ($own_money_result) {
-        $user->where('user_id = "'.$userinfo['openid'].'"')->setInc('user_money', $setinfo['set_beginmoney']);
-        }
-        $this->assign('is_get_money', 0);
-        }
-        //得到我从别人那里分享来的资金
-        $my_get_money = $money->where('money_owner = "'.$userinfo['openid'].'" and money_from != "0"')->select();
-        foreach ($my_get_money as $my_money) {
-        $usermoneyinfo = $user->where('user_id = "'.$my_money['money_from'].'"')->find();
-        $my_money = array_merge($my_money, $usermoneyinfo);
-        $my_money_list[] = $my_money;
-        }
-        //得到我的总金额
-        $wxuser = $user->where('user_id = "'.$userinfo['openid'].'"')->find();
-        $totel_money = $wxuser['user_money'];
-        }
 
-        $this->assign('my_money_list', $my_money_list);
-
-        $this->assign('setinfo', $setinfo);
-        $this->assign('totel_money', $totel_money);
-
-
-        $this->assign('code', $code);*/
         $shakeuser = M('shake_user');
         $user = $shakeuser->where('openid = "' . $userinfo['openid'] . '"')->find();
 
@@ -185,7 +146,7 @@ class ShakeAction extends Action
                  $isreg=0;
         }
         $this->assign('signPackage', $signPackage);
-
+        $this->assign("subscribe",$this->subscribe($userinfo['openid']));
         $this->assign('isreg', $isreg);
         $this->assign('shakeuser',$user);
         $this->assign('parentid', $parentid);

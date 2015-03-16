@@ -83,6 +83,18 @@
     <div class="pic"><img src="/images/20150312110642582_easyicon_net_256.png"></div>
     <div class="con">恭喜您{$shakeuser.name},摇出了1元钱！<br/>分享给朋友一起来继续摇奖吧！<a href="#">关注人人汇，还有更多中奖机会哦！</a> </div>
 </div>
+<if condition="($subscribe eq 0) ">
+
+    <section class="id_add_box add_box clearfix  ">
+        <div class="add_box_main clearfix">
+            <div class="add_box_main_close"><a href="javascript:void(0);" onclick="hideAddBox();"></a></div>
+            <div class="add_box_main_msg">   您还没有关注公众号，请关注</div>
+
+
+        </div>
+    </section>
+    <else />
+</if>
 <if condition="($isreg eq 0) ">
 
     <section class="id_add_box add_box clearfix  ">
