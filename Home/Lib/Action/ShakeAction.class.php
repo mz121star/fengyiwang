@@ -52,13 +52,15 @@ class ShakeAction extends Action
           $expires_time= $wxuser["expires_time"];
           if(strtotime(date('y-m-d h:i:s',time()))<strtotime($expires_time)){
              //还没有过期
+              echo "没过期";
               return $wxuser["token"];
          }else{
+              echo "过期了";
               $access_token_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$this->$app_id.'&secret='.$this->$app_secret;
               $access_token = $this->_getpage($access_token_url);
               $access_token = json_decode($access_token);
               $access_token = $access_token->{'access_token'};
-
+                var_dump($access_token);
               $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date($expires_time,strtotime('+7200 second'))));
 
         }
