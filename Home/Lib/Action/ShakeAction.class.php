@@ -141,10 +141,10 @@ class ShakeAction extends Action
         $this->display();
     }
 
-    public function zhuliAction()
+    public function zhuli()
     {
-        $parentopenid = I('post.parentopenid');
-        $zhuliuseropenid = I('post.zhuliuseropenid');
+        $parentopenid = $_POST["parentopenid"];
+        $zhuliuseropenid = $_POST["zhuliuseropenid"];
         $post = filterAllParam('post');
         $zhuli = M("jz_zhuli");
         $user = M("jz_user");
@@ -165,7 +165,7 @@ class ShakeAction extends Action
         }
     }
 
-    public function  joinAction()
+    public function  join()
     {
         $post = filterAllParam('post');
         $user = M("shake_user");
