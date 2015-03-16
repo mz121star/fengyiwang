@@ -214,11 +214,14 @@
     }
 
     function doResult() {
-        var openid={$userinfo.openid};
+
         $.ajax({
             type: "POST" ,
             url: "/index.php/Shake/sendmoney",
-            data: {openid:openid}
+            data: {
+                "openid":'{$userinfo.openid}'
+
+            }
 
         }).success(function(d){
             $(".infomsg").html(d);
