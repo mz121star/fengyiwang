@@ -62,7 +62,7 @@ class ShakeAction extends Action
               $access_token = json_decode($access_token);
               $access_token = $access_token->{'access_token'};
 
-              $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date($expires_time,strtotime('+7200 second'))));
+              $user->where('id=1')->save(array("token"=>$access_token,"expires_time"=>date('y-m-d h:i:s',strtotime('+7200 second'))));
 
         }
       }
