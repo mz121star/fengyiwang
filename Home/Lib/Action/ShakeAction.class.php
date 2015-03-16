@@ -168,11 +168,11 @@ class ShakeAction extends Action
         $param = array();
         if ($type == 'get') {
             foreach ($_GET as $key => $value) {
-                $param[$key] = I('get.'.$key);
+                $param[$key] = $_GET[$key];
             }
         } elseif ($type == 'post') {
             foreach ($_POST as $key => $value) {
-                $param[$key] = I('post.'.$key);
+                $param[$key] = $_POST[$key];
             }
         } else {
             foreach ($_REQUEST as $key => $value) {
