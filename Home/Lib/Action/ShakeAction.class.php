@@ -1,6 +1,6 @@
 <?php
 
-class ShakeController extends Action
+class ShakeAction extends Action
 {
 
     private $app_id = 'wxccf0766ad3d06490';
