@@ -20,7 +20,26 @@ class ShakeAction extends Action
         }
         $this->redirect('index/' . $actionto);
     }
+  public  function  getToken(){
+      $user = M("token");
+      $wxuser = $user->where('id =1')->find();
+      if ($wxuser) {
+          $expires_time= $wxuser["expires_time"];
+          if(strtotime(date('y-m-d h:i:s',time()))<strtotime($expires_time)){
+             //还没有过期
+              return $wxuser["token"];
+         }else{
+              $access_token_url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$this->$app_id.'&secret='.$this->$app_secret;
+              $access_token = $this->_getpage($access_token_url);
+              $access_token = json_decode($access_token);
+              $access_token = $access_token->{'access_token'};
+              $wxuser->save(array("token"=>$access_token,"expires_time"=>date('Y-m-d H:i:s',strtotime('+7200 secone'))));
 
+        }
+      }
+
+
+  }
     public function gotoOauth()
     {
         $parent = $_GET['parentid'];
@@ -31,9 +50,14 @@ class ShakeAction extends Action
         redirect($gotourl);
     }
 
+    public function subscribe($openid){
+
+      $url= 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.ACCESS_TOKEN.'&openid='.$openid.'&lang=zh_CN';
+    }
     public function index()
     {
 
+       echo $this->getToken();exit;
         require_once APP_PATH . "Common/jssdk.php";
         require_once APP_PATH . "Common/pay.php";
 
