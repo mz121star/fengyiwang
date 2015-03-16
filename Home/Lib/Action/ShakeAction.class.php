@@ -20,6 +20,30 @@ class ShakeAction extends Action
         }
         $this->redirect('index/' . $actionto);
     }
+    private function _getpage($url, $method = 'get', $data = array()) {
+        if (!$url) {
+            return '';
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        if ($method == 'post' || $method == 'POST') {
+            curl_setopt($ch, CURLOPT_POST, 1);
+            if (is_array($data)) {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+            } else {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            }
+        }
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        if (substr($url, 0, 5) == "https"){
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+        }
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
+    }
   public  function  getToken(){
       $user = M("token");
       $wxuser = $user->where('id =1')->find();
