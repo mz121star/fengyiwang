@@ -213,7 +213,30 @@ class ShakeAction extends Action
         }
 
     }
+        public  function sendmoney(){
 
+            $openid=$_POST["openid"];
+
+            if($openid){
+                $user = M("hongbaorecord");
+                $wxuser = $user->where('openid = "' .$openid. '"')->find();
+                if (!$wxuser) {
+                    require_once APP_PATH . "Common/pay.php";
+
+                    $packet = new \Packet();
+                    $packet->_route('wxpacket',array('openid'=>$openid));
+                    $userid = $user->add(array("openid"=>$openid,"money"=>1));
+                    if($userid)
+                     echo "恭喜您，摇出了一元钱现金红包！";
+                    else
+                        echo "很遗憾，没有摇出红包";
+
+                } else {
+                    echo "很遗憾，没有摇出红包";
+                }
+
+            }
+        }
     public function eventAction()
     {
         $fromUserName = I('post.fromUserName');

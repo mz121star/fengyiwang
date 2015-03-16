@@ -1,8 +1,10 @@
 <?php
 class Wxapi {
-    private $app_id = 'wxad6a4df6a301fb4b';
-    private $app_secret = 'ece8f0acb68c7ad8765997fd79a72b5b';
-    private $app_mchid = '1229180302';
+
+    private $app_id = 'wxccf0766ad3d06490';
+
+    private $app_secret = 'caa282ed24424a7f999f5196b4352ee6';
+    private $app_mchid = '1233186102';
     function __construct(){
     //do sth here....
     }
@@ -22,8 +24,8 @@ class Wxapi {
         $wxHongBaoHelper->setParameter("mch_billno", $this->app_mchid.date('YmdHis').rand(1000, 9999));//订单号
         $wxHongBaoHelper->setParameter("mch_id", $this->app_mchid);//商户号
         $wxHongBaoHelper->setParameter("wxappid", $this->app_id);
-        $wxHongBaoHelper->setParameter("nick_name", '微谷云');//提供方名称
-        $wxHongBaoHelper->setParameter("send_name", '微谷云元宵节摇一摇');//红包发送者名称
+        $wxHongBaoHelper->setParameter("nick_name", '人人汇');//提供方名称
+        $wxHongBaoHelper->setParameter("send_name", '人人汇红包摇一摇');//红包发送者名称
         $wxHongBaoHelper->setParameter("re_openid", $re_openid);//相对于医脉互通的openid
         $wxHongBaoHelper->setParameter("total_amount", 100);//付款金额，单位分
         $wxHongBaoHelper->setParameter("min_value", 100);//最小红包金额，单位分

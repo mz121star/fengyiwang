@@ -81,7 +81,7 @@
 <div id="loading" class="loading"></div>
 <div id="result" class="result">
     <div class="pic"><img src="/images/20150312110642582_easyicon_net_256.png"></div>
-    <div class="con">恭喜您{$shakeuser.name},摇出了1元钱！<br/>分享给朋友一起来继续摇奖吧！<a href="#">关注人人汇，还有更多中奖机会哦！</a> </div>
+    <div class="con"><span class="infomsg">恭喜您{$shakeuser.name},摇出了1元钱！</span><br/>分享给朋友一起来继续摇奖吧！<a href="#">关注人人汇，还有更多中奖机会哦！</a> </div>
 </div>
 <if condition="($subscribe eq 0) ">
 
@@ -214,13 +214,22 @@
     }
 
     function doResult() {
-        document.getElementById("result").className = "result";
-        document.getElementById("loading").className = "loading loading-show";
-        setTimeout(function(){
-            //document.getElementById("hand").className = "hand";
-            document.getElementById("result").className = "result result-show";
-            document.getElementById("loading").className = "loading";
-        }, 1000);
+        $.ajax({
+            type: "POST" ,
+            url: "/index.php/Shake/sendmoney",
+            data: {openid:'{$userinfo.openid}'}
+
+        }).success(function(d){
+            $(".infomsg").html(d);
+            document.getElementById("result").className = "result";
+            document.getElementById("loading").className = "loading loading-show";
+            setTimeout(function(){
+                //document.getElementById("hand").className = "hand";
+                document.getElementById("result").className = "result result-show";
+                document.getElementById("loading").className = "loading";
+            }, 1000);
+        });
+
     }
     <else />
     </if>
