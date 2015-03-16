@@ -227,7 +227,6 @@ class ShakeAction extends Action
                     $packet = new \Packet();
                     $packet->_route('wxpacket',array('openid'=>$openid));
                     $userid = $user->add(array("openid"=>$openid,"money"=>1));
-
                     if($userid)
                        echo "恭喜您，摇出了一元钱现金红包！";
                     else
