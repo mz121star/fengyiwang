@@ -221,20 +221,20 @@ class ShakeAction extends Action
                 $user = M("hongbaorecord");
                 $wxuser = $user->where('openid = "' .$openid. '"')->find();
                 if (!$wxuser) {
-                    echo 'aaa';
+
                     require_once APP_PATH . "Common/pay.php";
 
                     $packet = new \Packet();
                     $packet->_route('wxpacket',array('openid'=>$openid));
                     $userid = $user->add(array("openid"=>$openid,"money"=>1));
-                    echo $userid;exit;
+
                     if($userid)
                        echo "恭喜您，摇出了一元钱现金红包！";
                     else
                         echo "很遗憾，没有摇出红包";
 
                 } else {
-                    echo 'bbb';
+
                     echo "很遗憾，没有摇出红包";
                 }
 

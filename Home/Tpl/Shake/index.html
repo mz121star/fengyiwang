@@ -181,6 +181,7 @@
 
 
     <if condition="($isreg eq 1) ">
+            var ok=1;
     var SHAKE_THRESHOLD = 800;
     var last_update = 0;
     var x = y = z = last_x = last_y = last_z = 0;
@@ -214,26 +215,28 @@
     }
 
     function doResult() {
+        if(ok) {
+            ok=0;
+            $.ajax({
+                type: "POST",
+                url: "/index.php/Shake/sendmoney",
+                data: {
+                    "openid": '{$userinfo.openid}'
 
-        $.ajax({
-            type: "POST" ,
-            url: "/index.php/Shake/sendmoney",
-            data: {
-                "openid":'{$userinfo.openid}'
+                }
 
-            }
-
-        }).success(function(d){
-            $(".infomsg").html(d);
-            document.getElementById("result").className = "result";
-            document.getElementById("loading").className = "loading loading-show";
-            setTimeout(function(){
-                //document.getElementById("hand").className = "hand";
-                document.getElementById("result").className = "result result-show";
-                document.getElementById("loading").className = "loading";
-            }, 1000);
-        });
-
+            }).success(function (d) {
+                $(".infomsg").html(d);
+                document.getElementById("result").className = "result";
+                document.getElementById("loading").className = "loading loading-show";
+                setTimeout(function () {
+                    //document.getElementById("hand").className = "hand";
+                    document.getElementById("result").className = "result result-show";
+                    document.getElementById("loading").className = "loading";
+                    ok=1;
+                }, 1000);
+            });
+        }
     }
     <else />
     </if>
