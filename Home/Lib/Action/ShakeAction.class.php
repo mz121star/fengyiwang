@@ -34,8 +34,8 @@ class ShakeAction extends Action
     public function indexAction()
     {
 
-        require_once APP_PATH . "Home/Common/jssdk.php";
-        require_once APP_PATH . "Home/Common/pay.php";
+        require_once APP_PATH . "Common/jssdk.php";
+        require_once APP_PATH . "Common/pay.php";
 
 
 
