@@ -31,7 +31,7 @@ class ShakeAction extends Action
         redirect($gotourl);
     }
 
-    public function indexAction()
+    public function index()
     {
         echo APP_PATH;exit;
         require_once APP_PATH . "Common/jssdk.php";
