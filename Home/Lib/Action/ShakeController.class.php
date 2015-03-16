@@ -1,5 +1,4 @@
 <?php
-namespace Home\Controller;
 
 class ShakeController extends Action
 {
