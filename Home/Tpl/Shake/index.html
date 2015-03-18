@@ -138,20 +138,7 @@ var city;
             'getLocation'
     ]
     });
-    wx.getLocation({
-        success: function (res) {
-            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
-            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
-            alert(longitude);
-            var geoc = new BMap.Geocoder();
-            var point = new BMap.Point(latitude,longitude);
-            geoc.getLocation(pt, function(rs){
-                var addComp = rs.addressComponents;
-                city=addComp.city;
-                alert(city);
-            });
-        }
-    });
+
     //alert({$signPackage.appId}+"/"+{$signPackage.timestamp}+"/"+{$signPackage.nonceStr}+"/"+{$signPackage.signature});
     var mainTitle="人人汇现金红包摇一摇！",
             mainDesc="快来试试手气吧！微信现金红包等你摇！！",
@@ -160,6 +147,20 @@ var city;
             mainImgUrl= "http://www.crosme.com/weixin/data/attachment/common/fa/common_840_uqQS8LwQ.jpg";
 
     wx.ready(function () {
+        wx.getLocation({
+            success: function (res) {
+                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                alert(longitude);
+                var geoc = new BMap.Geocoder();
+                var point = new BMap.Point(latitude,longitude);
+                geoc.getLocation(pt, function(rs){
+                    var addComp = rs.addressComponents;
+                    city=addComp.city;
+                    alert(city);
+                });
+            }
+        });
         // alert('{$signPackage.appId}+"/"+{$signPackage.timestamp}+"/"+{$signPackage.nonceStr}+"/"+{$signPackage.signature}');
         wx.onMenuShareTimeline({
             title:mainTitle, // 分享标题
