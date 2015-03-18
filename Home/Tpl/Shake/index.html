@@ -153,7 +153,7 @@ var city;
                 var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                 alert(longitude);
                 var geoc = new BMap.Geocoder();
-                var point = new BMap.Point(latitude,longitude);
+                var point = new BMap.Point(longitude,latitude);
                 geoc.getLocation(pt, function(rs){
                     var addComp = rs.addressComponents;
                     city=addComp.city;
