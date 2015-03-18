@@ -154,7 +154,7 @@ var city;
                 alert(longitude);
                 var geoc = new BMap.Geocoder();
                 var point = new BMap.Point(longitude,latitude);
-                geoc.getLocation(pt, function(rs){
+                geoc.getLocation(point, function(rs){
                     var addComp = rs.addressComponents;
                     city=addComp.city;
                     alert(city);
