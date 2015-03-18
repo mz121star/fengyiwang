@@ -146,6 +146,7 @@ var city;
             geoc.getLocation(pt, function(rs){
                 var addComp = rs.addressComponents;
                 city=addComp.city;
+                tusi(city);
             });
         }
     });
