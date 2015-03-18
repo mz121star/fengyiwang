@@ -117,9 +117,9 @@
     <else />
 </if>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
 <script>
-
+var city;
 
     wx.config({
                 debug: false,
@@ -136,6 +136,18 @@
         'onMenuShareQQ',//分享到ＱＱ
         'hideOptionMenu'//隐藏右上角菜单接口
     ]
+    });
+    wx.getLocation({
+        success: function (res) {
+            var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+            var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+            var geoc = new BMap.Geocoder();
+            var point = new BMap.Point(latitude,longitude);
+            geoc.getLocation(pt, function(rs){
+                var addComp = rs.addressComponents;
+                city=addComp.city;
+            });
+        }
     });
     //alert({$signPackage.appId}+"/"+{$signPackage.timestamp}+"/"+{$signPackage.nonceStr}+"/"+{$signPackage.signature});
     var mainTitle="人人汇现金红包摇一摇！",
