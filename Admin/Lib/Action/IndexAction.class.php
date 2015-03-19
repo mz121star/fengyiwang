@@ -49,7 +49,7 @@ class IndexAction extends Action {
         {
             "type": "view",
             "name": "红包",
-            "key": "http://fy.webs.dlwebs.com/index.php/shake"
+            "url": "http://fy.webs.dlwebs.com/index.php/shake"
         }
     ]
 }
