@@ -19,7 +19,7 @@ class IndexAction extends Action {
             $this->redirect('Index/index');
         }
     }
-    public function weixinAction() {
+    public function weixin() {
         if (!$_SESSION['access_token']) {
             /*  $appid = 'wx746191c3d2d0ebd7';
               $appsecret = 'a4e835f6b20748fba46a827017cc835a';*/
