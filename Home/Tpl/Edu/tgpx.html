@@ -110,6 +110,34 @@
       });
 
 
+
+
+    $('.ckbox').on("touchstart",function(){
+        var id = $(this).data('id');
+        if($(this).attr("src")=="/images/check.png"){
+            $(this).attr("src","/images/uncheck.png")  ;
+            $('#edu_id'+id).attr("checked",false)  ;
+        } else {
+            $(this).attr("src","/images/check.png")  ;
+            $('#edu_id'+id).attr("checked",true)  ;
+        }})
+
+    $('#ordersub').on("touchstart",function(){
+        var issub = 0;
+        $("input[id^='edu_id']").each(function () {
+            if (this.checked) {
+                issub = 1;
+            }
+        });
+        if (issub) {
+            $('#ordername').submit();
+        } else {
+            alert("请选择至少一个机构");
+        }
+    })
+
+
+
 </script>
    <include file="Public:userleft"/>
  <include file="Public:footer"/>
