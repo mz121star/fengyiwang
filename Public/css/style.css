@@ -397,7 +397,7 @@ html.mm-nooverflowscrolling.mm-opened .mm-page #header,html.mm-nooverflowscrolli
 .list-item-address .s_aim_s { margin-right: 4px; position: relative; top: 4px; vertical-align: top;}
 
 
-.list-item{position:relative;min-height: 94px;padding: 10px 0px;margin: 10px;/* border-bottom:1px solid #d2d2d2; */opacity: 0.7;border-radius: 10px;background-color: #004788;margin-bottom: 10px;box-shadow: 0px 2px rgb(32, 27, 27);}
+.list-item{position:relative;min-height: 94px;padding: 10px 0px;margin: 10px;/* border-bottom:1px solid #d2d2d2; *//* opacity: 0.7; */border-radius: 10px;background-color: #004788;margin-bottom: 10px;/* box-shadow: 0px 2px rgb(32, 27, 27); */}
 .small{
     min-height: 10px;
     padding: 0;
@@ -1124,7 +1124,7 @@ header .l_tbn a:hover{color:#fff;}
 .small .list-item-title   {padding: 10px 0 2px 0; }
 .small .list-item-title  a  {text-decoration: none }
 .jglb{clear: both;
-    height: 150px;
+    /* height: 150px; */
     overflow-y: scroll;}
 #addPeople{width: 100px;height: 40px;margin: 0px 0px 0px 10px;/* display: inline-block; */border: 0px;background-color: #008FFF;border-radius: 2px;color: #fff;font-size: 2rem;}
 
