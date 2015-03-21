@@ -19,8 +19,8 @@ class TuanGouAction extends PublicAction {
     }
     public function getcode() {
 
-        $code = $_GET('code');
-        $telphone = $_GET('phone');
+        $code =  $this->_get('code');
+        $telphone =  $this->_get('phone');
         echo 'ea'; exit;
         //短信接口机构代码 $jgid
         $jgid = '300';
