@@ -1,6 +1,6 @@
 <?php
 
-class EduAction extends PublicAction {
+class TuanGouAction extends PublicAction {
 
     public function index(){
          $tuangou=M("tuangou");
