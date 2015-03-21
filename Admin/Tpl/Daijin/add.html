@@ -1,0 +1,58 @@
+<h2 class="sub-header">添加团购</h2>
+<div class="row placeholders">
+    <div class="col-md-7">
+        <form class="form-horizontal" role="form" method="post" action="__GROUP__/TuanGou/save" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="userid" class="col-sm-3 control-label">代金券名称</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="name" name="name" value="" required autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="userid" class="col-sm-3 control-label">代金券价值</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="price" name="price" value="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userid" class="col-sm-3 control-label">参与人数</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="joinpeople" name="joinpeople" value="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="type1" class="col-sm-3 control-label">代金券介绍</label>
+                <div class="col-sm-5">
+                    <script name="description" id="description"></script>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="status" class="col-sm-3 control-label">图片</label>
+                <div class="col-sm-4">
+                    <input type="file" id="image" name="image">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript " src="/ueditor/ueditor.config.js "></script>
+<script type="text/javascript " src="/ueditor/ueditor.all.js "></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('description', {
+        toolbars: [
+            ['fullscreen', 'source', 'undo', 'redo', 'simpleupload', 'insertimage']
+        ],
+        autoHeightEnabled: true,
+        autoFloatEnabled: true,
+        initialFrameHeight:300,
+        initialFrameWidth:500
+    });
+</script>

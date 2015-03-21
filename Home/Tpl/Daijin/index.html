@@ -1,0 +1,89 @@
+<include file="Public:header"/>
+<style>
+    #peoples{
+        position: fixed;
+        background-color: #35576F;
+        top: 10%;
+        width: 100%;
+        z-index: 99;
+        display: none;
+    }
+    #header{display: none}
+    .modal{
+        width: 100%;
+        background-color: #000;
+        opacity: 0.7;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 9;
+        display: none;
+    }
+</style>
+<!-- Content -->
+<form method="post"  >
+    <input type="hidden" name="order_type" value="2">
+    <h3>代金券列表</h3>
+    <div class="jglb" style="height: auto">
+
+        <!--      <foreach name="edulist" item="edu">
+                  <div class="checkbox">
+                      <label>
+                          &lt;!&ndash; <img src="/uploads/1403/image/22222.jpg" width="40" height="40">&ndash;&gt;
+                    <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                    {$edu.edu_name}
+                </label>
+
+            </div>
+        </foreach>-->
+
+
+        <foreach name="list" item="edu">
+            <div class="list-item toggle_bright">
+                <a href="__GROUP__/detail/{$edu.Id}" class="link_area"></a>
+                <a href="ticket_230.html"><img class="list-item-pic" src="/upload/{$edu.image}" /></a>
+                <div class="list-item-infos">
+                    <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$edu.name}</div>
+                    <div class="list-item-address txt_ellipsis gray">价值:<span style="text-decoration:line-through">{$edu.price}</span> </div>
+                    <div class="list-item-address1 txt_ellipsis gray"> 预约量:{$edu.joinpeople}</div>
+
+                </div>
+           <!--     <div class="list-item-price">
+                    <div class="item_fun orange">
+
+                    </div>
+                    <div class="link_area" href="detail.html"> <img class="ckbox"  data-id="{$edu.id}" src="/images/uncheck.png"/>
+
+                        <input type="checkbox" name="edu_id[]" id="edu_id{$edu.id}" value="{$edu.id}" style="display: none;"></div>
+
+                </div>-->
+            </div>
+        </foreach>
+    </div>
+    <div class="modal">    </div>
+    <div id="peoples" >              <h3>预约信息</h3>
+
+        <div class="mm-search" id="people">
+            <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
+            <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone[]">
+            <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_jbdesc[]"></textarea>
+
+        </div>
+        <if condition="$is_tg eq 1">
+            <input type="hidden" name="is_tg" value="1">
+            <input type="button" id="addPeople" value="增加">
+        </if>
+    </div>
+
+
+
+
+
+<!--    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 40px; position: fixed;" isfixed="true">
+        <a href="javascript:;" id="ordersub">确定报名</a>
+
+    </div>-->
+</form>
+
+<include file="Public:userleft"/>
+<include file="Public:footer"/>
