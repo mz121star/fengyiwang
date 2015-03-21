@@ -37,14 +37,14 @@ class IndexAction extends Action {
         $underbar_content = '{
     "button": [
         {
-            "type": "click",
+            "type": "view",
             "name": "团购",
-            "key": "fy_tuan"
+            "key": "http://fy.webs.dlwebs.com/index.php/TuanGou"
         },
         {
-            "type": "click",
+            "type": "view",
             "name": "代金券",
-            "key": "fy_tuan"
+            "key": "http://fy.webs.dlwebs.com/index.php/Daijin"
         },
         {
             "type": "view",
