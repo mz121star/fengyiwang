@@ -1,0 +1,170 @@
+<include file="Public:header"/>
+<style>
+    #peoples{
+        position: fixed;
+        background-color: #35576F;
+        top: 10%;
+        width: 100%;
+        z-index: 99;
+        display: none;
+    }
+    .modal{
+        width: 100%;
+        background-color: #000;
+        opacity: 0.7;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 9;
+        display: none;
+    }
+</style>
+<!-- Content -->
+<form method="post" action="__GROUP__/edu/savejbtg" id="ordername" name="ordername">
+    <input type="hidden" name="order_type" value="2">
+    <h3>可选机构列表</h3>
+    <div class="jglb" style="height: auto">
+
+        <!--      <foreach name="edulist" item="edu">
+                  <div class="checkbox">
+                      <label>
+                          &lt;!&ndash; <img src="/uploads/1403/image/22222.jpg" width="40" height="40">&ndash;&gt;
+                    <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                    {$edu.edu_name}
+                </label>
+
+            </div>
+        </foreach>-->
+
+
+        <foreach name="list" item="edu">
+            <div class="list-item toggle_bright">
+                <a href="__GROUP__/detailedu/{$edu.id}" class="link_area"></a>
+                <a href="ticket_230.html"><img class="list-item-pic" src="/upload/{$edu.image}" /></a>
+                <div class="list-item-infos">
+                    <div class="list-item-title txt_ellipsis" style="height:43px;overflow:hidden"> {$edu.name}</div>
+                    <div class="list-item-address txt_ellipsis gray">原价:<span style="text-decoration:line-through">{$edu.price}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;折后价:{$edu.discountprice}</div>
+                    <div class="list-item-address1 txt_ellipsis gray"> 签约量:{$edu.joinpeople}</div>
+
+                </div>
+                <div class="list-item-price">
+                    <div class="item_fun orange">
+
+                    </div>
+                    <div class="link_area" href="detail.html"> <img class="ckbox"  data-id="{$edu.id}" src="/images/uncheck.png"/>
+
+                        <input type="checkbox" name="edu_id[]" id="edu_id{$edu.id}" value="{$edu.id}" style="display: none;"></div>
+
+                </div>
+            </div>
+        </foreach>
+    </div>
+    <div class="modal">    </div>
+    <div id="peoples" >              <h3>预约信息</h3>
+
+        <div class="mm-search" id="people">
+            <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
+            <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone[]">
+            <textarea placeholder="大致情况"  rows="4"   autocomplete="off" name="user_jbdesc[]"></textarea>
+
+        </div>
+        <if condition="$is_tg eq 1">
+            <input type="hidden" name="is_tg" value="1">
+            <input type="button" id="addPeople" value="增加">
+        </if>
+    </div>
+
+
+
+
+
+    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+        <a href="javascript:;" id="ordersub">确定报名</a>
+
+    </div>
+</form>
+<script>
+    $(".modal").on("touchstart",function(){
+        $(this).hide();
+        $("#peoples").hide();
+    })
+    $('#ordersub').on("touchstart",function(){
+        $(".modal").show();
+        $("#peoples").show();
+        var issub = 0;
+        $("input[name^='edu_id']").each(function () {
+            if (this.checked) {
+                issub = 1;
+            }
+        });
+        if (issub) {
+            var issub1 = 1;
+            $("input[name^='user_jbname']").each(function () {
+                if (!this.value) {
+                    issub1 = 0;
+                }
+            });
+            if (issub1) {
+                var issub2 = 1;
+                $("input[name^='user_jbphone']").each(function () {
+                    if (!this.value) {
+                        issub2 = 0;
+                    }
+                });
+                if (issub2) {
+                    $('#ordername').submit();
+                } else {
+                    alert("请填写所有朋友联系电话");
+                }
+            } else {
+                alert("请填写所有朋友姓名");
+            }
+        } else {
+            alert("请选择至少一个机构");
+        }
+    });
+
+    var seq=1;
+
+    $("#addPeople").on("touchstart",function(){
+        //   $("#peoples").append($("p").clone());
+        seq= seq+1;
+        console.log(seq);
+        var a= $("#people").clone();
+        a.attr("id",seq);
+        $("#peoples").append(a);
+
+    });
+
+
+
+
+    $('.ckbox').on("touchstart",function(){
+        var id = $(this).data('id');
+        if($(this).attr("src")=="/images/check.png"){
+            $(this).attr("src","/images/uncheck.png")  ;
+            $('#edu_id'+id).attr("checked",false)  ;
+        } else {
+            $(this).attr("src","/images/check.png")  ;
+            $('#edu_id'+id).attr("checked",true)  ;
+        }})
+
+    $('#ordersub').on("touchstart",function(){
+        var issub = 0;
+        $("input[id^='edu_id']").each(function () {
+            if (this.checked) {
+                issub = 1;
+            }
+        });
+        if (issub) {
+            $('#ordername').submit();
+        } else {
+            alert("请选择至少一个机构");
+        }
+    })
+
+
+
+</script>
+<include file="Public:userleft"/>
+<include file="Public:footer"/>
