@@ -1,29 +1,63 @@
 <include file="Public:header"/>
         <style>
             #peoples{color: white;}
+      #header{display: none;}
+             #peoples{
+                 position: fixed;
+                 background-color: #35576F;
+                 top: 10%;
+                 width: 100%;
+                 z-index: 99;
+                 display: none;
+             }
+            .modal{
+                width: 100%;
+                background-color: #000;
+                opacity: 0.7;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                z-index: 9;
+                display: none;
+            }
+
         </style>
-<div id="peoples">
+<div id="">
     <div class="mm-search no-border" id="people">
         <div>团购名称：{$eduinfo.name}</div>
 
        <div style="text-decoration: line-through">价格：{$eduinfo.price}</div>
-        <div>现价：{$eduinfo.edu_ask}</div>
+        <div>现价：{$eduinfo.discountprice}</div>
             <div>签约量：{$eduinfo.joinpeople}</div>
+        <div>详细说明：</div>
                 <div>{$eduinfo.description|htmlspecialchars_decode}</div>
 
     </div>
 </div>
 
+<div class="modal">    </div>
+<div id="peoples" >              <h3>预约信息</h3>
+
+    <div class="mm-search" id="people">
+        <input placeholder="姓名" type="text" autocomplete="off"  name="username">
+        <input placeholder="电话" type="tel" autocomplete="off" name="phone">
+        <input placeholder="学校"  rows="4"   autocomplete="off" name="schoole">
+        <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
+    </div>
+
+</div>
 
 
 <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
-    <a href="javascript:;" id="ordersub">返回首页</a>
+    <a href="javascript:;" id="ordersub">报名参团！</a>
 
 </div>
 <script>
 
     $('#ordersub').on("touchstart",function(){
-        location.href = "__GROUP__/Index/index";
+        $(".modal").show();
+        $("#peoples").show();
+      //  location.href = "__GROUP__/Index/index";
     });
 
 
