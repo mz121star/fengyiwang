@@ -1,4 +1,7 @@
 <include file="Public:header"/>
+        <style>
+            #peoples{color: white;}
+        </style>
 <div id="peoples">
     <div class="mm-search no-border" id="people">
         <div>团购名称：{$eduinfo.name}</div>
@@ -6,7 +9,7 @@
        <div style="text-decoration: line-through">价格：{$eduinfo.price}</div>
         <div>现价：{$eduinfo.edu_ask}</div>
             <div>签约量：{$eduinfo.joinpeople}</div>
-                <div>{$eduinfo.description}</div>
+                <div>{$eduinfo.description|htmlspecialchars_decode}</div>
 
     </div>
 </div>
