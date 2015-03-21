@@ -1,6 +1,6 @@
 <?php
 
-class TuanGouAction extends PublicAction {
+class DaijinAction extends PublicAction {
 
     public function index(){
          $tuangou=M("Daijin");
