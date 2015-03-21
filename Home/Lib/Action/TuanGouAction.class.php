@@ -34,9 +34,8 @@ class TuanGouAction extends PublicAction {
         $message = urlencode('尊敬的客户：'.$code.'（人人汇手机动态验证码以生成，请完成验证）');
         $gateway = 'http://223.4.21.214:8180/service.asmx/SendMessageStr?Id='.$jgid.'&Name='.$loginname.'&Psw='.$passwd.'&Message='.$message.'&Phone='.$telphone.'&Timestamp=0';
         $result = file_get_contents($gateway);
+        $this->success($result);
 
-        echo $result;
-        exit;
     }
     public function peixun() {
         $sid = $this->_get('sid');

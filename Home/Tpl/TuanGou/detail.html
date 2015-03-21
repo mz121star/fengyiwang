@@ -62,7 +62,11 @@
         $("#peoples").show();
       //  location.href = "__GROUP__/Index/index";
     });
+    var send=true;
     $(".getcode").on("click",function(){
+        if(!send){
+            return false;
+        }
         var _code=Math.floor(Math.random()*10000);
         var _tel=$("#tel").val();
         if(/^1\d{10}$/.test(_tel)){
@@ -71,7 +75,11 @@
                 method:'GET',
                 data:{code:_code,phone:_tel}
             }).success(function(d){
-                $(this).val(d);
+                $(".getcode").val("已发送");
+                $(".getcode").attr("disable","disable");
+                send=false;
+            }).fail(function(d){
+                alert(d.info);
             })
         }else{
             alert("请输入正确手机号");
