@@ -18,6 +18,7 @@ $private_config = array(
                                                   'setsource/:uid/:from' => 'Index/sendsource',
                                                   'weixin/:uid/:send' => 'Index/send',
                                                   'putlogo/:logoid' => 'Index/putlogo',
+
                                                   )
                         );
 

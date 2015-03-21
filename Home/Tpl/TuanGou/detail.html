@@ -47,10 +47,11 @@
 
     <div class="mm-search" id="people">
         <input placeholder="姓名" type="text" autocomplete="off"  name="username">
-        <input placeholder="电话" type="tel" autocomplete="off" name="phone">
-        <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="onecol" type="button" value="获取验证码">
+        <input placeholder="电话" type="tel" autocomplete="off" name="phone" id="tel">
+        <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">
         <input placeholder="学校"  type="text"  autocomplete="off" name="schoole">
         <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
+        <input type="hidden" value="" id="code">
     </div>
 
 </div>
@@ -61,7 +62,23 @@
         $("#peoples").show();
       //  location.href = "__GROUP__/Index/index";
     });
+    $(".getcode").on("click",function(){
+        var _code=Math.floor(Math.random()*10000);
+        var _tel=$("#tel").val();
+        if(/^1\d{10}$/.test(_tel)){
+            $.ajax({
+                url:'__GROUP__/TuanGou/getcode',
+                method:'GET',
+                data:{code:_code,phone:_tel}
+            }).success(function(d){
+                $(this).val(d);
+            })
+        }else{
+            alert("请输入正确手机号");
+        }
 
+
+    })
 
 </script>
 
