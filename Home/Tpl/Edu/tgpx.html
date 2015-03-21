@@ -6,7 +6,7 @@
                 top: 10%;
                 width: 100%;
                 z-index: 99;
-
+                display: none;
             }
             .modal{
                 width: 100%;
@@ -16,6 +16,7 @@
                 position: absolute;
                 top: 0;
                 z-index: 9;
+                display: none;
             }
         </style>
     <!-- Content -->
@@ -83,7 +84,10 @@
 </div>
 </form>
           <script>
-    
+    $(".modal").on("touchstart",function(){
+        $(this).hide();
+        $("#peoples").hide();
+    })
     $('#ordersub').on("touchstart",function(){
         $(".modal").show();
         $("#peoples").show();
