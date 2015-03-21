@@ -3,18 +3,16 @@
 class TuanGouAction extends PublicAction {
 
     public function lists(){
-        $edu = M("edu");
+        $edu = M("baoming");
         import('ORG.Util.Page');
         $count = $edu->count();
         $page = new Page($count, 10);
-        $edulist = $edu->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $edulist = $edu->order(array('Id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('edulist', $edulist);
         
-        $section = M("section");
-        $sectionlist = $section->select();
-        $this->assign('sectionlist', $sectionlist);
+
         $this->display();
     }
     
