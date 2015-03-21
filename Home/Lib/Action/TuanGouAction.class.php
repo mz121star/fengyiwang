@@ -9,21 +9,12 @@ class TuanGouAction extends PublicAction {
         $this->display();
     }
     
-    public function detailedu(){
-        $eid = $this->_get('eid');
-        $edu = M("edu");
-        $eduinfo = $edu->where('id = '.$eid)->find();
-
-        $edu_browse = $eduinfo['edu_browse'];
-        $edu_browse = ($edu_browse) ? $edu_browse + 1 : 1;
-        $edu->where('id = '.$eid)->setField('edu_browse', $edu_browse);
-
-        $edu_ask = $eduinfo['edu_ask'];
-        $edu_ask = ($edu_ask) ? $edu_ask + 1 : 1;
-        $edu->where('id = '.$eid)->setField('edu_ask', $edu_ask);
-
+    public function detail(){
+        $eid = $this->_get('id');
+        $edu = M("tuangou");
+        $eduinfo = $edu->where('Id = '.$eid)->find();
         $this->assign('eduinfo', $eduinfo);
-        $this->assign('pagetitle', '机构详情');
+
         $this->display();
     }
 
@@ -57,19 +48,7 @@ class TuanGouAction extends PublicAction {
         $this->display('lists');
     }
 
-    public function detail() {
-        $post = $this->filterAllParam('post');
-        $edu = M("edu");
-        $edulist = array();
-        foreach ($post['edu_id'] as $value) {
-            $eduinfo = $edu->field('edu_name')->where('id = '.$value)->find();
-            $edulist[] = array('id'=>$value, 'edu_name'=>$eduinfo['edu_name']);
-        }
-        $this->assign('edulist', $edulist);
-        $this->assign('pagetitle', '订单详情');
-        $this->display();
-    }
-    
+
     public function gotousercenter() {
         $this->redirect('User/center');
     }

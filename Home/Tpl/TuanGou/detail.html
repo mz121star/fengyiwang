@@ -1,0 +1,29 @@
+
+<div id="peoples">
+    <div class="mm-search no-border" id="people">
+        <div>团购名称：{$eduinfo.name}</div>
+
+       <div style="text-decoration: line-through">价格：{$eduinfo.price}</div>
+        <div>现价：{$eduinfo.edu_ask}</div>
+            <div>签约量：{$eduinfo.joinpeople}</div>
+                <div>{$eduinfo.description}</div>
+
+    </div>
+</div>
+
+
+
+<div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
+    <a href="javascript:;" id="ordersub">返回首页</a>
+
+</div>
+<script>
+
+    $('#ordersub').on("touchstart",function(){
+        location.href = "__GROUP__/Index/index";
+    });
+
+
+</script>
+<include file="Public:userleft"/>
+<include file="Public:footer"/>

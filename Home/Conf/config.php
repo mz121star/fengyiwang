@@ -12,6 +12,7 @@ $private_config = array(
                                                   'edulist/:sid' => 'Edu/lists',
                                                   'syspic/:picid' => 'Index/syspic',
                                                   'detailedu/:eid' => 'Edu/detailedu',
+                                                     'detail/:id' => 'TuanGou/detail',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
                                                   'wx/:uid' => 'Index/home',
                                                   'setsource/:uid/:from' => 'Index/sendsource',
