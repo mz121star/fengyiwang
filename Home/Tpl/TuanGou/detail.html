@@ -48,6 +48,7 @@
     <div class="mm-search" id="people">
         <input placeholder="姓名" type="text" autocomplete="off"  name="username">
         <input placeholder="电话" type="tel" autocomplete="off" name="phone">
+        <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="onecol" type="button" value="获取验证码">
         <input placeholder="学校"  type="text"  autocomplete="off" name="schoole">
         <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
     </div>
@@ -64,15 +65,5 @@
 
 </script>
 
-<div class="modal">    </div>
-<div id="peoples" >              <h3>预约信息</h3>
 
-    <div class="mm-search" id="people">
-        <input placeholder="姓名" type="text" autocomplete="off"  name="username">
-        <input placeholder="电话" type="tel" autocomplete="off" name="phone">
-        <input placeholder="学校"  type="text"  autocomplete="off" name="schoole">
-        <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
-    </div>
-
-</div>
 <include file="Public:footer"/>
