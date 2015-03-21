@@ -45,15 +45,15 @@
 <div class="modal">    </div>
 <div id="peoples" >              <h3>预约信息</h3>
 
-    <div class="mm-search" id="people">
-        <form action="__GROUP__/TuanGou/baoming" method="post" id="baomingform">
+    <div class="mm-search" id="people1">
+        <form action="__GROUP__/TuanGou/baoming" method="post" id="baoming" name="baoming">
         <input placeholder="姓名" type="text" autocomplete="off"  name="name">
         <input placeholder="电话" type="tel" autocomplete="off" name="phone" id="tel">
         <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">
         <input placeholder="学校"  type="text"  autocomplete="off" name="school">
         <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
         <input type="hidden" value="zz" id="code">
-        <input type="button" id="submit" value="确认提交">
+        <input type="button"   id="submit" value="确认提交">
         </form>
     </div>
 
@@ -93,7 +93,7 @@
     })
     $("#submit").on("click",function(){
         if($("#code").val().trim()==$("#vercode").val().trim()){
-            $("#baomingform").submit();
+            $("#baoming").submit();
         }
     })
 
