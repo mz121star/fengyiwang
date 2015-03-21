@@ -46,12 +46,15 @@
 <div id="peoples" >              <h3>预约信息</h3>
 
     <div class="mm-search" id="people">
-        <input placeholder="姓名" type="text" autocomplete="off"  name="username">
+        <form action="__GROUP__/TuanGou/baoming" method="post" id="form">
+        <input placeholder="姓名" type="text" autocomplete="off"  name="name">
         <input placeholder="电话" type="tel" autocomplete="off" name="phone" id="tel">
         <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">
-        <input placeholder="学校"  type="text"  autocomplete="off" name="schoole">
+        <input placeholder="学校"  type="text"  autocomplete="off" name="school">
         <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
         <input type="hidden" value="" id="code">
+        <input type="button" id="submit" value="确认提交">
+        </form>
     </div>
 
 </div>
@@ -77,6 +80,7 @@
             }).success(function(d){
                 $(".getcode").val("已发送");
                 $(".getcode").attr("disable","disable");
+                $("#code").val(_code);
                 send=false;
             }).fail(function(d){
                 alert(d.info);
@@ -86,6 +90,11 @@
         }
 
 
+    })
+    $("#submit").on("click",function(){
+        if($("#code").val().trim()==$("#vercode").val().trim()){
+            $("#form").submit();
+        }
     })
 
 </script>

@@ -37,6 +37,22 @@ class TuanGouAction extends PublicAction {
         $this->success($result);
 
     }
+    public  function  baoming(){
+        $baoming = M("baoming");
+        $post = $this->filterAllParam('post');
+        $phone=$_POST["phone"];
+        $guangou_id=$_POST["guangou_id"];
+      $baomingid=  $baoming->where(array('phone'=>$phone,'guangou_id'=>$guangou_id))->find();
+        if($baomingid){
+            $this->error("您已经报名过该团购");
+        }
+        $baomingid = $baoming->add($post);
+        if($baomingid){
+            $this->success("报名成功");
+        }else{
+            $this->error("报名失败");
+        }
+    }
     public function peixun() {
         $sid = $this->_get('sid');
         $sectionedu = M("sectionedu");
