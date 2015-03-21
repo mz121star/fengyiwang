@@ -39,12 +39,12 @@ class IndexAction extends Action {
         {
             "type": "view",
             "name": "团购",
-            "key": "http://fy.webs.dlwebs.com/index.php/TuanGou"
+            "url": "http://fy.webs.dlwebs.com/index.php/TuanGou"
         },
         {
             "type": "view",
             "name": "代金券",
-            "key": "http://fy.webs.dlwebs.com/index.php/Daijin"
+            "url": "http://fy.webs.dlwebs.com/index.php/Daijin"
         },
         {
             "type": "view",
