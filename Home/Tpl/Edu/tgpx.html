@@ -1,6 +1,6 @@
 <include file="Public:header"/>
         <style>
-            .peoples{
+           #peoples{
                 position: fixed;
                 background-color: #35576F;
                 top: 10%;
@@ -75,7 +75,7 @@
     
     $('#ordersub').on("touchstart",function(){
 
-        $(".peoples").show();
+        $("#peoples").show();
         var issub = 0;
         $("input[name^='edu_id']").each(function () {
             if (this.checked) {
