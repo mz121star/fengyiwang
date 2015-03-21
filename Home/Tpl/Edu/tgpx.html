@@ -12,6 +12,10 @@
                 width: 100%;
                 background-color: #000;
                 opacity: 0.7;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                z-index: 9;
             }
         </style>
     <!-- Content -->
@@ -54,7 +58,7 @@
             </div>
         </foreach>
     </div>
-    <div class="modal">
+    <div class="modal">    </div>
     <div id="peoples" >              <h3>预约信息</h3>
 
     <div class="mm-search" id="people">
@@ -68,7 +72,7 @@
             <input type="button" id="addPeople" value="增加">
         </if>
     </div>
-    </div>
+
 
 
 
@@ -81,7 +85,7 @@
           <script>
     
     $('#ordersub').on("touchstart",function(){
-
+        $(".modal").show();
         $("#peoples").show();
         var issub = 0;
         $("input[name^='edu_id']").each(function () {
