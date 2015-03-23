@@ -1,0 +1,30 @@
+
+
+<h2 class="sub-header">红包发放列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>电话</th>
+            <th>中奖金额</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="list" item="order">
+          <tr>
+            <td class="col-sm-2">{$order.id}</td>
+            <td class="col-sm-2">{$order.name}</td>
+            <td class="col-sm-2">{$order.phone}</td>
+            <td class="col-sm-2">{$order.money}</td>
+
+
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+
+    </div>

@@ -3,15 +3,11 @@
 class ShakeAction extends PublicAction {
 
     public function index(){
-        $qrcode = M("qrcode");
-        import('ORG.Util.Page');
-        $count = $qrcode->count();
-        $page = new Page($count, 10);
-        $userlist = $qrcode->order(array('id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
-        $show = $page->show();
-        $this->assign('page',$show);
-        $this->assign('qrlist', $userlist);
-        $this->display();
+
+            $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
+            $result=$Model->query("  SELECT * FROM fy_shake_user s,fy_hongbaorecord h WHERE s.openid=h.openid");
+            $this->assign("list",$result);
+             $this->display();
     }
 
 
