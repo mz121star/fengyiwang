@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <meta name="author" content="www.frebsite.nl" />
-    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="author" content="www.frebsite.nl"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes"/>
 
     <title>人人汇</title>
     <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link type="text/css" rel="stylesheet" href="/css/meituan.css" />
+    <link type="text/css" rel="stylesheet" href="/css/meituan.css"/>
 
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
@@ -17,27 +17,101 @@
 </head>
 <body class="o-page">
 <div id="page">
-    <!-- Header -->
-    <header class="navbar">
+<!-- Header -->
+<header class="navbar">
 
-        <span class="nav-header h1">代金券列表</span>
-
-
-    </header>
+    <span class="nav-header h1">代金券列表</span>
 
 
-    <!-- Content -->
-    <form method="post">
-        <input type="hidden" name="order_type" value="2">
+</header>
+<dl class="list list-in">
+    <dd class="icon-wrapper h_gesture_">
+        <ul class="icon-list page current">
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/1" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=1&amp;cateType=poi">
+                <span class="icon-circle typeid1" style="background: #FF8822">
+                吃
+                </span>
+                    <span class="icon-desc">美食</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/99" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=99&amp;cateType=poi">
+                <span class="icon-circle typeid99" style="background: #EA6644">
+                看
+                </span>
+                    <span class="icon-desc">电影</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/20"
+                   href="/jiudian/touch/poi" data-stid="b1">
+                <span class="icon-circle typeid20" style="background: #7788F2">
+                住
+                </span>
+                    <span class="icon-desc">酒店</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/10" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=10&amp;cateType=poi">
+                <span class="icon-circle typeid10">
+                唱
+                </span>
+                    <span class="icon-desc">KTV</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/393" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=393&amp;cateType=poi">
+                <span class="icon-circle typeid393" style="background: #FF8822">
+                券
+                </span>
+                    <span class="icon-desc">代金券</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/195" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=195&amp;cateType=deal">
+                <span class="icon-circle typeid195" style="background: #66CCEE">
+                外
+                </span>
+                    <span class="icon-desc">周边游</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/11" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=11&amp;cateType=poi">
+                <span class="icon-circle typeid11">
+                糕
+                </span>
+                    <span class="icon-desc">蛋糕甜点</span></a>
+            </li>
+            <li class="icon">
+                <a class="J_single_category" style="display:block" gaevent="imt/homepage/category1/2" data-stid="_b1"
+                   href="http://i.meituan.com/tianjin?cid=2&amp;cateType=poi">
+                <span class="icon-circle typeid2" style="background: #F7BA5B">
+                乐
+                </span>
+                    <span class="icon-desc">休闲娱乐</span></a>
+            </li>
+        </ul>
+
+        <ul class="list-ico list">
+            <li class="active"></li>
+            <li>
+            </li>
+        </ul>
+    </dd>
+</dl>
+
+<!-- Content -->
+<form method="post">
+    <input type="hidden" name="order_type" value="2">
 
 
+    <div class="jglb" style="height: auto">
 
-        <div class="jglb" style="height: auto">
-
-            <!--      <foreach name="edulist" item="edu">
-                      <div class="checkbox">
-                          <label>
-                              &lt;!&ndash; <img src="/uploads/1403/image/22222.jpg" width="40" height="40">&ndash;&gt;
+        <!--      <foreach name="edulist" item="edu">
+                  <div class="checkbox">
+                      <label>
+                          &lt;!&ndash; <img src="/uploads/1403/image/22222.jpg" width="40" height="40">&ndash;&gt;
                     <input type="checkbox" name="edu_id[]" value="{$edu.id}">
                     {$edu.edu_name}
                 </label>
@@ -45,82 +119,83 @@
             </div>
         </foreach>-->
 
-            <div id="deals" class="deals-list">
-                <foreach name="list" item="edu">
+        <div id="deals" class="deals-list">
+            <foreach name="list" item="edu">
 
-                    <!--     <div class="list-item-price">
-                             <div class="item_fun orange">
+                <!--     <div class="list-item-price">
+                         <div class="item_fun orange">
 
-                             </div>
-                             <div class="link_area" href="detail.html"> <img class="ckbox"  data-id="{$edu.id}" src="/images/uncheck.png"/>
+                         </div>
+                         <div class="link_area" href="detail.html"> <img class="ckbox"  data-id="{$edu.id}" src="/images/uncheck.png"/>
 
-                                 <input type="checkbox" name="edu_id[]" id="edu_id{$edu.id}" value="{$edu.id}" style="display: none;"></div>
+                             <input type="checkbox" name="edu_id[]" id="edu_id{$edu.id}" value="{$edu.id}" style="display: none;"></div>
 
-                         </div>-->
-
-
-
-                    <dl class="list">
-                        <dd class="poi-list-item"><a class="react" href="__GROUP__/detaildj/{$edu.Id}">
-                            <span class="poiname"> {$edu.name}</span>
-                              <span class="dealtype-icon dealcard-magiccard">券</span>
+                     </div>-->
 
 
-                            <div class="kv-line-r">
-                                <h6>
+                <dl class="list">
+                    <dd class="poi-list-item"><a class="react" href="__GROUP__/detaildj/{$edu.Id}">
+                        <span class="poiname"> {$edu.name}</span>
+                        <span class="dealtype-icon dealcard-magiccard">券</span>
+
+
+                        <div class="kv-line-r">
+                            <h6>
 
                             <span class="stars"><i class="text-icon icon-star"></i><i class="text-icon icon-star"></i><i
                                     class="text-icon icon-star"></i><i class="text-icon icon-star"></i><i
                                     class="text-icon icon-star"><i class="text-icon icon-star"></i></i><em
                                     class="star-text">5</em></span>
-                                </h6>
+                            </h6>
 
-                                <p><span data-lat="22.6" data-lng="114.13" data-com="locdist"></span> </p>
-                            </div>
-                        </a></dd>
-                        <dd>
-                        </dd>
-                        <dd>
-                            <dl class="list">
-                                <!-- 欧阳赔20150317：有疑问@连鑫 -->
+                            <p><span data-lat="22.6" data-lng="114.13" data-com="locdist"></span></p>
+                        </div>
+                    </a></dd>
+                    <dd>
+                    </dd>
+                    <dd>
+                        <dl class="list">
+                            <!-- 欧阳赔20150317：有疑问@连鑫 -->
 
-                                <dd><a href="__GROUP__/detaildj/{$edu.Id}"  class="react">
-                                    <div class="dealcard dealcard-poi" >
-                                        <span class="dealcard-nobooking"></span>
+                            <dd><a href="__GROUP__/detaildj/{$edu.Id}" class="react">
+                                <div class="dealcard dealcard-poi">
+                                    <span class="dealcard-nobooking"></span>
 
-                                        <div class="dealcard-img imgbox"
-                                             data-src="　"
-                                             data-src-high="　"
-                                             data-com="unveil" style="background: none;"><img
-                                                src="/upload/{$edu.image}"
-                                                style="width: 100%;"></div>
-                                        <div class="dealcard-block-right">
+                                    <div class="dealcard-img imgbox"
+                                         data-src="　"
+                                         data-src-high="　"
+                                         data-com="unveil" style="background: none;"><img
+                                            src="/upload/{$edu.image}"
+                                            style="width: 100%;"></div>
+                                    <div class="dealcard-block-right">
 
-                                            <div class="title text-block">价值{$edu.discountprice}元{$edu.name}代金券</div>
-                                            <div class="price">
-                                                <span class="strong">{$edu.discountprice}</span><span class="strong-color">元</span>
-                                                <del>{$edu.price}</del>
+                                        <div class="title text-block">价值{$edu.discountprice}元{$edu.name}代金券</div>
+                                        <div class="price">
+                                            <span class="strong">{$edu.discountprice}</span><span
+                                                class="strong-color">元</span>
+                                            <del>{$edu.price}</del>
             <span class="line-right">
                     预约量{$edu.joinpeople}
 
             </span>
-                                            </div>
                                         </div>
                                     </div>
-                                </a></dd>
+                                </div>
+                            </a></dd>
 
-                            </dl>
-                        </dd>
-                    </dl>
-                </foreach>
-            </div>
+                        </dl>
+                    </dd>
+                </dl>
+            </foreach>
         </div>
+    </div>
 
 
+    <!--    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 40px; position: fixed;" isfixed="true">
+            <a href="javascript:;" id="ordersub">确定报名</a>
 
-        <!--    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 40px; position: fixed;" isfixed="true">
-                <a href="javascript:;" id="ordersub">确定报名</a>
-
-            </div>-->
-    </form>
-</div></body></html>
+        </div>-->
+</form>
+</div>
+</body>
+</html>
