@@ -1,46 +1,128 @@
-<include file="Public:header"/>
-        <style>
-            #detail{color: white;}
-           #header{display: none;}
-             #peoples{
-                 position: fixed;
-                 background-color: #35576F;
-                 top: 10%;
-                 width: 100%;
-                 z-index: 99;
-                 display: none;
-             }
-            .modal{
-                width: 100%;
-                background-color: #000;
-                opacity: 0.7;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                z-index: 9;
-                display: none;
-            }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
-        </style>
-<div id="detail">
-    <div class="mm-search no-border" id="people">
-        <div>代金券名称：{$eduinfo.name}</div>
+    <title>{$eduinfo.name}</title>
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="/css/meituan.css" />
+    <style>
+        #detail{color: white;}
+        #header{display: none;}
+        #peoples{
+            position: fixed;
+            background-color: #EFF2F4;
+            top: 10%;
+            width: 100%;
+            z-index: 99;
+            display: none;
+            padding-left: 13px;
+        }
+        .modal{
+            width: 100%;
+            background-color: #000;
+            opacity: 0.7;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 9;
+            display: none;
+        }
+        .album {
+            height: 3.9rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-       <div style="text-decoration: line-through">价值：{$eduinfo.price}</div>
+        .album img {
+            width: 100%;
+            min-height: 100%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top: 50%;
+            position: relative;
+        }
 
-            <div>签约量：{$eduinfo.joinpeople}</div>
-        <div>详细说明：</div>
-                <div>{$eduinfo.description|htmlspecialchars_decode}</div>
+        .album .desc {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            height: .56rem;
+            line-height: .56rem;
+            font-size: .24rem;
+            background: rgba(0, 0, 0, .5);
+        }
+        input{margin: 5px 0 5px 0;}
+        input[type='button'],input[type='submit']{
+            background-color: #fdb338;
+            border:0px;
+            color:#fff;
+            height:22px;
+        }
+    </style>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/js/o-script.js"></script>
+    <script type="text/javascript" src="/js/jquery.overlay.min.js"></script>
+</head>
+<body class="o-page">
+<div id="page">
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a class="react back" href="javascript:history.back()"><i class="text-icon icon-back"></i></a>
+        </div>
+        <span class="nav-header h1">团购详情</span>
+
+
+    </header>
+
+
+
+
+
+
+
+
+
+    <div id="deal" class="deal">
+        <div class="list">
+            <div class="album" data-com="album" data-page="0"    >
+                <img src="http://p0.meituan.net/440.0/deal/8c5018f6c8f0edcb009906cc218aea77314092.jpg.webp">
+                <div class="desc">{$eduinfo.name} 已有{$eduinfo.joinpeople}人报名</div>
+            </div>
+            <dl class="list list-in">
+                <dd class="dd-padding buy-price">
+                    <div class="price">
+                        <strong class="J_pricetag strong-color">{$eduinfo.discountprice}</strong><span class="strong-color">元</span>
+                        <space>
+                        </space>
+                        <!--
+                    -->
+                        <del>{$eduinfo.price}0元</del>
+                    </div>
+                    <!-- <a class="btn buy-btn btn-large btn-strong" href="http://i.meituan.com/deal/buy/27430554?" rel="nofollow" data-stid="360409918564642816_a4621695_c0_e69d16df7f8014c63dd600ce96b667d0e_b1" gaevent="imt/deal/buyBtn">立即报名</a>-->
+                </dd>
+                <dd class="dd-padding buy-desc">
+                    <h1>{$eduinfo.name}</h1>
+
+                    <p class="explain">{$eduinfo.description|htmlspecialchars_decode}</p>
+                </dd>
+
+            </dl>
+            <div class="btn-wrapper">
+                <a class="btn buy-btn btn-block btn-larger btn-strong"  href="javascript:;" id="ordersub">立即报名</a>
+            </div>
+        </div>
 
     </div>
 </div>
 
-
-
-<div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 0px; position: fixed;" isfixed="true">
-    <a href="javascript:;" id="ordersub">报名使用！</a>
-
-</div>
 
 <div class="modal">    </div>
 <div id="peoples" >              <h3>预约信息</h3>
