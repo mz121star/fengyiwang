@@ -29,7 +29,32 @@
             z-index: 9;
             display: none;
         }
+        .album {
+            height: 3.9rem;
+            position: relative;
+            overflow: hidden;
+        }
 
+        .album img {
+            width: 100%;
+            min-height: 100%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top: 50%;
+            position: relative;
+        }
+
+        .album .desc {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            height: .56rem;
+            line-height: .56rem;
+            font-size: .24rem;
+            background: rgba(0, 0, 0, .5);
+        }
     </style>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
