@@ -18,13 +18,12 @@
 <body class="o-page">
 <div id="page">
     <!-- Header -->
-    <div id="header">
-        <a href="#menu"></a>
-				<span id="Logo" class="svg">
-					{$pagetitle|default="人人汇"}
-				</span>
-        <a class="backBtn" href="javascript:history.back();"></a>
-    </div>
+    <header class="navbar">
+
+        <span class="nav-header h1">团购信息</span>
+
+
+    </header>
 
 
 <!-- Content -->
@@ -116,20 +115,7 @@
         </foreach>
             </div>
     </div>
-    <div class="modal"></div>
-    <div id="peoples"><h3>预约信息</h3>
 
-        <div class="mm-search" id="people">
-            <input placeholder="朋友姓名" type="text" autocomplete="off" name="user_jbname[]">
-            <input placeholder="联系电话" type="tel" autocomplete="off" name="user_jbphone[]">
-            <textarea placeholder="大致情况" rows="4" autocomplete="off" name="user_jbdesc[]"></textarea>
-
-        </div>
-        <if condition="$is_tg eq 1">
-            <input type="hidden" name="is_tg" value="1">
-            <input type="button" id="addPeople" value="增加">
-        </if>
-    </div>
 
 
     <!--    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 40px; position: fixed;" isfixed="true">
@@ -137,6 +123,4 @@
 
         </div>-->
 </form>
-
-<include file="Public:userleft"/>
-<include file="Public:footer"/>
+</div></body></html>
