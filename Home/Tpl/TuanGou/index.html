@@ -1,30 +1,32 @@
-<include file="Public:header"/>
-<style>
-    #peoples {
-        position: fixed;
-        background-color: #35576F;
-        top: 10%;
-        width: 100%;
-        z-index: 99;
-        display: none;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
-    #header {
-        display: none
-    }
+    <title>人人汇</title>
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="/css/meituan.css" />
 
-    .modal {
-        width: 100%;
-        background-color: #000;
-        opacity: 0.7;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        z-index: 9;
-        display: none;
-    }
-</style>
-<link type="text/css" rel="stylesheet" href="/css/meituan.css" />
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/js/o-script.js"></script>
+    <script type="text/javascript" src="/js/jquery.overlay.min.js"></script>
+</head>
+<body class="o-page">
+<div id="page">
+    <!-- Header -->
+    <div id="header">
+        <a href="#menu"></a>
+				<span id="Logo" class="svg">
+					{$pagetitle|default="人人汇"}
+				</span>
+        <a class="backBtn" href="javascript:history.back();"></a>
+    </div>
+
+
 <!-- Content -->
 <form method="post">
     <input type="hidden" name="order_type" value="2">
