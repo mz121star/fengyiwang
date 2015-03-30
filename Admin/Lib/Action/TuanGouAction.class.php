@@ -2,6 +2,20 @@
 
 class TuanGouAction extends PublicAction {
 
+    public function tglists(){
+        $tuangou = M("tuangou");
+        import('ORG.Util.Page');
+        $count = $tuangou->count();
+        $page = new Page($count, 10);
+        $edulist = $tuangou->order(array('Id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('edulist', $edulist);
+        
+
+        $this->display();
+    }
+
     public function lists(){
         $edu = M("baoming");
         import('ORG.Util.Page');
@@ -11,7 +25,7 @@ class TuanGouAction extends PublicAction {
         $show = $page->show();
         $this->assign('page',$show);
         $this->assign('edulist', $edulist);
-        
+
 
         $this->display();
     }

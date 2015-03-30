@@ -1,0 +1,30 @@
+
+
+<h2 class="sub-header">团购列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>团购名称</th>
+            <th>团购原价</th>
+            <th>折后价</th>
+            <th>参与人数</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="edulist" item="order">
+          <tr>
+            <td class="col-sm-2">{$order.Id}</td>
+            <td class="col-sm-2">{$order.name}</td>
+            <td class="col-sm-2">{$order.price}</td>
+            <td class="col-sm-2">{$order.discountprice}</td>
+            <td class="col-sm-2">{$order.joinpeople}</td>
+              <td class="col-sm-2">                <a href="__GROUP__/edittuangou/{$order.Id}">编辑</a></td>
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>
