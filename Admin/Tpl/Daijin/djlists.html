@@ -1,0 +1,32 @@
+
+
+<h2 class="sub-header">代金券列表</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>代金券名称</th>
+            <th>代金券价值</th>
+            <th>代金券折扣价</th>
+              <th>使用人数</th>
+            <th>Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        <foreach name="edulist" item="order">
+          <tr>
+            <td class="col-sm-2">{$order.Id}</td>
+            <td class="col-sm-2">{$order.name}</td>
+            <td class="col-sm-2">{$order.price}</td>
+            <td class="col-sm-2">{$order.discountprice}</td>
+              <td class="col-sm-2">{$order.joinpeople}</td>
+            <td class="col-sm-2">     <a href="__GROUP__/editdaijin/{$order.Id}">编辑</a></td>
+
+          </tr>
+        </foreach>
+        </tbody>
+      </table>
+      {$page}
+    </div>

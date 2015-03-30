@@ -15,7 +15,32 @@ class DaijinAction extends PublicAction {
 
         $this->display();
     }
-    
+    public function djlists(){
+        $edu = M("daijin");
+        import('ORG.Util.Page');
+        $count = $edu->count();
+        $page = new Page($count, 10);
+        $edulist = $edu->order(array('Id'=>'desc'))->limit($page->firstRow.','.$page->listRows)->select();
+        $show = $page->show();
+        $this->assign('page',$show);
+        $this->assign('edulist', $edulist);
+
+
+        $this->display();
+    }
+    public function moddaijin() {
+        $eduid = $this->_get('id');
+        $edu = M("daijin");
+        $eduinfo = $edu->where('Id='.$eduid)->find();
+        if (!$eduinfo) {
+            $this->redirect('Daijin/lists');
+        }
+        $this->assign('eduinfo', $eduinfo);
+
+
+        $this->display();
+    }
+
     public function eduorder(){
         $order = $this->_get("order");
         $edu = M("edu");
@@ -183,8 +208,14 @@ class DaijinAction extends PublicAction {
         }
         $tuangou = M("daijin");
         $post = $this->filterAllParam('post');
+        if (isset($post['Id']) && $post['Id']) {
+            $tuangouid = $tuangou->where('Id='.$post['Id'])->save($post);
 
-        $tuangouid = $tuangou->add($post);
+
+        } else {
+            $tuangouid = $tuangou->add($post);
+        }
+
         if($tuangouid){
             $this->success("增加代金券信息成功");
         }else{

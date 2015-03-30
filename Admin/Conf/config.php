@@ -22,7 +22,8 @@ $private_config = array(
                                                   'dellogo/:logoid' => 'System/dellogo',
                                                   'deltuan/:tuanid' => 'System/deltuan',
                                                   'delqrcode/:qrid' => 'Qrcode/delqrcode',
-                                                    'edittuangou/:id'=>'TuanGou/modtuangou'
+                                                    'edittuangou/:id'=>'TuanGou/modtuangou',
+                              'editdaijin/:id'=>'Daijin/moddaijin'
                                                   )
                         );
 
