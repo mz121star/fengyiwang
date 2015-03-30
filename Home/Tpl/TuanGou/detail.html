@@ -56,7 +56,7 @@
             font-size: .24rem;
             background: rgba(0, 0, 0, .5);
         }
-        input{margin: 5px 0 5px 0;}
+        input{margin: 5px 0 5px 0;height: 30px}
         input[type='button'],input[type='submit']{
             background-color: #fdb338;
             border:0px;
@@ -156,11 +156,11 @@
         <form action="__GROUP__/TuanGou/baoming" method="post" id="baoming" name="baoming">
         <input placeholder="姓名" type="text" autocomplete="off"  name="name">
         <input placeholder="电话" type="tel" autocomplete="off" name="phone" id="tel">
-        <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="width: 30%; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">
+        <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="height: 40px;width: 30%; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">
         <input placeholder="学校"  type="text"  autocomplete="off" name="school">
         <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
         <input type="hidden" value="zz" id="code">
-        <input type="submit"    id="submit" value="确认提交">
+        <input type="submit"   style="clear: both;width: 80%;  height: 40px;"  id="submit" value="确认提交">
         </form>
     </div>
 
