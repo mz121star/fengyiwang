@@ -15,6 +15,18 @@ class TuanGouAction extends PublicAction {
 
         $this->display();
     }
+    public function modtuangou() {
+        $eduid = $this->_get('id');
+        $edu = M("tuangou");
+        $eduinfo = $edu->where('Id='.$eduid)->find();
+        if (!$eduinfo) {
+            $this->redirect('TuanGou/lists');
+        }
+        $this->assign('eduinfo', $eduinfo);
+
+
+        $this->display();
+    }
 
     public function lists(){
         $edu = M("baoming");
