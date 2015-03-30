@@ -209,8 +209,16 @@ class TuanGouAction extends PublicAction {
         }
         $tuangou = M("tuangou");
         $post = $this->filterAllParam('post');
+        $post['description'] = $_POST['description'];
 
-        $tuangouid = $tuangou->add($post);
+        if (isset($post['Id']) && $post['Id']) {
+            $tuangouid = $tuangou->where('Id='.$post['Id'])->save($post);
+
+
+        } else {
+            $tuangouid = $tuangou->add($post);
+        }
+
         if($tuangouid){
             $this->success("增加团购信息成功");
         }else{
