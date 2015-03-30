@@ -3,10 +3,19 @@
 class DaijinAction extends PublicAction {
 
     public function index(){
-         $tuangou=M("Daijin");
-        $list=$tuangou->select();
-        $this->assign('list', $list);
-        $this->display();
+      $id=$_GET["id"];
+      if($id){
+        $tuangou=M("Daijin");
+              $list=$tuangou->where('section='.$id)->select();
+              $this->assign('list', $list);
+              $this->display();
+      }else{
+          $tuangou=M("Daijin");
+                $list=$tuangou->select();
+                $this->assign('list', $list);
+                $this->display();
+      }
+
     }
     
     public function detail(){
