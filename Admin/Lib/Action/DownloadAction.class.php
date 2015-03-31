@@ -28,12 +28,12 @@ class DownloadAction extends PublicAction {
 
         $this->display();
     }
-    public function moddaijin() {
+    public function moddownload() {
         $eduid = $this->_get('id');
-        $edu = M("daijin");
+        $edu = M("download");
         $eduinfo = $edu->where('Id='.$eduid)->find();
         if (!$eduinfo) {
-            $this->redirect('Daijin/lists');
+            $this->redirect('Download/lists');
         }
         $this->assign('eduinfo', $eduinfo);
 

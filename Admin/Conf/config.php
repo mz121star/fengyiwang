@@ -23,7 +23,8 @@ $private_config = array(
                                                   'deltuan/:tuanid' => 'System/deltuan',
                                                   'delqrcode/:qrid' => 'Qrcode/delqrcode',
                                                     'edittuangou/:id'=>'TuanGou/modtuangou',
-                              'editdaijin/:id'=>'Daijin/moddaijin'
+                                                     'editdaijin/:id'=>'Daijin/moddaijin',
+                                               'download/:id'=>'Download/moddownload'
                                                   )
                         );
 
