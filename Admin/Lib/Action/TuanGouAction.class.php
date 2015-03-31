@@ -214,7 +214,6 @@ class TuanGouAction extends PublicAction {
         if (isset($post['Id']) && $post['Id']) {
             $tuangouid = $tuangou->where('Id='.$post['Id'])->save($post);
 
-
         } else {
             $tuangouid = $tuangou->add($post);
         }

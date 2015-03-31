@@ -24,7 +24,7 @@ $private_config = array(
                                                   'delqrcode/:qrid' => 'Qrcode/delqrcode',
                                                     'edittuangou/:id'=>'TuanGou/modtuangou',
                                                      'editdaijin/:id'=>'Daijin/moddaijin',
-                                               'download/:id'=>'Download/moddownload'
+                                               'downloadfile/:id'=>'Download/moddownload'
                                                   )
                         );
 
