@@ -208,6 +208,7 @@ class DownloadAction extends PublicAction {
         }
         $tuangou = M("download");
         $post = $this->filterAllParam('post');
+        $post['description'] = $_POST['description'];
         if (isset($post['Id']) && $post['Id']) {
             $tuangouid = $tuangou->where('Id='.$post['Id'])->save($post);
 
