@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta name="author" content="www.frebsite.nl"/>
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes"/>
+
+    <title>人人汇</title>
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="/css/meituan.css"/>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/js/o-script.js"></script>
+    <script type="text/javascript" src="/js/jquery.overlay.min.js"></script>
+</head>
+<body class="o-page">
+<div id="page">
+<!-- Header -->
+<header class="navbar">
+
+    <span class="nav-header h1">下载资料列表</span>
+
+
+</header>
+
+<!-- Content -->
+<form method="post">
+    <input type="hidden" name="order_type" value="2">
+
+
+    <div class="jglb" style="height: auto">
+
+        <!--      <foreach name="edulist" item="edu">
+                  <div class="checkbox">
+                      <label>
+                          &lt;!&ndash; <img src="/uploads/1403/image/22222.jpg" width="40" height="40">&ndash;&gt;
+                    <input type="checkbox" name="edu_id[]" value="{$edu.id}">
+                    {$edu.edu_name}
+                </label>
+
+            </div>
+        </foreach>-->
+
+        <div id="deals" class="deals-list">
+            <foreach name="list" item="edu">
+
+                <!--     <div class="list-item-price">
+                         <div class="item_fun orange">
+
+                         </div>
+                         <div class="link_area" href="detail.html"> <img class="ckbox"  data-id="{$edu.id}" src="/images/uncheck.png"/>
+
+                             <input type="checkbox" name="edu_id[]" id="edu_id{$edu.id}" value="{$edu.id}" style="display: none;"></div>
+
+                     </div>-->
+
+
+                <dl class="list">
+                    <dd  style="  height: 32px;" class="poi-list-item"><a class="react" href="__GROUP__/detaildownload/{$edu.Id}">
+                        <span class="poiname"> {$edu.name}</span>
+                        <span class="dealtype-icon dealcard-magiccard">文件</span>
+
+
+                        <div class="kv-line-r">
+
+
+                            <p><span data-lat="22.6" data-lng="114.13" data-com="locdist"></span></p>
+                        </div>
+                    </a></dd>
+                    <dd>
+                    </dd>
+                    <dd>
+                        <dl class="list">
+                            <!-- 欧阳赔20150317：有疑问@连鑫 -->
+
+                            <dd><a href="__GROUP__/detaildownload/{$edu.Id}" class="react">
+                                <div class="dealcard dealcard-poi">
+                                    <span class="dealcard-nobooking"></span>
+
+                                    <div class="dealcard-img imgbox"
+                                         data-src="　"
+                                         data-src-high="　"
+                                         data-com="unveil" style="background: none;"><img
+                                            src="/upload/{$edu.image}"
+                                            style="width: 100%;"></div>
+                                    <div class="dealcard-block-right">
+
+                                        <div class="title text-block">价值{$edu.discountprice}元{$edu.name}代金券</div>
+                                        <div class="price">
+
+            <span class="line-right">
+                   下载量{$edu.joinpeople}
+
+            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a></dd>
+
+                        </dl>
+                    </dd>
+                </dl>
+            </foreach>
+        </div>
+    </div>
+
+
+    <!--    <div id="book-button" class="book_now v-page" style="width: 100%; left: 0px; bottom: 40px; position: fixed;" isfixed="true">
+            <a href="javascript:;" id="ordersub">确定报名</a>
+
+        </div>-->
+</form>
+</div>
+</body>
+</html>

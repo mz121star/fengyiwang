@@ -3,7 +3,7 @@
 class DownloadAction extends PublicAction {
 
     public function index(){
-         $tuangou=M("tuangou");
+         $tuangou=M("download");
         $list=$tuangou->select();
         $this->assign('list', $list);
         $this->display();
