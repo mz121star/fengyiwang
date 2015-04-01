@@ -16,6 +16,7 @@ $private_config = array(
                                                      'daijin/:id' => 'Daijin/index',
                                                 'detaildj/:id' => 'Daijin/detail',
                                                   'detailorder/:joid/:jeid' => 'User/detailorder',
+                                           'detaildownload/:id' => 'Download/detail',
                                                   'wx/:uid' => 'Index/home',
                                                   'setsource/:uid/:from' => 'Index/sendsource',
                                                   'weixin/:uid/:send' => 'Index/send',

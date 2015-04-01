@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+    <title>{$eduinfo.name}</title>
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="/css/meituan.css" />
+    <style>
+        #detail{color: white;}
+        #header{display: none;}
+        #peoples{
+            position: fixed;
+            background-color: #EFF2F4;
+            top: 10%;
+            width: 100%;
+            z-index: 99;
+            display: none;
+            padding-left: 13px;
+        }
+        .modal{
+            width: 100%;
+            background-color: #000;
+            opacity: 0.7;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 9;
+            display: none;
+        }
+        .album {
+            height: 3.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album img {
+            width: 100%;
+            min-height: 100%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            top: 50%;
+            position: relative;
+        }
+
+        .album .desc {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: white;
+            text-align: center;
+            height: .56rem;
+            line-height: .56rem;
+            font-size: .24rem;
+            background: rgba(0, 0, 0, .5);
+        }
+        input{margin: 5px 0 5px 0;height: 30px}
+        input[type='button'],input[type='submit']{
+            background-color: #fdb338;
+            border:0px;
+            color:#fff;
+            height:22px;
+        }
+    </style>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.mmenu.min.all.js"></script>
+    <script type="text/javascript" src="/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="/js/o-script.js"></script>
+    <script type="text/javascript" src="/js/jquery.overlay.min.js"></script>
+</head>
+<body class="o-page">
+<div id="page">
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-wrap-left">
+            <a class="react back" href="javascript:history.back()"><i class="text-icon icon-back"></i></a>
+        </div>
+        <span class="nav-header h1">{$eduinfo.name}</span>
+
+
+    </header>
+
+
+
+
+
+
+
+
+
+    <div id="deal" class="deal">
+        <div class="list">
+            <div class="album" data-com="album" data-page="0"    >
+                <img src="/upload/{$eduinfo.image}">
+                <div class="desc">{$eduinfo.name} 已有{$eduinfo.joinpeople}人下载</div>
+            </div>
+            <dl class="list list-in">
+                <dd class="dd-padding buy-price">
+                    <div class="price">
+                        <strong class="J_pricetag strong-color">优质学习资料</strong>
+                        <space>
+                        </space>
+                        <!--
+                    -->
+
+                    </div>
+                    <!-- <a class="btn buy-btn btn-large btn-strong" href="http://i.meituan.com/deal/buy/27430554?" rel="nofollow" data-stid="360409918564642816_a4621695_c0_e69d16df7f8014c63dd600ce96b667d0e_b1" gaevent="imt/deal/buyBtn">立即报名</a>-->
+                </dd>
+                <dd class="dd-padding buy-desc">
+                    <h1>{$eduinfo.name}</h1>
+
+                    <p class="explain">{$eduinfo.description|htmlspecialchars_decode}</p>
+                </dd>
+
+            </dl>
+            <div class="btn-wrapper">
+                <a class="btn buy-btn btn-block btn-larger btn-strong"  href="{$eduinfo.url}"  >马上下载</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal">    </div>
+<div id="peoples" >              <h3>代金券</h3>
+
+    <div class="mm-search" id="people1">
+        <form action="__GROUP__/Daijin/baoming" method="post" id="baoming" name="baoming">
+        <input placeholder="姓名" type="text" autocomplete="off"  name="name">
+        <input placeholder="电话" type="tel" autocomplete="off" name="phone" id="tel">
+       <!-- <input type="text" style="width: 60%; float: left;display: inline-block"  placeholder="验证码" name="vercode" id="vercode" autocomplete="off"><input style="width: 30%; height: 40px; float: left;display: inline-block"   class="getcode" type="button" value="获取验证码">-->
+        <input placeholder="学校"  type="text"  autocomplete="off" name="school">
+        <input type="hidden" value="{$eduinfo.Id}" name="guangou_id">
+        <input type="hidden" value="zz" id="code">
+        <input type="submit" style="clear: both;width: 80%;  height: 40px;"  id="submit" value="确认提交">
+        </form>
+    </div>
+
+</div>
+<script>
+
+    $('#ordersub').on("touchstart",function(){
+        $(".modal").show();
+        $("#peoples").show();
+      //  location.href = "__GROUP__/Index/index";
+    });
+    var send=true;
+    $(".getcode").on("click",function(){
+        if(!send){
+            return false;
+        }
+        var _code=Math.floor(Math.random()*10000);
+        var _tel=$("#tel").val();
+        if(/^1\d{10}$/.test(_tel)){
+            $.ajax({
+                url:'__GROUP__/Daijin/getcode',
+                method:'GET',
+                data:{code:_code,phone:_tel}
+            }).success(function(d){
+                $(".getcode").val("已发送");
+                $(".getcode").attr("disable","disable");
+                $("#code").val(_code);
+                send=false;
+            }).fail(function(d){
+                alert(d.info);
+            })
+        }else{
+            alert("请输入正确手机号");
+        }
+
+
+    })
+    $("#submit").on("click",function(){
+        if($("#code").val().trim()==$("#vercode").val().trim()){
+           return true
+        }else{
+            alert("验证码填写错误");
+            return false;
+        }
+    })
+
+</script>
+
+
+<include file="Public:footer"/>

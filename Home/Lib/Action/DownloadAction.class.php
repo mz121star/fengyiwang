@@ -11,7 +11,7 @@ class DownloadAction extends PublicAction {
     
     public function detail(){
         $eid = $this->_get('id');
-        $edu = M("tuangou");
+        $edu = M("download");
         $eduinfo = $edu->where('Id = '.$eid)->find();
         $this->assign('eduinfo', $eduinfo);
 
