@@ -38,6 +38,14 @@ class IndexAction extends Action {
     "button": [
         {
             "type": "view",
+            "name": "学习资料",
+            "url": "http://fy.webs.dlwebs.com/index.php/Download"
+        },
+       {
+           "name":"优惠中心",
+           "sub_button":[
+        {
+            "type": "view",
             "name": "团购",
             "url": "http://fy.webs.dlwebs.com/index.php/TuanGou"
         },
@@ -45,7 +53,8 @@ class IndexAction extends Action {
             "type": "view",
             "name": "代金券",
             "url": "http://fy.webs.dlwebs.com/index.php/Daijin"
-        },
+        }
+            ]},
         {
             "type": "view",
             "name": "红包",
