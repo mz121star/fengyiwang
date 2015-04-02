@@ -2260,8 +2260,8 @@ body .box-search.active {
     border-radius: 50%;
     background-color: #2bb2a3;
     color: #fff;
-    padding-left: 20px;
-    padding-top: 20px;
-    margin:5px 10px 5px 10px;
+    /* padding-left: 20px; */
+    /* padding-top: 20px; */
+    text-align: center;margin:5px 10px 5px 10px;
 }
 .exploreSiteFullPane h4{padding-top: 15px;color:#001}
