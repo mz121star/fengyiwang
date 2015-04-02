@@ -2255,12 +2255,13 @@ body .box-search.active {
     color: #2bb2a3
 }
 .exploreSiteFullPane a{display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background-color: #2bb2a3;
     color: #fff;
-    padding-left: 25px;
-    padding-top: 25px;
+    padding-left: 20px;
+    padding-top: 20px;
     margin:5px 10px 5px 10px;
 }
+.exploreSiteFullPane h4{padding-top:40px;color:#001}
