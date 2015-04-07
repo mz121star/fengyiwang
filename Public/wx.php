@@ -74,7 +74,7 @@ class weixin {
         } elseif ($object->Event == 'SCAN') {
             $fromsource = $object->EventKey;
             file_get_contents('http://'.$_SERVER['SERVER_NAME'].'/index.php/setsource/'.$object->FromUserName.'/'.$fromsource);
-            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '欢迎同学们进入微官网', 'http://'.$_SERVER['SERVER_NAME'].'/uploads/xiaoyuanzhixing.jpg', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
+            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '加关注摇红包', 'http://'.$_SERVER['SERVER_NAME'].'/upload/index.jpg', $_SERVER['SERVER_NAME'].'/index.php/Shake/' );
         } elseif ($object->Event == 'subscribe') {
             if (isset($object->EventKey) && $object->EventKey) {
                 $fromsource = substr($object->EventKey, 8);
@@ -82,7 +82,7 @@ class weixin {
                 $fromsource = 0;
             }
             file_get_contents('http://'.$_SERVER['SERVER_NAME'].'/index.php/setsource/'.$object->FromUserName.'/'.$fromsource);
-            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '欢迎同学们进入微官网', 'http://'.$_SERVER['SERVER_NAME'].'/uploads/xiaoyuanzhixing.jpg', $_SERVER['SERVER_NAME'].'/index.php/wx/'.$object->FromUserName);
+            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '加关注摇红包', 'http://'.$_SERVER['SERVER_NAME'].'/upload/index.jpg', $_SERVER['SERVER_NAME'].'/index.php/Shake/');
 //            $item_str = sprintf($itemTpl, '欢迎关注人人汇', '', '', '');
 //            $item_str1 = sprintf($itemTpl, '绑定手机', '手机绑定后，才可以进行预约咨询', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/regphone');
 //            $item_str2 = sprintf($itemTpl, 'Logo投票', 'Logo投票', '', $_SERVER['SERVER_NAME'].'/index.php/weixin/'.$object->FromUserName.'/logo');
